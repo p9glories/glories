@@ -8,11 +8,10 @@ class Categoria{
     protected $icono;  /*** RUTA */
     
 
-    protected function registraCategoria(){
-        /** PROVAR icono */
-        $this->icono = "ruta";
-
-       
+    protected function registraCategoria($nombre, $icono){
+        $this->setNombre($nombre);
+        $this->setIcono($icono);
+        
         try{    
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
@@ -20,13 +19,13 @@ class Categoria{
                     VALUES (null, :nombre, :icono)";
             $resultado = $conecta->getConexionBD()->prepare($sqlUsuario);
             $resultado->execute(array(
-                                    ":nombre" => $this->nombre,
-                                    ":icono" => $this->icono
+                                    ":nombre" => $this->getNombre(),
+                                    ":icono" => $this->getIcono()
                                 ));
-            $conecta->getConexionBD()->commit();  //executa l'Insert
+            $conecta->getConexionBD()->commit();  
             return true;
          }catch(Exception $excepcio){
-            $conecta->getConexionBD()->rollback();  //NO insertarà 
+            $conecta->getConexionBD()->rollback();  
             return false; 
         }
         
@@ -47,13 +46,16 @@ class Categoria{
         }
     }
 
-    protected function modificaCategoria(){
+    protected function modificaCategoria($id, $nombre, $icono){
+        $this->setId_categoria($id);
+        $this->setNombre($nombre);
+        $this->setIcono($icono);
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sentenciaSQL = "UPDATE categorias
-                                    SET nombre = '$this->nombre', icono = '$this->icono'
-                                    WHERE id_categoria = '$this->id_categoria'";
+                                    SET nombre = $this->getNombre(), icono = $this->getIcono()
+                                    WHERE id_categoria = $this->getId_categoria()";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             $conecta->getConexionBD()->commit();
@@ -64,6 +66,45 @@ class Categoria{
         }
     }
 
+
+    public function getId_categoria()
+    {
+        return $this->id_categoria;
+    }
+
+    public function setId_categoria($id_categoria)
+    {
+        $this->id_categoria = $id_categoria;
+
+        return $this;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+ 
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+
+    public function getIcono()
+    {
+        return $this->icono;
+    }
+
+
+    public function setIcono($icono)
+    {
+        $this->icono = $icono;
+
+        return $this;
+    }
 }
 
 

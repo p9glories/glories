@@ -1,6 +1,6 @@
 <?php
     
-    require "ConexionBD.php";
+    require_once "ConexionBD.php";
 
 class SuperAdministrador{
     protected $id_usuario;
@@ -13,7 +13,14 @@ class SuperAdministrador{
 
     protected $id_superadmin;
     
-    protected function registraSuperAdministrador(){
+    protected function registraSuperAdministrador($email, $password, $nombre, $apellidos, $telefono, $newsletter){
+        $this->setEmail($email);
+        $this->setPassword($password);
+        $this->setNombre($nombre);
+        $this->setApellidos($apellidos);
+        $this->setTelefono($telefono);
+        $this->setNewsletter($newsletter);
+
         try{    
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
@@ -21,12 +28,12 @@ class SuperAdministrador{
                     VALUES (null, :email, :password, :nombre, :apellidos, :telefono, :newsletter)";
             $resultado = $conecta->getConexionBD()->prepare($sqlUsuario);
             $resultado->execute(array(
-                                    ":email" => $this->email,
-                                    ":password" => $this->password,
-                                    ":nombre" => $this->nombre,
-                                    ":apellidos" => $this->apellidos,
-                                    ":telefono" => $this->telefono,
-                                    ":newsletter" => $this->newsletter
+                                    ":email" => $this->getEmail(),
+                                    ":password" => $this->getPassword(),
+                                    ":nombre" => $this->getNombre(),
+                                    ":apellidos" => $this->getApellidos(),
+                                    ":telefono" => $this->getTelefono(),
+                                    ":newsletter" => $this->getNewsletter()
                                 ));
             
             $idInsertado = $conecta->getConexionBD()->lastInsertId();
@@ -37,10 +44,10 @@ class SuperAdministrador{
             $resultado->execute(array(
                             ":id_usuario" => $idInsertado
                         ));
-            $conecta->getConexionBD()->commit();  //executa l'Insert
+            $conecta->getConexionBD()->commit();  
             return true;
          }catch(Exception $excepcio){
-            $conecta->getConexionBD()->rollback();  //NO insertarà 
+            $conecta->getConexionBD()->rollback();  
             return false;  
         }
     }
@@ -57,11 +64,126 @@ class SuperAdministrador{
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcio){
-            $conecta->getConexionBD()->rollback();  //NO insertarà 
+            $conecta->getConexionBD()->rollback(); 
             return null;  
         }
     }
 
+
+    protected function buscaSuperAdministrador($id){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT id_superadmin 
+                                FROM superadministradores
+                                        WHERE id_usuario = '$id'";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
+
+    public function getId_usuario()
+    {
+        return $this->id_usuario;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    public function setId_usuario($id_usuario)
+    {
+        $this->id_usuario = $id_usuario;
+
+        return $this;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
+
+
+    public function getId_superadmin()
+    {
+        return $this->id_superadmin;
+    }
+
+   
+    public function setId_superadmin($id_superadmin)
+    {
+        $this->id_superadmin = $id_superadmin;
+
+        return $this;
+    }
 }
 
 

@@ -1,7 +1,20 @@
 <?php    
     /***  ENCABEZADO */
-
     //GP
+    require_once "../../Controladores/SesionesController.php";
+    $objecteSessions = new SesionesController();
+   
+    
+    if (!isset($_SESSION["id_usuario"])){
+        $_SESSION["login"] = false;
+        $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
+        header ("location: ../../index.php");
+    }else{
+        if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="Administrador"){
+                $_SESSION["Denegado"]="No tiene acceso al módulo de MODIFICAR la Tienda!!";
+                header ("location: ../../index.php");
+        }
+    }
    
 
 ?>
@@ -10,8 +23,26 @@
     if (isset($_GET["id"])){
         ?>
         <h1>Modifica la Tienda <?php echo $_GET["id"]?></h1>
-        <form action="../../Controladores/TiendasController.php" method="POST">
+        <form action="../../Controladores/TiendasController.php" method="POST" ecntype="multipart/form-data">
             <div class="six fields">
+
+            <div class="field">
+            <label for="nombre">Categoria</label>
+            <select name="categoria">
+                <option value="0">Seleccione:</option>
+                    <?php
+                        
+                        $categorias = new CategoriasController();
+                        $valoresCategorias = $categorias->selectCategorias();
+                        foreach ($valoresCategorias as $categoria){
+                            echo "<option value=$categoria->id_categoria>".$categoria->nombre."</option>";
+                        }
+                    ?>
+            </select>
+
+        </div>
+
+
             <div class="field">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" placeholder="nombre">

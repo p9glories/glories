@@ -1,7 +1,22 @@
 <?php    
     /***  ENCABEZADO */
 
-    //require '';
+    //GP
+ require_once "../../Controladores/SesionesController.php";
+ $objecteSessions = new SesionesController();
+
+
+ if (!isset($_SESSION["id_usuario"])){
+     $_SESSION["login"] = false;
+     $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
+     header ("location: ../../index.php");
+ }else{
+     if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="SuperAdministrador"){
+             $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Nivel!!";
+             header ("location: ../../index.php");
+     }
+ }
+
 
 ?>
 

@@ -1,11 +1,11 @@
 <?php    
     /***  ENCABEZADO */
-
-    //require '';
+    
+    
 
 ?>
 
-<h1>Lista TODAS las Valoraciones</h1>
+<h1>Lista TODAS las Valoraciones: </td></h1>
 
 <div>
 
@@ -39,7 +39,7 @@
                 <td style="border:1px solid black;"><?php echo DateTime::createFromFormat('Y-m-d', $objecte->fecha)->format("d/m/Y") ?></td>
                 <td style="border:1px solid black;"><?php echo $objecte->nivel ?></td>
                 
-                <td style="border:1px solid black;"><a href="ValoracionesController.php?operacio=modificar&valoracion=<?php echo $objecte->id_valoracion ?>">MODIFICAR</a></td>
+                <td style="border:1px solid black;"><a href="ValoracionesController.php?tienda=<?php echo $objecte->id_tienda ?>&cliente=<?php echo $objecte->id_cliente ?>&operacio=modificar&valoracion=<?php echo $objecte->id_valoracion ?>">MODIFICAR</a></td>
 
             </tr>
     <?php

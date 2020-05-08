@@ -7,9 +7,8 @@ class Nivel{
     protected $nombre;
     
 
-    protected function registraNivel(){
-
-       
+    protected function registraNivel($nombre){
+        $this->setNombre($nombre);
         try{    
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
@@ -17,12 +16,12 @@ class Nivel{
                     VALUES (null, :nombre)";
             $resultado = $conecta->getConexionBD()->prepare($sqlUsuario);
             $resultado->execute(array(
-                                    ":nombre" => $this->nombre
+                                    ":nombre" => $this->getNombre()
                                 ));
-            $conecta->getConexionBD()->commit();  //executa l'Insert
+            $conecta->getConexionBD()->commit();  
             return true;
          }catch(Exception $excepcio){
-            $conecta->getConexionBD()->rollback();  //NO insertarà 
+            $conecta->getConexionBD()->rollback();  
             return false; 
         }
     }
@@ -41,13 +40,15 @@ class Nivel{
         }
     }
 
-    protected function modificaNivel(){
+    protected function modificaNivel($id, $nombre){
+        $this->setId_nivel($id);
+        $this->setNombre($nombre);
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sentenciaSQL = "UPDATE niveles
-                                    SET nombre = '$this->nombre'
-                                    WHERE id_nivel = '$this->id_nivel'";
+                                    SET nombre = $this->getNombre()
+                                    WHERE id_nivel = $this->getId_nivel()";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             $conecta->getConexionBD()->commit();
@@ -58,6 +59,30 @@ class Nivel{
         }
     }
 
+
+    public function getId_nivel()
+    {
+        return $this->id_nivel;
+    }
+
+    public function setId_nivel($id_nivel)
+    {
+        $this->id_nivel = $id_nivel;
+
+        return $this;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
 }
 
 

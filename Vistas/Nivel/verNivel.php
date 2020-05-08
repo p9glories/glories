@@ -15,6 +15,7 @@
             <th>nombre</th>
 
             <th>MODIFICAR</th>
+            <th>ELIMINAR</th>
         </tr>
     <?php
         
@@ -25,6 +26,7 @@
                 <td style="border:1px solid black;"><?php echo $objecte->nombre ?></td>
 
                 <td style="border:1px solid black;"><a href="NivelesController.php?operacio=modificar&nivel=<?php echo $objecte->id_nivel ?>">MODIFICAR</a></td>
+                <td style="border:1px solid black;"><a href="NivelesController.php?operacio=eliminar&nivel=<?php echo $objecte->id_nivel ?>">ELIMINAR</a></td>
             </tr>
     <?php
         }?>
