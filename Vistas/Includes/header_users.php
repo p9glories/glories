@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 a">
-				<a class="logo" href="index.html"></a>
+				<a class="logo" href="../../index.php"></a>
 			</div>
 			<div class="col-md-4 b align-self-center">
 				<form action="#">
