@@ -53,7 +53,7 @@
       </div>
 
       <div>
-      		<form action="">
+      		<form action="../../Controladores/ClientesController.php?operacio=login" method="POST">
       			<div class="col-12 mb-3">
       				<div class="input-container">
 		              <input type="text" id="email" name="email" required="required">
@@ -73,7 +73,8 @@
 					</div>
 		        </div>
 		        <div class="col-12 mb-4">
-					<button class="btn btn-orange btn-lg">Continuar</button>
+		        	<input type="hidden" name="operacio" value="login">
+             		<input type="submit" class="btn btn-orange btn-lg" value="Iniciar sesión">
 		        </div>
 				<div class="col-12 mb-4 text-center">
 					<a href="../Cliente/insertarCliente.php" class="link">

@@ -51,9 +51,9 @@ class Administrador{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             //$sentenciaSQL = "SELECT * FROM Administradores";
-            $sentenciaSQL = "SELECT * FROM Usuarios
-                                        INNER JOIN Administradores 
-                                        ON Administradores.id_usuario=Usuarios.id_usuario";
+            $sentenciaSQL = "SELECT * FROM usuarios
+                                        INNER JOIN administradores 
+                                        ON administradores.id_usuario=usuarios.id_usuario";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);

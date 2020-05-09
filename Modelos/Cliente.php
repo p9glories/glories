@@ -65,9 +65,9 @@ class Cliente{
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM Usuarios
-                                        INNER JOIN Clientes 
-                                        ON Clientes.id_usuario=Usuarios.id_usuario";
+            $sentenciaSQL = "SELECT * FROM usuarios
+                                        INNER JOIN clientes 
+                                        ON clientes.id_usuario=usuarios.id_usuario";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);

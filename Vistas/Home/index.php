@@ -15,7 +15,7 @@ if (isset($_SESSION["mensajeResultado"])){
     //var_dump($_SESSION);
 ?>
 
-<?php include '../Categoria/verCategoria.php';?>
+
 
 <!-- Slider inicio -->
 
