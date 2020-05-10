@@ -66,12 +66,12 @@ class UsuariosController extends Usuario{
                 }
                 else {
                     $_SESSION["login"]=false;
-                    $_SESSION["mensajeLogin"]="<< Contraseña incorrecta >>";
+                    $_SESSION["mensajeLogin"]="La contraseña no es correcta";
                     header("location: ../index.php");
                 }
         }else{
             $_SESSION["login"]=false;
-            $_SESSION["mensajeLogin"]="<< El usuario No existe! >>";
+            $_SESSION["mensajeLogin"]="El usuario no existe";
             header("location: ../index.php");
         }
     }

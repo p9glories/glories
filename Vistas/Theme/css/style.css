@@ -8,6 +8,15 @@
   -ms-box-shadow: none!important;
   box-shadow: none!important;
 }
+.fw-n {
+  font-weight: normal;
+}
+.c-999 {
+  color: #999999!important;
+}
+.c-orange {
+  color: #ff5722!important;
+}
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -68,6 +77,9 @@ h2.title + p{
   line-height: 30px;
   font-weight: normal!important;
   top: 0;
+  background-color: transparent;
+}
+.input-container textarea:not(:focus):valid ~ .label {
   background-color: #ffffff;
 }
 .input-container.s2 .label {
@@ -347,6 +359,11 @@ nav {
 }
 .modal-title span {
   color: #FF5722;
+}
+.modal .close {
+  position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 /* Products */
