@@ -35,6 +35,20 @@ class CategoriasController extends Categoria{
         require "../Vistas/Categoria/verCategoria.php";
     }
 
+    // AZ
+    public function MenuCategorias(){
+
+        $Llistat = $this->retornaCategoriasTodos();
+        require "../Vistas/Categoria/menuCategoria.php";
+    }
+
+    // AZ
+    public function EnlaceCategorias(){
+
+        $Llistat = $this->retornaCategoriasTodos();
+        require "../Vistas/Categoria/enlaceCategoria.php";
+    }
+
     public function MuestraModificarCategoria($id){
         header("location: ../Vistas/Categoria/modificarCategoria.php?id=$id"); 
     }

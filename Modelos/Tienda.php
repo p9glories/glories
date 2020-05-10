@@ -63,7 +63,7 @@ class Tienda{
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM Tiendas";
+            $sentenciaSQL = "SELECT * FROM tiendas";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);

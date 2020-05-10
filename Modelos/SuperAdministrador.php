@@ -57,9 +57,9 @@ class SuperAdministrador{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             //$sentenciaSQL = "SELECT * FROM Administradores";
-            $sentenciaSQL = "SELECT * FROM Usuarios
+            $sentenciaSQL = "SELECT * FROM usuarios
                                         INNER JOIN superadministradores 
-                                        ON superadministradores.id_usuario=Usuarios.id_usuario";
+                                        ON superadministradores.id_usuario=usuarios.id_usuario";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
