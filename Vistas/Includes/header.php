@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>CC Glòries</title>
-	<link rel="stylesheet" href="../Theme/css/bootstrap.css">
-	<link rel="stylesheet" href="../Theme/css/style.css">
-	<script src="../Theme/js/jquery.min.js"></script>
-	<script src="../Theme/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="Theme/css/bootstrap.css">
+	<link rel="stylesheet" href="Theme/css/style.css">
+	<script src="Theme/js/jquery.min.js"></script>
+	<script src="Theme/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 
@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 a">
-				<a class="logo" href="../../index.php"></a>
+				<a class="logo" href="../index.php"></a>
 			</div>
 			<div class="col-md-4 b align-self-center">
 				<form action="#">
@@ -53,7 +53,7 @@
       </div>
 
       <div>
-      		<form action="../../Controladores/ClientesController.php?operacio=login" method="POST">
+      		<form action="../Controladores/ClientesController.php?operacio=login" method="POST">
       			<div class="col-12 mb-3">
       				<div class="input-container">
 		              <input type="text" id="email" name="email" required="required">
