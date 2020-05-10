@@ -63,6 +63,10 @@ class TiendasController extends Tienda{
         require "../Vistas/Tienda/verTiendaTODO.php";
     }
 
+    public function menuTiendas(){
+        $Llistat = $this->retornaTiendasTODOTodas();
+        require "../Vistas/Tienda/menuTiendas.php";
+    }
 
     public function MuestraModificarTienda($id){
 
