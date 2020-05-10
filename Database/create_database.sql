@@ -2,8 +2,8 @@
 -- Creacio de la BD
 --
 
-CREATE DATABASE IF NOT EXISTS `p9`;
-USE `p9`;
+CREATE DATABASE IF NOT EXISTS `cc_glories`;
+USE `cc_glories`;
 
 --
 -- Creacio de TABLES
