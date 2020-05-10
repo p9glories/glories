@@ -67,14 +67,14 @@ class Usuario{
         }
     }
 
-    protected function BuscaUsuariPerEmail(){
+    protected function BuscaUsuariPerEmail($email, $paraula){
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sentenciaSQL = "SELECT * FROM usuarios
-                                    WHERE email = '$this->email'";
+                                    WHERE email = :email";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
-            $intencio->execute();
+            $intencio->execute(array(":email" => $email));
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $excepcio){
             $conecta->getConexionBD()->rollback();  

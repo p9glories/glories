@@ -28,9 +28,8 @@ class UsuariosController extends Usuario{
     public function CheckejaUsuari($email, $paraula)
     {
         $dadesUsuari = $this->BuscaUsuariPerEmail($email, $paraula);
-        if ($dadesUsuari != null){
+         if ($dadesUsuari != null){
             foreach ($dadesUsuari as $infoDelUsuari){}  //només n'hi ha 1
-                
                 if ($paraula == $infoDelUsuari->password){
                     $_SESSION["id_usuario"]=$infoDelUsuari->id_usuario;
                     $_SESSION["email"]=$infoDelUsuari->email;
@@ -66,10 +65,12 @@ class UsuariosController extends Usuario{
                     header("location: ../index.php");
                 }
                 else {
+                    $_SESSION["login"]=false;
                     $_SESSION["mensajeLogin"]="<< Contraseña incorrecta >>";
                     header("location: ../index.php");
                 }
         }else{
+            $_SESSION["login"]=false;
             $_SESSION["mensajeLogin"]="<< El usuario No existe! >>";
             header("location: ../index.php");
         }
@@ -102,13 +103,13 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="ver"){
 
 
 if(isset($_POST["operacio"]) && $_POST["operacio"]=="login"){
-    if (isset($_POST[""]) && isset($_POST[""])){
+    if (isset($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["password"])){
         $objecte = new UsuariosController();
         $objecte->CheckejaUsuari($_POST["email"], $_POST["password"]);
     }else{
         $_SESSION["mensajeResultado"]="
             <div style='background-color: red; height: 80px; text-align: center; padding-top: 5px;'>
-                <h1>Tiene que introducir Email y Password!</h1>
+                <h1>Tiene que introducir Emails y Password!</h1>
             <div>";
         header("location: ../index.php");
     }

@@ -14,6 +14,7 @@ if (isset($_SESSION["login"])){
                 echo "</h1>";
                 echo "<a href='formLoginPrueba.php'>Loguearse</a>";
                 echo "</div>";
+                unset($_SESSION["mensajeLogin"]);
             }
         }else{
             if (isset($_SESSION["Denegado"])){
@@ -22,12 +23,14 @@ if (isset($_SESSION["login"])){
                 echo "</h1>";
                // echo "<a href='formLoginPrueba.php'>Loguearse de nuevo</a>";
                 echo "</div>";
+                unset($_SESSION["Denegado"]);
             }
         }
     }
     
     if (isset($_SESSION["mensajeResultado"])){
         echo $_SESSION["mensajeResultado"];
+        unset($_SESSION["mensajeResultado"]);
     }
 ?>
 
