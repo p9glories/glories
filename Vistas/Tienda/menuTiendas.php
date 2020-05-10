@@ -16,7 +16,7 @@
                     <span class="stars stars-0<?php echo $objecte->estrellitas ?>">
                         <span></span><span></span><span></span><span></span><span></span>
                     </span>
-                    <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, saepe. Rem fugit, quis, nam aliquid odio, quam ullam illum expedita quo modi aut. Accusamus, accusantium, error. Laborum omnis iure, inventore?</span>
+                    <span class="text"><?php echo $objecte->descripcion ?></span>
                     <span class="btn-container">
                         <span class="btn btn-sm">Seguir leyendo</span>
                     </span>

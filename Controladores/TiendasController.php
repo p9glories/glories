@@ -40,6 +40,7 @@ class TiendasController extends Tienda{
             $informacioTendes["id_admin"] = $objecte->id_admin;
             $informacioTendes["id_categoria"] = $objecte->id_categoria;
             $informacioTendes["nombre"] = $objecte->nombre;
+            $informacioTendes["descripcion"] = $objecte->descripcion;
             $informacioTendes["logo"] = $objecte->logo;
             $informacioTendes["horario"] = $objecte->horario;
             $informacioTendes["ubicacion"] = $objecte->ubicacion;

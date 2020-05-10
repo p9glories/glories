@@ -155,6 +155,7 @@ class Tienda{
                                         tiendas.id_categoria, 
                                         categorias.nombre as nombreCategoria,  
                                     tiendas.nombre,
+                                    tiendas.descripcion,
                                     tiendas.logo,
                                     tiendas.horario,
                                     tiendas.ubicacion,
