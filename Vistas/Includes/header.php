@@ -53,7 +53,7 @@
       </div>
 
       <div>
-      		<form action="../Controladores/ClientesController.php?operacio=login" method="POST">
+      		<form action="../Controladores/UsuariosController.php?operacio=login" method="POST">
       			<div class="col-12 mb-3">
       				<div class="input-container">
 		              <input type="text" id="email" name="email" required="required">
@@ -94,3 +94,4 @@
 <!-- Modal login fin -->
 
 <body>
+

@@ -90,7 +90,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="inserta"){
             <div style='background-color: red; height: 80px; text-align: center; padding-top: 5px;'>
                 <h1>La operación NO se ha podido realizar. Tiene que introducir más datos!</h1>
             <div>";
-        header("location: ../../index.php");
+        header("location: ../index.php");
     }
 
 }
@@ -110,7 +110,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="login"){
             <div style='background-color: red; height: 80px; text-align: center; padding-top: 5px;'>
                 <h1>Tiene que introducir Email y Password!</h1>
             <div>";
-        header("location: ../../index.php");
+        header("location: ../index.php");
     }
    
 }
