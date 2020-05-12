@@ -9,7 +9,7 @@
     <?php
         foreach($Llistat as $objecte){ 
             ?>
-            <a class="col-6 col-md-2 box" href="categoria.php?categoria=<?php echo $objecte->id_categoria ?>">
+            <a class="col-6 col-md-2 box" href="categoria.php?id=<?php echo $objecte->id_categoria ?>">
                 <figure><img src="<?php echo $objecte->icono ?>"></figure>
                 <span><?php echo $objecte->nombre ?></span>
             </a>

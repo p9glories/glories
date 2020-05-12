@@ -64,9 +64,10 @@ class TiendasController extends Tienda{
         require "../Vistas/Tienda/verTiendaTODO.php";
     }
 
-    public function menuTiendas(){
-        $Llistat = $this->retornaTiendasTodas();
-        require "../Vistas/Tienda/menuTiendas.php";
+    //AZ Filtrar tiendas por categoria
+    public function menuTiendas($id){
+        $Llistat = $this->retornaTiendasPorCategoria($id);
+        require "../Vistas/Tienda/menuTienda.php";
     }
 
     public function MuestraModificarTienda($id){
@@ -119,7 +120,13 @@ class TiendasController extends Tienda{
         $infoPuntosTiendas=$this->retornaInfoPuntosTiendas($tenda);
         foreach($infoPuntosTiendas as $objecte){}
     }
+    
+    //AZ Mostrar datos de tienda individual
 
+    public function paginaTienda($id){
+        $Llistat = $this->retornaTienda($id);
+        require "../Vistas/Tienda/paginaTienda.php";
+    }
     
 
 }

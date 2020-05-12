@@ -16,13 +16,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 a">
-				<a class="logo" href="../index.php"></a>
+				<a class="logo" href="index.php"></a>
 			</div>
 			<div class="col-md-4 b align-self-center">
 				<form action="#">
 					<div class="input-container s2">
 						<input type="text" name="search" id="search" required="required">
-						<label for="search" class="label">Buscar tienda</label>
+						<label for="search" class="label">Buscar comercio</label>
 						<button type="submit">Buscar</button>
 					</div>
 				</form>

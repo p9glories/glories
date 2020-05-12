@@ -12,7 +12,7 @@
         foreach($Llistat as $objecte){ 
             ?>
         <li class="nav-item">
-            <a class="nav-link" href="categoria.php?categoria=<?php echo $objecte->id_categoria ?>"><?php echo $objecte->nombre ?></a>
+            <a class="nav-link" href="categoria.php?id=<?php echo $objecte->id_categoria ?>"><?php echo $objecte->nombre ?></a>
         </li>
         <?php
             }?>

@@ -17,6 +17,12 @@
 .c-orange {
   color: #ff5722!important;
 }
+figure.null {
+  background-image: url(../img/icon-null.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -397,6 +403,12 @@ section.products .box div {
 section.products figure {
   height: 100px;
   position: relative;
+}
+section.products figure.null {
+  background-image: url(../img/icon-null.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 section.products img {
   position: absolute;

@@ -73,6 +73,38 @@ class Tienda{
         }
     }
 
+    //AZ Mostrar tiendas por categoria
+
+    protected function retornaTiendasPorCategoria($id){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT * FROM tiendas WHERE id_categoria=$id ";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
+    //AZ Mostrar datos de tienda individual
+
+    protected function retornaTienda($id){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT * FROM tiendas WHERE id_tienda=$id";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
     protected function retornaInfoPuntosTiendas($tenda){
         try{
             $conecta = new ConexionBD();
@@ -226,7 +258,6 @@ class Tienda{
             return false; 
         }
     }
-
 
     public function getId_tienda()
     {
