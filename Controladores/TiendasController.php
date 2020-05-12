@@ -64,10 +64,10 @@ class TiendasController extends Tienda{
         require "../Vistas/Tienda/verTiendaTODO.php";
     }
 
-    //AZ Filtrar tiendas por categoria
+    //AZ Filtrar tiendas
     public function menuTiendas($id){
         $Llistat = $this->retornaTiendasPorCategoria($id);
-        require "../Vistas/Tienda/menuTienda.php";
+        require "../Vistas/Tienda/menuTiendas.php";
     }
 
     public function MuestraModificarTienda($id){
