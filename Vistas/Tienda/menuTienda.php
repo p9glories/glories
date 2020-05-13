@@ -1,6 +1,12 @@
 <?php
 foreach($Llistat as $array){ 
     $objecte = (object)$array;
+
+                /************************************************ */
+                /* veo que las estrellitas solo admiten ENTEROS  */
+                /* como lo dejo, redondeo a entero superior ceil(). Si no, seria floor()*/
+                /********************************************************************** */
+    
 ?>
 
 <a class="col-6 col-md-4 box" href="tienda.php?id=<?php echo $objecte->id_tienda ?>">
@@ -13,7 +19,7 @@ foreach($Llistat as $array){
             echo "<figure class='null'></figure>";
         }?>
         
-        <span class="stars stars-0<?php echo $objecte->estrellitas ?>">
+        <span class="stars stars-0<?php echo ceil($objecte->estrellitas) ?>">
             <span></span><span></span><span></span><span></span><span></span>
         </span>
         <span class="text"><?php echo $objecte->descripcion ?></span>
@@ -24,5 +30,6 @@ foreach($Llistat as $array){
 </a>
 
 <?php
-}?>
+}
+?>
 

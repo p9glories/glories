@@ -65,9 +65,32 @@ class TiendasController extends Tienda{
     }
 
     //AZ Filtrar tiendas
-    public function menuTiendas($id){
-        $Llistat = $this->retornaTiendasPorCategoria($id);
-        require "../Vistas/Tienda/menuTiendas.php";
+    public function menuTiendas($id){    //id es CATEGORIA
+        $informacioTendes = Array();
+        $Llistat = Array();
+
+        $infoTenda = $this->retornaTiendasPorCategoria($id);   //id CATEGORIA!!!!
+        
+        $i=1;
+        foreach($infoTenda as $objecte){
+            $informacioTendes["id_tienda"] = $objecte->id_tienda;
+            $informacioTendes["id_admin"] = $objecte->id_admin;
+            $informacioTendes["id_categoria"] = $objecte->id_categoria;
+            $informacioTendes["nombre"] = $objecte->nombre;
+            $informacioTendes["descripcion"] = $objecte->descripcion;
+            $informacioTendes["logo"] = $objecte->logo;
+            $informacioTendes["horario"] = $objecte->horario;
+            $informacioTendes["ubicacion"] = $objecte->ubicacion;
+            $informacioTendes["foto1"] = $objecte->foto1;
+            $informacioTendes["foto2"] = $objecte->foto2;
+            $informacioTendes["foto3"] = $objecte->foto3;
+            $informacioTendes["estrellitas"] = $this->calculaPuntosTienda($informacioTendes["id_tienda"]); 
+            array_push($Llistat, $informacioTendes);
+            $i++;
+        }
+
+        require "../Vistas/Tienda/menuTienda.php";
+
     }
 
     public function MuestraModificarTienda($id){
@@ -113,13 +136,21 @@ class TiendasController extends Tienda{
             }
         }
         return $resultat;
+
     }
 
 
     public function calculaPuntosTienda($tienda){
-        $infoPuntosTiendas=$this->retornaInfoPuntosTiendas($tenda);
-        foreach($infoPuntosTiendas as $objecte){}
+        $vector=array();
+        $infoPuntosTiendas=$this->retornaInfoPuntosTiendas($tienda);
+        foreach ($infoPuntosTiendas as $objecte){
+            array_push($vector, array($objecte->id_tienda, $objecte->nivel, $objecte->puntos, $objecte->puntuaciones));
+        }
+        return $this->obtenPuntosTienda($vector);
     }
+    
+
+
     
     //AZ Mostrar datos de tienda individual
 

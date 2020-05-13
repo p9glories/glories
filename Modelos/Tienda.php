@@ -75,11 +75,11 @@ class Tienda{
 
     //AZ Mostrar tiendas por categoria
 
-    protected function retornaTiendasPorCategoria($id){
+    protected function retornaTiendasPorCategoria($categoria){
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM tiendas WHERE id_categoria=$id ";
+            $sentenciaSQL = "SELECT * FROM tiendas WHERE id_categoria=$categoria ";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
@@ -111,7 +111,7 @@ class Tienda{
             $conecta->getConexionBD()->beginTransaction();
             $sentenciaSQL = "SELECT id_tienda, nivel,  SUM(puntuacion) AS puntos, COUNT(puntuacion) AS puntuaciones
                                 FROM valoraciones
-                                WHERE id_tienda=$tenda
+                                WHERE id_tienda = $tenda
                                 GROUP BY id_tienda, nivel";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
@@ -139,6 +139,7 @@ class Tienda{
     }
 
     protected function obtenPuntosTienda($info){
+
         $pt=0;
         $pes=0;
         $total=0;
@@ -159,6 +160,7 @@ class Tienda{
             $total = $total+$pes*$mitja;
         }
         return round($total/100, 1);
+
     }
 
     protected function retornaTiendasdelAdmin($administrador){
