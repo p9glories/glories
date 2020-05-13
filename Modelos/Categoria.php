@@ -46,6 +46,24 @@ class Categoria{
         }
     }
 
+    
+    protected function buscaNombreDeLaCategoria($categoria){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT nombre FROM categorias 
+                                            WHERE id_categoria = $categoria";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchColumn();
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();   
+            return null;  
+        }
+    }
+
+
+
     protected function modificaCategoria($id, $nombre, $icono){
         $this->setId_categoria($id);
         $this->setNombre($nombre);

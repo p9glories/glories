@@ -34,7 +34,10 @@ if (isset($_SESSION["login"])){
 
 	    if (isset($_GET["id"])){
 
-	    	echo "<h2 class='title text-center'>Comercios de <b>Nombre categoría</b></h2>";
+			$categoriaTitulo = new CategoriasController();
+			$nombreCategoria = $categoriaTitulo->obtieneNombreDeLaCategoria($_GET["id"]);
+
+	    	echo "<h2 class='title text-center'>Comercios de <b>".$nombreCategoria."</b></h2>";
 	    	echo "<div class='row justify-content-center'>";
 			require_once '../Controladores/TiendasController.php'; 
 			    $objecte = new TiendasController();

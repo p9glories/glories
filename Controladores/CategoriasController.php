@@ -74,6 +74,10 @@ class CategoriasController extends Categoria{
         return $this->retornaCategoriasTodos();
     }
 
+    public function obtieneNombreDeLaCategoria($categoria){
+        return $this->buscaNombreDeLaCategoria($categoria);
+    }
+
 
 }
 
