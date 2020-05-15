@@ -35,6 +35,18 @@ class ClientesController extends Cliente{
     }
     
 
+    public function CuantasValoracionesCliente($id){
+        return $this->obtieneValoracionesCliente($id);
+    }
+
+    
+    public function actualizaValoracionesCliente($id, $valoraciones){
+        return  $this->restaValoracionesCliente($id, $valoraciones);
+    }
+
+    public function mesValoracioCliente($id){
+        return  $this->afegeixValoracioCliente($id);
+    }
 
 }
 

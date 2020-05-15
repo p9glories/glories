@@ -75,14 +75,32 @@ class ValoracionesController extends Valoracion{
         header("location: ../index.php");
     }
 
-     public function apruebaValoracion($valoracion){
-        $resultat = $this->aprueba($valoracion);
+     public function apruebaValoracion($valoracion, $cliente){
+        $resultat = $this->aprueba($valoracion, $cliente);
         if ($resultat){
             echo "VALORACION APROBADA";
         }else{
             echo "NO SE PUDO APROBAR";
         }
      }
+
+     
+     public function eliminaValoracion($valoracion, $cliente){
+        require_once "ClientesController.php";
+        $client = new ClientesController();
+        $valoracionesCliente = $client->CuantasValoracionesCliente($cliente)-1;
+
+        $resultat = $this->elimina($valoracion, $cliente, $valoracionesCliente);
+        if ($resultat){
+            echo "VALORACION ELIMINADA";
+        }else{
+            echo "NO SE PUDO ELIMINAR";
+        }
+     }
+
+
+
+
 
      public function LlistavaloracionesAprobadas(){
         $Llistat = $this->ListaValoracionesAprobada();
@@ -184,9 +202,16 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
 
 
 
-if(isset($_GET["aprobarValoracion"])){
+if(isset($_GET["aprobarValoracion"]) && isset($_GET["cliente"])){
     $objecte = new ValoracionesController();
-    $objecte->apruebaValoracion($_GET["aprobarValoracion"]);
+    $objecte->apruebaValoracion($_GET["aprobarValoracion"],$_GET["cliente"]);
+}
+
+
+
+if(isset($_GET["eliminarValoracion"]) && isset($_GET["cliente"])){
+    $objecte = new ValoracionesController();
+    $objecte->eliminaValoracion($_GET["eliminarValoracion"], $_GET["cliente"]);
 }
 
 ?>

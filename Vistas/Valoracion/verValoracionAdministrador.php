@@ -34,6 +34,8 @@
 
     
             <th>APROBAR</th>
+
+            <th>ELIMINAR</th>
     
         </tr>
     
@@ -45,21 +47,27 @@
                    foreach($valoraciones as $array=>$contingut){
                         foreach($contingut as $nivellarray=>$nivellcontingut){
                 ?>
-                        <tr>
-                <?php      foreach($nivellcontingut as $clau=>$valor){    //$clau és el NOm del camp
+                         <tr>
+                 <?php      foreach($nivellcontingut as $clau=>$valor){    //$clau és el NOm del camp
                  ?>
-                        <td style="border:1px solid black;"><?php echo $valor ?></td>   
-                    <?php
+                         <td style="border:1px solid black;"><?php echo $valor ?></td>   
+                     <?php
                             if ($clau == "id_valoracion"){
-                                $valoracioAprobar = $valor;
+                                $valoracio = $valor;
+                            }
+                            if ($clau == "id_cliente"){
+                                $clientAbuscar = $valor;
                             }
                         }
                     ?>
                         
-                        <td style="border:1px solid black;"><a href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracioAprobar ?>">APROBAR</a></td>
-                    <?php
+                         <td style="border:1px solid black;"><a href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">APROBAR</a></td>
+                         <td style="border:1px solid black;"><a href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">ELIMINAR</a></td>
+                     <?php
                     }
                 }
+
+                
                ?>
                 
         </tr>

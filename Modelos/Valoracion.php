@@ -20,8 +20,8 @@ class Valoracion{
         $this->setAprobado(0); //==NO: por defecto, NO queda aprobado hasta validar!!
         $this->setFecha(date("Y-m-d H:i:s"));
         $this->setNivel(0);
-        $this->id_cliente(0);
-        $this->id_tienda(0);
+        $this->setId_cliente(0);
+        $this->setId_tienda(0);
     }
 
     protected function registraValoracion($cliente, $tienda, $nivel, $puntuacion, $comentario){
@@ -145,9 +145,14 @@ class Valoracion{
             $conecta->getConexionBD()->beginTransaction();
             $sentenciaSQL = "SELECT count(*) valoraciones 
                                     FROM valoraciones
-                                    WHERE id_cliente = $this->getId_cliente() and id_tienda = $getId_tienda()";
+                                    WHERE id_cliente = :idCliente and id_tienda = :idTienda";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
-            $intencio->execute();
+            $intencio->execute(
+                            array( 
+                                ":idCliente" => $this->getId_cliente(),
+                                ":idTienda" => $this->getId_tienda()
+                            )
+            );
             return $resultat = $intencio->fetchColumn();
         }catch(Exception $excepcio){
             $conecta->getConexionBD()->rollback();  
@@ -172,16 +177,20 @@ class Valoracion{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sqlValoracion = "UPDATE valoraciones
-                                    SET aprobado = $this->getId_cliente(),
-                                        id_tienda = $this->getId_tienda(),
+                                    SET id_cliente = :id_cliente,
+                                        id_tienda = :idTienda,
                                         puntuacion = :puntuacion, 
                                         comentario = :comentario,
-                                        aprobado = $this->getAprobado(),
-                                        fecha = $this->getFecha(),
+                                        aprobado = :aprobado,
+                                        fecha = now(),
                                         nivel = :nivel
-                                        WHERE id_valoracion = $this->getId_valoracion()";
+                                        WHERE id_valoracion = :idValoracion";
             $resultado = $conecta->getConexionBD()->prepare($sqlValoracion);
             $resultado->execute(array(
+                                    ":id_cliente" => $this->getId_cliente(),
+                                    ":idTienda" => $this->getId_tienda(),
+                                    ":aprobado" => $this->getAprobado(),
+                                    ":idValoracion" => $this->getId_valoracion(),
                                     ":puntuacion" => $this->getPuntuacion(),
                                     ":comentario" => $this->getComentario(),
                                     ":nivel" => $this->getNivel()
@@ -201,7 +210,7 @@ class Valoracion{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sentenciaSQL = "SELECT * FROM valoraciones
-                                        WHERE id_tienda=$tienda and aprobado=0";
+                                        WHERE id_tienda= $tienda and aprobado = 0";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
@@ -212,19 +221,21 @@ class Valoracion{
     }
 
 
-    protected function aprueba($valoracion){
+    protected function aprueba($valoracion, $cliente){
 
-        $this->setAprobado(1);
-        $this->setId_valoracion($valoracion);
-
+        require_once "../Controladores/ClientesController.php";
+        $client = new ClientesController();
+        
         try{    
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sqlValoracion = "UPDATE valoraciones
                                     SET aprobado = 1
-                                        WHERE id_valoracion = $this->getId_valoracion()";
+                                        WHERE id_valoracion = $valoracion";
             $resultado = $conecta->getConexionBD()->prepare($sqlValoracion);
             $resultado->execute();
+
+            $client->mesValoracioCliente($cliente);
             $conecta->getConexionBD()->commit();  
             return true;
          }catch(Exception $excepcio){
@@ -233,6 +244,34 @@ class Valoracion{
         }
         
     }
+
+  
+    protected function elimina($idValoracion, $idCliente, $valoracionesFinal){
+        require_once "../Controladores/ClientesController.php";
+        $cliente = new ClientesController();
+
+        $this->setId_valoracion($idValoracion);
+
+        try{    
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $cliente->actualizaValoracionesCliente($idCliente, $valoracionesFinal);
+            $sqlValoracion = "DELETE FROM valoraciones
+                                        WHERE id_valoracion = :idValoracion";
+            $resultado = $conecta->getConexionBD()->prepare($sqlValoracion);
+            $resultado->execute(array(":idValoracion" => $this->getId_valoracion()));
+            $conecta->getConexionBD()->commit();  
+            return true;
+         }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return false; 
+        }
+        
+    }
+
+
+
+
     
     protected function retornaNivell($tiempo, $valoraciones){
 

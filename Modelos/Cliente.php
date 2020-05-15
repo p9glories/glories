@@ -126,6 +126,22 @@ class Cliente{
         }
     }
 
+    protected function obtieneValoracionesCliente($cliente){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT valoraciones 
+                                    FROM clientes
+                                    WHERE id_cliente = $cliente";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchColumn();
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
     protected function calculaTiempo($id){
         $this->setId_cliente($id);
         $resultat = $this->buscaCliente($this->getId_cliente());
@@ -146,6 +162,43 @@ class Cliente{
         }
 
         return $meses;
+    }
+
+    protected function restaValoracionesCliente($id, $valoraciones){
+        try{    
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sqlValoracion = "UPDATE clientes
+                                    SET valoraciones = $valoraciones
+                                        WHERE id_cliente = $id";
+            $resultado = $conecta->getConexionBD()->prepare($sqlValoracion);
+            $resultado->execute();
+            $conecta->getConexionBD()->commit();  
+            return true;
+         }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return false; 
+        }
+    }
+    
+    protected function afegeixValoracioCliente($id){
+        $valorAposar = $this->obtieneValoracionesCliente($id);
+
+        $valorAposar = $valorAposar+1;
+        try{    
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sqlValoracion = "UPDATE clientes
+                                    SET valoraciones = $valorAposar
+                                        WHERE id_cliente = $id";
+            $resultado = $conecta->getConexionBD()->prepare($sqlValoracion);
+            $resultado->execute();
+            $conecta->getConexionBD()->commit();  
+            return true;
+         }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return false; 
+        }
     }
    
 
