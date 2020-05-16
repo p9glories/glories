@@ -2,22 +2,25 @@
 //GP
 require_once "../Controladores/SesionesController.php";
 $objecteSessio = new SesionesController();
-?>
 
+
+?>
 
 <?php
 if (isset($_SESSION["login"])){
-	if ($_SESSION["login"]){
-			include 'Includes/header_users.php';
-		} else {
-			include 'Includes/header.php';
-		}
-	} else {
+	if ($_SESSION["login"]!=false){
+		include 'Includes/header_users.php';
+		} 
+	else {
 		include 'Includes/header.php';
 	}
+} 
+else {
+	include 'Includes/header.php';
+}
 ?>
-<?php
 
+<?php
 if (isset($_SESSION["login"])){
     if ($_SESSION["login"]==false){
         if (isset($_SESSION["mensajeLogin"])){

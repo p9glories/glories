@@ -7,12 +7,16 @@ $objecteSessio = new SesionesController();
 
 <?php
 if (isset($_SESSION["login"])){
-	if ($_SESSION["login"]){
-			include 'Includes/header_users.php';
-		} else {
-			include 'Includes/header.php';
-		}
+	if ($_SESSION["login"]!=false){
+		include 'Includes/header_users.php';
+		} 
+	else {
+		include 'Includes/header.php';
 	}
+} 
+else {
+	include 'Includes/header.php';
+}
 ?>
 
 <!-- Menú de categorías inicio -->
