@@ -42,7 +42,10 @@ foreach($Llistat as $array){
         <div class="breadcrumbs">
             <a href="index.php">Inicio</a>
             <i></i>
-            <a href="category.html">Restaurantes</a>
+
+            <a href="categoria.php">
+                Nombre categoría
+            </a>
             <i></i>
         </div>
         <div class="title">

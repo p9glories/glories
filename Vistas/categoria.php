@@ -4,10 +4,9 @@ require_once "../Controladores/SesionesController.php";
 $objecteSessio = new SesionesController();
 ?>
 
-
 <?php
 if (isset($_SESSION["login"])){
-	if ($_SESSION["login"]!=false){
+	if ($_SESSION["login"]==true){
 		include 'Includes/header_users.php';
 		} 
 	else {

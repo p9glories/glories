@@ -77,7 +77,7 @@
              		<input type="submit" class="btn btn-orange btn-lg" value="Iniciar sesión">
 		        </div>
 				<div class="col-12 mb-4 text-center">
-					<a href="../Cliente/insertarCliente.php" class="link">
+					<a href="nuevo-cliente.php" class="link">
 						Registrarme como nuevo cliente 
 						<svg class="bi bi-arrow-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					  		<path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 8l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
