@@ -63,7 +63,12 @@ foreach($Llistat as $array){
             <span class="stars stars-0<?php echo ceil($objecte->estrellitas) ?>">
                 <span></span><span></span><span></span><span></span><span></span>
             </span>
-            <span class="votes">XX valoraciones</span>
+            <span class="votes">
+            <?php 
+            $cantValoraciones = new ValoracionesController();
+            $cifraValoraciones = $cantValoraciones->obtieneCantValoracionesAprobadas($objecte->id_tienda);
+            echo $cifraValoraciones?>
+            valoraciones</span>
         </div>
         <div class="description">
             <?php echo $objecte->descripcion ?>

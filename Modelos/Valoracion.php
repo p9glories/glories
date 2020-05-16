@@ -104,7 +104,21 @@ class Valoracion{
             return null;  
         }
     }
-
+    //AZ
+    protected function buscaCantValoracionesAprobadas($idtienda){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT COUNT(*) FROM valoraciones  
+                                        WHERE aprobado = 1 AND id_tienda='$idtienda'";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchColumn();
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();   
+            return null;  
+        }
+    }
     
     protected function calculaNumeroValoracionesDel($cliente){
         try{

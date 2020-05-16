@@ -106,10 +106,15 @@ class ValoracionesController extends Valoracion{
      }
 
      //AZ
-     public function LlistavaloracionesAprobadasTienda($idtienda){
+    public function LlistavaloracionesAprobadasTienda($idtienda){
         $Llistat = $this->ListaValoracionesAprobadasTienda($idtienda);
         require "../Vistas/valoracion/tienda-valoraciones.php";
      }
+    public function obtieneCantValoracionesAprobadas($idtienda){
+        return $this->buscaCantValoracionesAprobadas($idtienda);
+    }
+
+
 
      public function obtenNumeroValoracionesDel($idcliente){
         return $valor = $this->calculaNumeroValoracionesDel($idcliente);
