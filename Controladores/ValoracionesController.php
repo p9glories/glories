@@ -45,7 +45,6 @@ class ValoracionesController extends Valoracion{
 
         $valoraciones = json_encode($valoraciones);
         require "../Vistas/valoracion/verValoracionAdministrador.php";
-
     }
 
     public function MuestraModificarValoracion($id, $cliente, $tienda){
@@ -83,7 +82,6 @@ class ValoracionesController extends Valoracion{
             echo "NO SE PUDO APROBAR";
         }
      }
-
      
      public function eliminaValoracion($valoracion, $cliente){
         require_once "ClientesController.php";
@@ -105,6 +103,12 @@ class ValoracionesController extends Valoracion{
      public function LlistavaloracionesAprobadas(){
         $Llistat = $this->ListaValoracionesAprobada();
         require "../Vistas/valoracion/verValoracion.php";
+     }
+
+     //AZ
+     public function LlistavaloracionesAprobadasTienda($idtienda){
+        $Llistat = $this->ListaValoracionesAprobadasTienda($idtienda);
+        require "../Vistas/valoracion/tienda-valoraciones.php";
      }
 
      public function obtenNumeroValoracionesDel($idcliente){
@@ -155,6 +159,9 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="verAprobadas"){
     $objecte = new ValoracionesController();
     $objecte->LlistavaloracionesAprobadas();
 }
+
+
+
 
 
 

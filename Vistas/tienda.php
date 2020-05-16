@@ -93,26 +93,13 @@ if ((isset($_SESSION["login"]))&&(($_SESSION["login"])==true)){
 ?>
 <!-- Seccion valorar fin -->
 
-
 <!-- Lista valoraciones inicio -->
 
-<div class="ratings">
-	<!---->
-	<div class="rating-done">
-		<div class="top">
-			<span class="name">Manuel López</span>
-			<span class="date">15 abril 2020</span>
-		</div>
-		<div class="stars stars-02">
-			<span></span><span></span><span></span><span></span><span></span>
-		</div>
-		<div class="comment">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus accusantium, perferendis suscipit earum nemo, doloribus culpa odit, minus porro sed commodi, cum excepturi provident voluptas aliquam voluptatum odio consequuntur quia.
-		</div>
-	</div>
-	<hr>
-
-</div>
+<?php require_once '../Controladores/ValoracionesController.php'; 
+if (isset($_GET["id"])){
+	$objecte = new ValoracionesController();
+	$objecte->LlistavaloracionesAprobadasTienda($_GET["id"]);
+}?>
 
 <!-- Lista valoraciones fin -->
 

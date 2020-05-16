@@ -33,7 +33,7 @@
 					<?php 
 					echo "<b>".$_SESSION["nombre"]." ".$_SESSION["apellidos"]."<span>, ".$_SESSION["rol"]."</span></b>";
         			echo "<a class='c-orange' href='cliente-nuevo.php'>Mi cuenta</a>";
-        			echo " <a class='c-999' href='../Controladores/SesionesController.php?operacion=cerrarSesion'>Cerrar sesión</a>";
+        			echo "<a class='c-999' href='../Controladores/SesionesController.php?operacion=cerrarSesion'>Cerrar sesión</a>";
         			?>
 
 				</span>

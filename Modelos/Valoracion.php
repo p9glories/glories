@@ -85,6 +85,26 @@ class Valoracion{
         }
     }
 
+    //AZ
+    protected function ListaValoracionesAprobadasTienda($idtienda){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT * FROM valoraciones  
+                                INNER JOIN clientes
+                                        ON valoraciones.id_cliente=clientes.id_cliente 
+                                INNER JOIN usuarios
+                                        ON clientes.id_usuario=usuarios.id_usuario 
+                                        WHERE aprobado = 1 AND id_tienda='$idtienda'";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
     
     protected function calculaNumeroValoracionesDel($cliente){
         try{
