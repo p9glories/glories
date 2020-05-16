@@ -152,11 +152,35 @@ class TiendasController extends Tienda{
 
 
     
-    //AZ Mostrar datos de tienda individual
+    //AZ Mostrar datos de tienda individualmente
 
     public function paginaTienda($id){
-        $Llistat = $this->retornaTienda($id);
+        $informacioTendes = Array();
+        $Llistat = Array();
+
+        $infoTenda = $this->retornaTienda($id);  //id CATEGORIA!!!!
+        
+        $i=1;
+        foreach($infoTenda as $objecte){
+            $informacioTendes["id_tienda"] = $objecte->id_tienda;
+            $informacioTendes["id_admin"] = $objecte->id_admin;
+            $informacioTendes["id_categoria"] = $objecte->id_categoria;
+             $informacioTendes["telefono"] = $objecte->telefono;
+            $informacioTendes["nombre"] = $objecte->nombre;
+            $informacioTendes["descripcion"] = $objecte->descripcion;
+            $informacioTendes["logo"] = $objecte->logo;
+            $informacioTendes["horario"] = $objecte->horario;
+            $informacioTendes["ubicacion"] = $objecte->ubicacion;
+            $informacioTendes["foto1"] = $objecte->foto1;
+            $informacioTendes["foto2"] = $objecte->foto2;
+            $informacioTendes["foto3"] = $objecte->foto3;
+            $informacioTendes["estrellitas"] = $this->calculaPuntosTienda($informacioTendes["id_tienda"]); 
+            array_push($Llistat, $informacioTendes);
+            $i++;
+        }
+
         require "../Vistas/Tienda/paginaTienda.php";
+
     }
     
 

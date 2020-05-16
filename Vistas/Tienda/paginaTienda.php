@@ -42,10 +42,13 @@ foreach($Llistat as $array){
         <div class="breadcrumbs">
             <a href="index.php">Inicio</a>
             <i></i>
-
-            <a href="categoria.php">
-                Nombre categoría
-            </a>
+                <?php
+                $categoriaTitulo = new CategoriasController();
+                $nombreCategoria = $categoriaTitulo->obtieneNombreDeLaCategoria($objecte->id_categoria);
+                echo "<a href='categoria.php?id=".$objecte->id_categoria."'>";
+                echo $nombreCategoria;
+                echo "</a>";
+                ?>
             <i></i>
         </div>
         <div class="title">
@@ -57,7 +60,7 @@ foreach($Llistat as $array){
                 echo "<figure class='null'></figure>";
             }?>
 
-            <span class="stars <?php echo $objecte->estrellitas ?>">
+            <span class="stars stars-0<?php echo ceil($objecte->estrellitas) ?>">
                 <span></span><span></span><span></span><span></span><span></span>
             </span>
             <span class="votes">XX valoraciones</span>

@@ -23,6 +23,7 @@ else {
 <?php require_once '../Controladores/CategoriasController.php'; 
 	$Categoria = new CategoriasController();
     $Categoria->MenuCategorias();
+    $Categoria->getNombre();
 ?>
 
 <!-- Menú de categorías fin -->
@@ -35,7 +36,6 @@ else {
 
 <!-- Info tienda inicio -->
 <?php 
-
     if (isset($_GET["id"])){
     	require_once "../Controladores/TiendasController.php";
         $Categoria = new TiendasController();
@@ -43,7 +43,6 @@ else {
     } else {
         echo "NO se puede mostrar";
     }
-
 ?>
 <!-- Info tienda fin -->
 
@@ -82,7 +81,7 @@ if ((isset($_SESSION["login"]))&&(($_SESSION["login"])==true)){
 		<div class="h5">Déjanos tu valoración</div>
 		<form class="row">
 	        <div class="col-12">
-	        	<p class="m-0">Debes iniciar sesión para ingresar reseñas.<br>
+	        	<p class="m-0 fz-14">Debes iniciar sesión para ingresar reseñas.<br>
 	        	<span class="btn btn-success mt-2" data-toggle="modal" data-target="#loginModal">Iniciar sesión</span>
 	        	<a href="cliente-nuevo.php" class="btn btn-dark mt-2">Registrarme</a>
 	        	</p>
