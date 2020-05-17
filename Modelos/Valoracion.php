@@ -170,6 +170,23 @@ class Valoracion{
         }
     }
 
+    //AZ
+    protected function cantValoracionClienteTienda($cliente,$tienda){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT count(*) valoraciones 
+                                    FROM valoraciones
+                                    WHERE id_cliente='$cliente' AND id_tienda='$tienda'";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchColumn();
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
     protected function buscaCuantasValoracionesTiene($cliente, $tienda){
         $this->setId_cliente($cliente);
         $this->setId_tienda($tienda);

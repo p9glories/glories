@@ -40,7 +40,7 @@ else {
     	require_once "../Controladores/TiendasController.php";
     	require_once "../Controladores/ValoracionesController.php";
         $Categoria = new TiendasController();
-    	$Categoria->paginaTienda($_GET["id"]);
+    	  $Categoria->paginaTienda($_GET["id"]);
     } else {
         echo "NO se puede mostrar";
     }
@@ -48,36 +48,46 @@ else {
 <!-- Info tienda fin -->
 
 <!-- Seccion valorar inicio -->
+
 <?php 
 if ((isset($_SESSION["login"]))&&(($_SESSION["login"])==true)){
-	echo '
-	<div class="rating-box mb-4">
-	<div class="h5">Déjanos tu valoración</div>
-	<form class="row" action="../../Controladores/ValoracionesController.php" method="POST">
-    	<div class="rating-stars col-12">
-	  		<ul id="stars">
-		      	<li class="star" data-value="1"><i></i></li>
-		      	<li class="star" data-value="2"><i></i></li>
-		      	<li class="star" data-value="3"><i></i></li>
-		      	<li class="star" data-value="4"><i></i></li>
-		      	<li class="star" data-value="5"> <i></i></li>
-		    </ul>
-			<span class="stars-number"></span>
-		</div>
-	  	<div class="col-12 mb-3">
-            <div class="input-container">
-              <textarea type="text" id="comentario" name="comentario" required="required" rows="3"></textarea>
-              <label for="comentario" class="label">Escribe tu reseña</label>
-            </div>
+
+  $haValorado = new ValoracionesController();
+  $sihaValorado = $haValorado->consultaValoracionClienteTienda($_SESSION["id_cliente"],$_GET["id"]);
+
+  if ($sihaValorado == 0) {
+    echo '<div class="rating-box mb-4">
+      <div class="h5">Déjanos tu valoración</div>
+      <form class="row" action="../../Controladores/ValoracionesController.php" method="POST">
+          <div class="rating-stars col-12">
+            <ul id="stars">
+                <li class="star" data-value="1"><i></i></li>
+                <li class="star" data-value="2"><i></i></li>
+                <li class="star" data-value="3"><i></i></li>
+                <li class="star" data-value="4"><i></i></li>
+                <li class="star" data-value="5"> <i></i></li>
+            </ul>
+          <span class="stars-number"></span>
         </div>
-		<div class="col-12">
-        <input type="hidden" name="puntuacion" id="puntuacion" value="" required="required">
-        <input type="hidden" name="tienda" value="'.$_GET["id"].'">
-        <input type="hidden" name="operacio" value="insertarV">
-	    <input type="submit" class="btn btn-success" value="Enviar valoración">
-	    </div>
-	</form>
-	</div>';
+          <div class="col-12 mb-3">
+                <div class="input-container">
+                  <textarea type="text" id="comentario" name="comentario" required="required" rows="3"></textarea>
+                  <label for="comentario" class="label">Escribe tu reseña</label>
+                </div>
+            </div>
+        <div class="col-12">
+            <input type="hidden" name="puntuacion" id="puntuacion" value="" required="required">
+            <input type="hidden" name="tienda" value="'.$_GET["id"].'">
+            <input type="hidden" name="operacio" value="insertarV">
+            <input type="submit" class="btn btn-success" value="Enviar valoración">
+        </div>
+      </form>
+      </div>'; 
+    } else {
+    echo '<div class="rating-box mb-4">
+      <div class="h5">Gracias por habernos valorado.</div>
+    </div>';
+  }
 
 } else {
 	echo '
