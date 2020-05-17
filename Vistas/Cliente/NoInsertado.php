@@ -9,7 +9,7 @@
 
 <a href="../Vistas/Cliente/insertarCliente.php">Volver</a>
 <br>
-<a href="../index.html">Inicio</a>
+<a href="../index.php">Inicio</a>
 
 
 <?php    
