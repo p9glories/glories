@@ -27,17 +27,14 @@ else {
                 
                 <div class="row">
 
-                    <h2 class="col-12">Datos personales</h2>
+                    <h2 class="col-12">Mis reseñas</h2>
+                    <div class="col-12 ratings">
                     <?php
-                    include '../Controladores/ClientesController.php'; 
-                    $objecte = new ClientesController();
-                    $objecte->infoCliente();
+                    include '../Controladores/ValoracionesController.php'; 
+                    $objecte = new ValoracionesController();
+                    $objecte->Llistavaloracionespor($_SESSION['id_cliente']);
                     ?>
-                    <div class="col-12">
-                        <a href="cliente-modificar.php" class="btn btn-secondary">Modificar</a>
                     </div>
-                    
-                
                 </div>
 
             </div>

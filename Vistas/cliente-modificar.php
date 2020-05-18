@@ -9,12 +9,9 @@ if (isset($_SESSION["login"])){
     if ($_SESSION["login"]==true){
         include 'Includes/header_users.php';
         } 
-    else {
-        include 'Includes/header.php';
-    }
 } 
 else {
-    include 'Includes/header.php';
+    header("Location: index.php");
 }
 ?>
 

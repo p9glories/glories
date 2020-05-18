@@ -28,7 +28,7 @@
 }
 figure.null {
   background-image: url(../img/icon-null.png);
-  background-size: contain;
+  background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -618,19 +618,33 @@ section.commerce .info .data div {
 
 /**/
 
-.rating-done {
-
-}
+.rating-done {position: relative;}
 .rating-done .top {margin-bottom: 5px;}
-.rating-done .name {
+.rating-done .name,
+.rating-done a.name {
   font-weight: bold;
   font-size: 16px;
+  color: #333;
 }
+
 .rating-done .date {font-size: 13px;color: #666666;}
 .rating-done .comment {
   font-size: 13px;
 }
 
+.rating-done.figure {
+  padding-left: 90px;
+}
+.rating-done figure {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #e5e5e5;
+}
+
+.rating-done .bottom {margin-top: 5px;color: #999999;}
 /**/
 
 .gallery {margin-bottom: 20px;padding: 10px;}

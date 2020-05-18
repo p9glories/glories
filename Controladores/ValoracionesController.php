@@ -116,8 +116,12 @@ class ValoracionesController extends Valoracion{
     public function consultaValoracionClienteTienda($idcliente,$idtienda){
         return $this->cantValoracionClienteTienda($idcliente,$idtienda);
     }
+    public function Llistavaloracionespor($idcliente){
+        $Llistat = $this->ListaValoracionesPor($idcliente);
+        require "../Vistas/valoracion/cliente-valoraciones.php";
+    }
 
-     public function obtenNumeroValoracionesDel($idcliente){
+    public function obtenNumeroValoracionesDel($idcliente){
         return $valor = $this->calculaNumeroValoracionesDel($idcliente);
      }
 
