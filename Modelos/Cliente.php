@@ -93,6 +93,23 @@ class Cliente{
         }
     }
 
+    //AZ
+    protected function retornaCliente($id){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT * FROM usuarios
+                                        INNER JOIN clientes 
+                                        ON clientes.id_usuario=usuarios.id_usuario
+                                        WHERE clientes.id_usuario='$id'";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();   
+            return null;  
+        }
+    }
 
     protected function retornaIdClientedel($usuario){
         try{

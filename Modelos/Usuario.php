@@ -82,6 +82,61 @@ class Usuario{
         }
     }
 
+    //AZ
+    protected function modificarPassword($id, $password){
+        $this->setPassword($password);
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "UPDATE usuarios 
+                                    SET password = :password
+                                    WHERE id_usuario = $id";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute(array(
+                ":password" => $this->getPassword(),
+            ));
+            $conecta->getConexionBD()->commit();
+            return true;
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return  $excepcio->getMessage();  
+        }
+    }
+
+    //AZ
+    protected function modificarCliente($id, $email, $nombre, $apellidos, $telefono, $newsletter){
+        $this->setEmail($email);
+        $this->setNombre($nombre);
+        $this->setApellidos($apellidos);
+        $this->setTelefono($telefono);
+        $this->setNewsletter($newsletter);
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "UPDATE usuarios 
+                                    SET  email = :email,
+                                        nombre = :nombre,
+                                        apellidos = :apellidos,
+                                        telefono = :telefono,
+                                        newsletter = :newsletter
+                                    WHERE id_usuario = $id";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute(array(
+                ":email" => $this->getEmail(),
+                ":nombre" => $this->getNombre(),
+                ":apellidos" => $this->getApellidos(),
+                ":telefono" => $this->getTelefono(),
+                ":newsletter" => $this->getNewsletter()
+            ));
+            $conecta->getConexionBD()->commit();
+            return true;
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return  $excepcio->getMessage();  
+        }
+        
+    }
+
     public function getId_usuario()
     {
         return $this->id_usuario;

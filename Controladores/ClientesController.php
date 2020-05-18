@@ -48,6 +48,34 @@ class ClientesController extends Cliente{
         return  $this->afegeixValoracioCliente($id);
     }
 
+    //AZ
+    public function infoCliente(){
+
+        $Llistat = $this->retornaCliente($_SESSION["id_usuario"]);
+
+        if (file_exists("../Vistas/Cliente/cliente-perfil.php")){
+            require_once "../Vistas/Cliente/cliente-perfil.php";
+        }
+        if (file_exists("../../Vistas/Cliente/cliente-perfil.php")){
+            require_once "../../Vistas/Cliente/cliente-perfil.php";
+        }
+
+    }
+
+    //AZ
+    public function mostrarModificarCliente(){
+
+        $Llistat = $this->retornaCliente($_SESSION["id_usuario"]);
+
+        if (file_exists("../Vistas/Cliente/cliente-modificar.php")){
+            require_once "../Vistas/Cliente/cliente-modificar.php";
+        }
+        if (file_exists("../../Vistas/Cliente/cliente-modificar.php")){
+            require_once "../../Vistas/Cliente/cliente-modificar.php";
+        }
+
+    }
+
 }
 
 

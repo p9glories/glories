@@ -56,18 +56,23 @@ h2.title + p{
   overflow: hidden;
   background-color: #ffffff;
 }
+.input-container.disabled {
+  background-color: #f7f7f7;
+  box-shadow: none;
+}
 .input-container .label {
   position: absolute;
   pointer-events: none;
   left: 10px;
   top: 5px;
-  line-height: 50px;
+  line-height: 20px;
   transition: 0.2s ease all;
   padding: 0;
   font-size: 14px;
   color: #333333;
 }
 .input-container input,
+.input-container .input,
 .input-container textarea {
     padding: 25px 10px 5px 10px;
     line-height: 30px;
@@ -664,6 +669,91 @@ section.commerce .info .data div {
 
 /**/
 
+/* Navegacion lateral */
+
+
+
+.nav-col {
+  border-right: 1px solid #dddd;
+  border-left: 1px solid #dddddd;
+  padding: 20px 0;
+  min-height: 640px;
+}
+.nav-col h3 {
+  font-weight: 600;
+  font-size: 20px;
+  padding: 0 15px;
+  margin: 0;
+  color: #ff5722;
+  line-height: 40px;
+}
+.nav-col nav {background-color: transparent;}
+
+.nav-col ul {
+  
+list-style: none;
+  
+margin: 0;
+  
+padding: 0;
+}
+
+.nav-col li {
+  
+margin: 0;
+  
+padding: 0;
+}
+
+.nav-col a {
+  
+line-height: 50px;
+  
+color: #444444;
+  
+display: block;
+  
+padding: 0 15px;
+  
+font-size: 14px;
+  
+border-bottom: 1px solid #e2e2e2;
+  
+font-weight: 600;
+}
+.nav-col a:hover {
+color: #111111;
+background-color: #fbfbfb;
+text-decoration: none;
+}
+.nav-col a i {
+  
+}
+
+/* Section admin */
+
+section.admin {
+  border-top: 1px solid #dddddd;
+  background-color: #ffffff;
+  min-height: 640px;
+}
+section.admin .content {
+  padding: 20px 40px;
+  background-color: #ffffff;
+}
+section.admin .content h2 {
+font-size: 24px;
+font-weight: 600;
+margin: 10px 0 20px;
+}
+section.admin .content form {
+  display: block;
+  width: 100%;
+}
+section.admin .msg {
+  color: #4CAF50;
+    font-weight: 600;
+}
 
 
 /**/
