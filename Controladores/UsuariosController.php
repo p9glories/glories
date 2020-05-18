@@ -87,7 +87,7 @@ class UsuariosController extends Usuario{
         }else{
             $_SESSION["mensajeResultado"]="La contraseña no se ha podido modificar";
         } 
-        header("location: ../Vistas/Home/cliente-password.php");
+        header("location: ../../Vistas/cliente-password.php");
     }
 
     //AZ
