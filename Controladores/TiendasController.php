@@ -205,7 +205,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="insertaT"){
             if (isset($_POST["nombre"]) && !empty($_POST["nombre"])){
                     $nombre = $_POST["nombre"];
                     if (isset($_FILES["logo"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["logo"]["type"];
@@ -236,7 +236,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="insertaT"){
 
                             
                     if (isset($_FILES["foto1"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["foto1"]["type"];
@@ -267,7 +267,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="insertaT"){
 
 
                     if (isset($_FILES["foto2"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["foto2"]["type"];
@@ -298,7 +298,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="insertaT"){
 
 
                     if (isset($_FILES["foto3"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["foto3"]["type"];
@@ -399,7 +399,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
             if (isset($_POST["nombre"]) && !empty($_POST["nombre"])){
                     $nombre = $_POST["nombre"];
                     if (isset($_FILES["logo"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["logo"]["type"];
@@ -430,7 +430,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
 
                             
                     if (isset($_FILES["foto1"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["foto1"]["type"];
@@ -461,7 +461,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
 
 
                     if (isset($_FILES["foto2"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["foto2"]["type"];
@@ -492,7 +492,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
 
 
                     if (isset($_FILES["foto3"])){
-                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+                        if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
                         }
                         $tipo = $_FILES["foto3"]["type"];
