@@ -2,11 +2,14 @@
     foreach($Llistat as $objecte){ 
         ?>
     <div class="rating-done figure">
-        <?php if($objecte->logo) {
-            echo "<figure class='logo'><img src=".$objecte->logo."></figure>";
+        <figure class="logo">
+        <?php if ($objecte->logo) {
+            echo '<img src="../imagenes/'.$objecte->logo.'">';
         } else {
-            echo "<figure class='logo null'></figure>";
-        }?>
+            echo '<img src="../imagenes/no-image.jpg">';
+        }
+        ?>   
+        </figure>
 
         <div class="top">
             <a class="name" href="tienda.php?id=<?php echo $objecte->id_tienda ?>"><?php echo $objecte->nombre ?></a>

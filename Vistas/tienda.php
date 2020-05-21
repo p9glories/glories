@@ -50,7 +50,7 @@ else {
 <!-- Seccion valorar inicio -->
 
 <?php 
-if ( (isset($_SESSION["login"]))&&(($_SESSION["login"])==true)&&(($_SESSION["rol"])=="Usuario") ){
+if ( (isset($_SESSION["login"]))&&(($_SESSION["login"])==true)&&(($_SESSION["rol"])=="Cliente") ){
 
   $haValorado = new ValoracionesController();
   $sihaValorado = $haValorado->consultaValoracionClienteTienda($_SESSION["id_cliente"],$_GET["id"]);
@@ -83,7 +83,7 @@ if ( (isset($_SESSION["login"]))&&(($_SESSION["login"])==true)&&(($_SESSION["rol
         </div>
       </form>
       </div>'; 
-    } else if ($sihaValorado == 0) {
+    } else if ($sihaValorado != 0) {
     echo '<div class="rating-box mb-4">
       <div class="h5">Gracias por habernos valorado.</div>
     </div>';

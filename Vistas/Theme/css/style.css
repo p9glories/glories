@@ -647,7 +647,11 @@ section.commerce .info .data div {
   left: 0;
   border: 1px solid #e5e5e5;
 }
-
+.rating-done figure img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
 .rating-done .bottom {margin-top: 5px;color: #999999;}
 /**/
 

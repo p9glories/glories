@@ -1,18 +1,20 @@
-<?php    
-    /***  ENCABEZADO */
+<?php include '../Vistas/Includes/header.php'; ?>
+<body>
 
-    //require '';
+<section class="admin">
+    <div class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h3><b><span class="c-orange">Lo sentimos</span></b></h3>
+				<p>Tu cuenta no se ha  podido crear</p>
+				<a class="btn btn-success" href="javascript:history.go(-1)">Volver a intentarlo</a>
+			</div>
+		</div>
+	</div>
+</section>
 
-?>
+<?php include '../Vistas/Includes/footer.php'; ?>
 
-<h1 style="color: red;">>> Lo sentimos, En este momento el Cliente NO se ha podido crear << </h1>
+</body>
 
-<a href="../Vistas/Cliente/insertarCliente.php">Volver</a>
-<br>
-<a href="../index.php">Inicio</a>
-
-
-<?php    
-    /***  PIE */
-
-?>
+</html>
