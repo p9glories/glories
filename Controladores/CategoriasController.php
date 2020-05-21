@@ -87,7 +87,7 @@ class CategoriasController extends Categoria{
 if(isset($_POST["operacio"]) && $_POST["operacio"]=="inserta"){
     if (isset($_POST["nombre"]) && !empty($_POST["nombre"])){
         if (isset($_FILES["icono"])){
-            if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes/")){
+            if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                 mkdir($ruta_imagenes);
             }
             $tipo = $_FILES["icono"]["type"];
@@ -140,7 +140,7 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="modificar"){
 if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
     if (isset($_POST["nombre"]) && !empty($_POST["nombre"]) && isset($_POST["id"]) && !empty($_POST["id"])){
         if (isset($_FILES["icono"])){
-            if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/glories/imagenes")){
+            if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                 mkdir($ruta_imagenes);
             }
             $tipo = $_FILES["icono"]["type"];
