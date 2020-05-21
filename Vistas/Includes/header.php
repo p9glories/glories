@@ -66,7 +66,7 @@
 		              <label for="password" class="label">Password</label>
 		            </div>
 		        </div>
-		        <div class="col-12 mb-3 text-center">
+		        <div class="col-12 mb-3 text-center d-none">
 		        	<div class="form-check">
 					    <input type="checkbox" class="form-check-input" id="admin">
 					    <label class="form-check-label" for="admin">Acceder como administrador</label>

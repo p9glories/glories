@@ -32,7 +32,7 @@
        
 
     <div class="field">
-            <label for="nombre">Categoria</label>
+            <label for="categoria">Categoria</label>
             <select name="categoria">
                 <option value="0">Seleccione:</option>
                     <?php

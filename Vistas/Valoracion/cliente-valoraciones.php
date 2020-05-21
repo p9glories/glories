@@ -9,11 +9,6 @@
         }?>
 
         <div class="top">
-            
-            
-
-
-
             <a class="name" href="tienda.php?id=<?php echo $objecte->id_tienda ?>"><?php echo $objecte->nombre ?></a>
             <span class="date"><?php echo DateTime::createFromFormat('Y-m-d', $objecte->fecha)->format("d/m/Y") ?></span>
         </div>
@@ -23,7 +18,7 @@
         <div class="comment">
             <?php echo $objecte->comentario ?>
         </div>
-        <div class="bottom fz-12">
+        <div class="bottom fz-13">
             <?php if ($objecte->aprobado==0) {
                 echo "Sin aprobar";
             } else {

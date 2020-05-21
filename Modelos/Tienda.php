@@ -24,13 +24,13 @@ class Tienda{
         $this->setId_categoria($categoria);
         $this->setNombre($nombre);
         $this->setDescripcion($descripcion);
-        $this->setLogo(logo);
+        $this->setLogo($logo);
         $this->setHorario($horario);
         $this->setTelefono($telefono);
         $this->setUbicacion($ubicacion);
         $this->setFoto1($foto1);
         $this->setFoto2($foto2);
-        $this->setFoto2($foto2);
+        $this->setFoto3($foto3);
 
         try{    
             $conecta = new ConexionBD();
@@ -224,7 +224,7 @@ class Tienda{
         $this->setUbicacion($ubicacion);
         $this->setFoto1($foto1);
         $this->setFoto2($foto2);
-        $this->setFoto2($foto2);
+        $this->setFoto3($foto3);
         try{    
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();

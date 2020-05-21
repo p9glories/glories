@@ -13,11 +13,14 @@ foreach($Llistat as $array){
     <div>
         <span class="name"><?php echo $objecte->nombre ?></span>
         
-        <?php if($objecte->logo) {
-            echo "<figure><img src=".$objecte->logo."></figure>";
+        <figure>
+        <?php if ($objecte->logo) {
+            echo '<img src="../imagenes/'.$objecte->logo.'">';
         } else {
-            echo "<figure class='null'></figure>";
-        }?>
+            echo '<img src="../imagenes/no-image.jpg">';
+        }
+        ?>   
+        </figure>
         
         <span class="stars stars-0<?php echo ceil($objecte->estrellitas) ?>">
             <span></span><span></span><span></span><span></span><span></span>

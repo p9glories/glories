@@ -32,8 +32,14 @@
 					<i class="icon-user"></i>
 					<?php 
 					echo "<b>".$_SESSION["nombre"]." ".$_SESSION["apellidos"]."<span>, ".$_SESSION["rol"]."</span></b>";
-        			echo "<a class='c-orange' href='cliente-perfil.php'>Mi cuenta</a> ";
-        			echo "<a class='c-999' href='../Controladores/SesionesController.php?operacion=cerrarSesion'>Cerrar sesión</a>";
+					if ($_SESSION["rol"]=="Cliente"){
+						echo "<a class='c-orange' href='cliente-cuenta.php'>Mi cuenta</a> ";
+					} else if ($_SESSION["rol"]=="Administrador"){
+						echo "<a class='c-orange' href='admin-cuenta.php'>Mi cuenta</a> ";
+					} else if ($_SESSION["rol"]=="Superadministrador"){
+						echo "<a class='c-orange' href='superadmin-cuenta.php'>Mi cuenta</a> ";
+					}
+					    echo "<a class='c-999' href='../Controladores/SesionesController.php?operacion=cerrarSesion'>Cerrar sesión</a>";
         			?>
 
 				</span>

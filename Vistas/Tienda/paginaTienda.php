@@ -9,24 +9,44 @@ foreach($Llistat as $array){
         <div class="row">
             <div class="col-12 main" main>
                 <figure>
-                    <img src="https://scontent.fmad7-1.fna.fbcdn.net/v/t31.0-8/23632100_10155211486013506_6483325655654681337_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQn71EVoyPaTilRqVxOCOoOiNj_9-Nz3JZBSzWCCnvW2MR2IHFr6_E-i7Yx_wBd_uLU&_nc_ht=scontent.fmad7-1.fna&oh=807c4eb7b56eb8b66ea0ddbcd2c8a098&oe=5ED63D95">
+                <?php if ($objecte->foto1) {
+                    echo '<img src="../imagenes/'.$objecte->foto1.'">';
+                } else {
+                    echo '<img src="../imagenes/no-image.jpg">';
+                }
+                ?>   
                 </figure>
             </div>
             <div class="col-12 thumbs" thumbs>
                 <div class="row">
                     <div class="col-4 li">
                         <figure>
-                            <img src="https://scontent.fmad7-1.fna.fbcdn.net/v/t31.0-8/23632100_10155211486013506_6483325655654681337_o.jpg?_nc_cat=100&_nc_sid=8024bb&_nc_oc=AQn71EVoyPaTilRqVxOCOoOiNj_9-Nz3JZBSzWCCnvW2MR2IHFr6_E-i7Yx_wBd_uLU&_nc_ht=scontent.fmad7-1.fna&oh=807c4eb7b56eb8b66ea0ddbcd2c8a098&oe=5ED63D95">
+                        <?php if ($objecte->foto1) {
+                            echo '<img src="../imagenes/'.$objecte->foto1.'">';
+                        } else {
+                            echo '<img src="../imagenes/no-image.jpg">';
+                        }
+                        ?>   
                         </figure>
                     </div>
                     <div class="col-4 li">
                         <figure>
-                            <img src="https://gloriagastronomicavideo.files.wordpress.com/2019/05/img_8744.jpg?w=1024">
+                        <?php if ($objecte->foto2) {
+                            echo '<img src="../imagenes/'.$objecte->foto2.'">';
+                        } else {
+                            echo '<img src="../imagenes/no-image.jpg">';
+                        }
+                        ?>   
                         </figure>
                     </div>
                     <div class="col-4 li">
                         <figure>
-                            <img src="https://www.modaes.es/files/000_2016/0109recursos/glories-renovado-barcelona-728.jpg">
+                        <?php if ($objecte->foto3) {
+                            echo '<img src="../imagenes/'.$objecte->foto3.'">';
+                        } else {
+                            echo '<img src="../imagenes/no-image.jpg">';
+                        }
+                        ?>   
                         </figure>
                     </div>
                 </div>
@@ -54,11 +74,14 @@ foreach($Llistat as $array){
         <div class="title">
             <div class="name"><?php echo $objecte->nombre ?></div>
 
-            <?php if($objecte->logo) {
-                echo "<figure><img src=".$objecte->logo."></figure>";
+            <figure>
+            <?php if ($objecte->logo) {
+                echo '<img src="../imagenes/'.$objecte->logo.'">';
             } else {
-                echo "<figure class='null'></figure>";
-            }?>
+                echo '<img src="../imagenes/no-image.jpg">';
+            }
+            ?>   
+            </figure>
 
             <span class="stars stars-0<?php echo ceil($objecte->estrellitas) ?>">
                 <span></span><span></span><span></span><span></span><span></span>

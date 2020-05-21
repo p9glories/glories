@@ -50,7 +50,7 @@ else {
 <!-- Seccion valorar inicio -->
 
 <?php 
-if ((isset($_SESSION["login"]))&&(($_SESSION["login"])==true)){
+if ( (isset($_SESSION["login"]))&&(($_SESSION["login"])==true)&&(($_SESSION["rol"])=="Usuario") ){
 
   $haValorado = new ValoracionesController();
   $sihaValorado = $haValorado->consultaValoracionClienteTienda($_SESSION["id_cliente"],$_GET["id"]);
@@ -83,21 +83,31 @@ if ((isset($_SESSION["login"]))&&(($_SESSION["login"])==true)){
         </div>
       </form>
       </div>'; 
-    } else {
+    } else if ($sihaValorado == 0) {
     echo '<div class="rating-box mb-4">
       <div class="h5">Gracias por habernos valorado.</div>
     </div>';
   }
 
+} else if ((isset($_SESSION["login"]))&&(isset($_SESSION["rol"]))){
+  echo '
+  <div class="rating-box mb-4">
+    <form class="row">
+          <div class="col-12">
+            <p class="m-0 fz-14"><b>Sólo los clientes pueden escribir reseñar</b></p>
+          </div>
+    </form>
+  </div>
+  ';
 } else {
 	echo '
 	<div class="rating-box mb-4">
-		<div class="h5">Déjanos tu valoración</div>
 		<form class="row">
 	        <div class="col-12">
-	        	<p class="m-0 fz-14">Debes iniciar sesión para ingresar reseñas.<br>
+	        	<p class="m-0 fz-14"><b>Sólo los clientes registrados pueden escribir reseñar</b></p>
+            <p class="m-0">
 	        	<span class="btn btn-success mt-2" data-toggle="modal" data-target="#loginModal">Iniciar sesión</span>
-	        	<a href="cliente-nuevo.php" class="btn btn-dark mt-2">Registrarme</a>
+	        	<a href="cliente-registro.php" class="btn btn-dark mt-2">Registrarme</a>
 	        	</p>
 	        </div>
 		</form>
@@ -169,7 +179,7 @@ if ((isset($_SESSION["login"]))&&(($_SESSION["login"])==true)){
     var msg = "";
     if (ratingValue > 0) {
         msg = ratingValue + " de 5";
-        $('input#puntuacion').val(ratingValue);
+        $('#puntuacion').val(ratingValue);
     }
     responseMessage(msg);
     

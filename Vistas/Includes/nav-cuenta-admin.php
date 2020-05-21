@@ -2,16 +2,19 @@
 
 <div class="col-md-3 nav-col">
   <nav class="nav-cuenta cliente">
-    <h3>Área de cliente</h3>
+    <h3>Área de Administrador</h3>
     <ul>
       <li>
-        <a href="cliente-valoraciones.php">Mis reseñas</a>
+        <a href="#">Reseñas recibidas</a>
       </li>
       <li>
-        <a href="cliente-cuenta.php">Datos personales</a>
+        <a href="#">Mi tienda</a>
       </li>
       <li>
-        <a href="cliente-password.php">Cambiar contraseña</a>
+        <a href="#">Mis datos personales</a>
+      </li>
+      <li>
+        <a href="#">Cambiar contraseña</a>
       </li>
     </ul>
   </nav>

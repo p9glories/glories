@@ -17,6 +17,9 @@
 .fz-12 {
   font-size: 12px;
 }
+.fz-13 {
+  font-size: 13px;
+}
 .fz-14 {
   font-size: 14px;
 }
@@ -31,6 +34,7 @@ figure.null {
   background-size: 80%;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
 }
 body {
   font-family: 'Open Sans', sans-serif;
@@ -551,7 +555,7 @@ section.commerce .info .title {
 }
 section.commerce .info .name {font-weight: bold;font-size: 28px;color: #000000;margin: 0;line-height: 1;}
 section.commerce .info figure {height: 90px;width: 90px;position: absolute;top: 0;left: 0;margin: 0;border: 1px solid #d9d9d9;}
-section.commerce .info figure img {height: 90%;width: 90%;object-fit: contain;position: absolute;top: 0;left: 0;right: 0;bottom: 0;margin: auto;}
+section.commerce .info figure img {height: 100%;width: 100%;object-fit: contain;position: absolute;top: 0;left: 0;right: 0;bottom: 0;margin: auto;}
 section.commerce .info .stars {
     margin: 8px 0;
 }
