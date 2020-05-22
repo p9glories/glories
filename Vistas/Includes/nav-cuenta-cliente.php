@@ -5,13 +5,13 @@
     <h3>Área de cliente</h3>
     <ul>
       <li>
-        <a href="cliente-valoraciones.php">Mis reseñas</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/cliente-valoraciones.php">Mis reseñas</a>
       </li>
       <li>
-        <a href="cliente-cuenta.php">Datos personales</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/cliente-cuenta.php">Datos personales</a>
       </li>
       <li>
-        <a href="cliente-password.php">Cambiar contraseña</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/cliente-password.php">Cambiar contraseña</a>
       </li>
     </ul>
   </nav>

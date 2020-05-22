@@ -11,10 +11,10 @@
         <a href="#">Mi tienda</a>
       </li>
       <li>
-        <a href="#">Mis datos personales</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/admin-cuenta.php">Datos personales</a>
       </li>
       <li>
-        <a href="#">Cambiar contraseña</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/admin-password.php">Cambiar contraseña</a>
       </li>
     </ul>
   </nav>
