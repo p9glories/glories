@@ -28,7 +28,8 @@
                 echo "Aprobado";
             } 
             ?>
-            <a href="cliente-valoracion.php?id=<?php echo $objecte->id_valoracion ?>"><b>Modificar</b></a>
+
+            <a href="../Controladores/ValoracionesController.php?tienda=<?php echo $objecte->id_tienda ?>&cliente=<?php echo $objecte->id_cliente ?>&operacio=modificar&valoracion=<?php echo $objecte->id_valoracion ?>"><b>Modificar</b></a>
         </div>
     </div>
     <hr>
