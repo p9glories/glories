@@ -159,8 +159,8 @@ class Tienda{
             $mitja = $dato[2]/$dato[3];  //puntstotals/numero_puntuacions
             $total = $total+$pes*$mitja;
         }
-        return round($total/100, 1);
-
+        //return round($total/100, 1);
+        return round($total/50, 1);
     }
 
     protected function retornaTiendasdelAdmin($administrador){
