@@ -86,6 +86,7 @@ foreach($Llistat as $array){
             <span class="stars stars-0<?php echo ceil($objecte->estrellitas) ?>">
                 <span></span><span></span><span></span><span></span><span></span>
             </span>
+            <h2 class="d-block"><?php echo ceil($objecte->estrellitas) ?></h2>
             <span class="votes">
             <?php 
             $cantValoraciones = new ValoracionesController();

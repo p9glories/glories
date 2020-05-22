@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 a">
-				<a class="logo" href="index.php"></a>
+				<a class="logo" href="<?php $_SERVER['DOCUMENT_ROOT']?>/index.php"></a>
 			</div>
 			<div class="col-md-4 b align-self-center">
 				<form action="#">
