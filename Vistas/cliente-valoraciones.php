@@ -19,12 +19,19 @@ else {
 
 <section class="admin">
     <div class="container">
+        
+
         <div class="row">
             
         <?php include 'Includes/nav-cuenta-cliente.php';?>
         
             <div class="col-md-9 content">
                 
+                <?php if (isset($_SESSION["mensajeResultado"])){
+                    echo "<div class='row'><div class='col-12'><span class='msg'>".$_SESSION["mensajeResultado"]."</span></div></div>";
+                    unset($_SESSION["mensajeResultado"]);
+                };?>
+
                 <div class="row">
 
                     <h2 class="col-12">Mis reseñas</h2>

@@ -60,18 +60,11 @@ class ValoracionesController extends Valoracion{
     }
     public function resultadoModificaValoracion($resultat){
         if ($resultat){
-            $_SESSION["mensajeResultado"]="
-                    <div style='background-color: green; height: 80px; text-align: center; padding-top: 5px;'>
-                        <h1>Valoración Modificada</h1>
-                    <div>";
+            $_SESSION["mensajeResultado"]="Valoración modificada";
         }else{
-            $_SESSION["mensajeResultado"]="
-            <div style='background-color: red; height: 80px; text-align: center; padding-top: 5px;'>
-                <h1>La Valoración NO se ha podido Modificar</h1>
-            <div>";
-            
+            $_SESSION["mensajeResultado"]="La valoración no se ha podido modificar";
         } 
-        header("location: ../index.php");
+        header("location:../Vistas/cliente-valoraciones.php");
     }
 
      public function apruebaValoracion($valoracion, $cliente){
@@ -199,11 +192,11 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="modificar"){
 
 if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
     if (isset($_SESSION["id_usuario"]) && isset($_POST["id"]) && isset($_POST["tienda"]) && isset($_SESSION["id_cliente"]) && isset($_POST["puntuacion"]) && isset($_POST["comentario"])){
-        $id_cliente = $_SESSION["id_usuario"];    /**** */
+        $id_cliente = $_SESSION["id_cliente"];    /**** */
         $id_tienda = $_POST["tienda"];  /**** */
-        $id_nivel = $objecte->obteNivell($_SESSION["id_cliente"]);
-
+        
         $objecte = new ValoracionesController();
+        $id_nivel = $objecte->obteNivell($_SESSION["id_cliente"]);
         $objecte->ModificarValoracio($_POST["id"],$id_cliente,$id_tienda,$id_nivel,$_POST["puntuacion"],$_POST["comentario"]);
     }else{
         $_SESSION["mensajeResultado"]="

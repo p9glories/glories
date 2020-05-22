@@ -2,6 +2,7 @@
     foreach($Llistat as $objecte){ 
         ?>
     <div class="rating-done figure">
+
         <figure class="logo">
         <?php if ($objecte->logo) {
             echo '<img src="../imagenes/'.$objecte->logo.'">';
