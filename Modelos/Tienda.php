@@ -143,23 +143,33 @@ class Tienda{
         $pt=0;
         $pes=0;
         $total=0;
+        $PesTotal=[0,0,0];
         foreach($info as $dato){
             if ($dato[1]==1){ //CAP
                 $pes=0;
             }
             if ($dato[1]==2){ //2-principiant
                 $pes=16.5;
+                $PesTotal[0]= $pes;
             }
             if ($dato[1]==3){ //intermig,
                 $pes=33.5;
+                $PesTotal[1]= $pes;
             }
             if ($dato[1]==4){  //avançat
                 $pes=50;
+                $PesTotal[2]= $pes;
             }
             $mitja = $dato[2]/$dato[3];  //puntstotals/numero_puntuacions
             $total = $total+$pes*$mitja;
         }
-        return round($total/100, 1);
+        
+        $SumaPesTotal=0;
+        for($i=0;$i<count($PesTotal);$i++){
+            $SumaPesTotal=$SumaPesTotal+$PesTotal[$i];
+        }
+        
+        return round($total/$SumaPesTotal, 1);
         
     }
 
