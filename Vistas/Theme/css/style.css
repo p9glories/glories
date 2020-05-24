@@ -703,11 +703,12 @@ section.commerce .info .data div {
 }
 .nav-col h3 {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   padding: 10px 15px;
   line-height: 1.4;
   margin: 0;
   color: #ff5722;
+  font-family: 'Open Sans', sans-serif;
 }
 .nav-col nav {background-color: transparent;}
 
@@ -763,11 +764,7 @@ section.admin .content {
   padding: 20px 40px;
   background-color: #ffffff;
 }
-section.admin .content h2 {
-font-size: 24px;
-font-weight: 600;
-margin: 10px 0 20px;
-}
+section.admin .content h2 {font-size: 24px;font-weight: 600;margin: 10px 0 20px;font-family: 'Open Sans', sans-serif;}
 section.admin .content form {
   display: block;
   width: 100%;
@@ -776,6 +773,29 @@ section.admin .msg {
   color: #4CAF50;
     font-weight: 600;
 }
+ 
+ /**/
+
+figure.img-container {position: relative;display: -webkit-box;margin: 0;border-radius: 5px;overflow: hidden;/* border: 1px solid #e2e2e2; */}
+figure.img-container:before {
+  margin-top: 80%;
+  display: block;
+  content:"";
+}
+figure.img-container img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  float: left;
+  object-fit: contain;
+}
+
+
+
 
 
 /**/

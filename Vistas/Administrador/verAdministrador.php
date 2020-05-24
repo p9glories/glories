@@ -1,48 +1,90 @@
 <?php    
-    /***  ENCABEZADO */
+    // Solo superadministrador
+    require_once "../Controladores/SesionesController.php";
+    $objecteSessions = new SesionesController();
 
-    //require '';
+    if (!isset($_SESSION["id_usuario"])){
+        $_SESSION["login"] = false;
+        $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
+        header ("location: ../../index.php");
+    }else{
+        if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="SuperAdministrador"){
+                $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Usuarios!!";
+                header ("location: ../../index.php");
+        }
+    }
+
+    // Header usuarios registrados
+
+    if (isset($_SESSION["login"])){
+        if ($_SESSION["login"]==true){
+            include '../Vistas/Includes/header_users.php';
+            } 
+    } 
+    else {
+        header("Location: index.php");
+    }
+
 
 ?>
 
-<h1>Lista TODOS los Administradores</h1>
+<body>
 
-<div>
+<section class="admin">
+    <div class="container">
+    <div class="row">
+            
+    <?php include '../Vistas/Includes/nav-cuenta-superadmin.php';?>
+        
+    <div class="col-md-9 content">
+    <div class="row">
 
-    <table style="border:1px solid black;">
+    <h2 class="col-12">Administradores</h2>
+
+    <!-- Contenido inicio -->
+    <div class="col-12">
+    <table class="table fz-13">
+        <thead>
         <tr>
-            <th>id_admin</th>
-            <th>id_usuario</th>
-            <th>email</th>
-            <th>password</th>
-            <th>nombre</th>
-            <th>apellidos</th>
-            <th>telefono</th>
-            <th>newsletter</th>
+            <th scope="col">Id admin</th>
+            <th scope="col">Id usuario</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Teléfono</th>
         </tr>
+        </thead>
+
     <?php
         
         foreach($Llistat as $administrador){ 
             ?>
             <tr>
-                <td style="border:1px solid black;"><?php echo $administrador->id_admin ?></td>
-                <td style="border:1px solid black;"><?php echo $administrador->id_usuario ?></td>
-                <td style="border:1px solid black;"><?php echo $administrador->email ?></td>
-                <td style="border:1px solid black;"><?php echo $administrador->password ?></td>
-                <td style="border:1px solid black;"><?php echo $administrador->nombre ?></td>
-                <td style="border:1px solid black;"><?php echo $administrador->apellidos ?></td>
-                <td style="border:1px solid black;"><?php echo $administrador->telefono ?></td>
+                <td><?php echo $administrador->id_admin ?></td>
+                <td><?php echo $administrador->id_usuario ?></td>
+                <td><?php echo $administrador->email ?></td>
+                <?php $administrador->password ?>
+                <td><?php echo $administrador->nombre ?></td>
+                <td><?php echo $administrador->apellidos ?></td>
+                <td><?php echo $administrador->telefono ?></td>
                 
-                <td style="border:1px solid black;"><?php echo $administrador->newsletter ? "SI":"NO"?></td>
             </tr>
     <?php
         }?>
     </table>
 </div>
-<br>
-<a href="../index.html">Inicio</a>
 
-<?php    
-    /***  PIE */
+<!-- Contenido fin -->
 
-?>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<?php include '../Vistas/Includes/footer.php'; ?>
+    
+</section>
+
+</body>
+
+</html>

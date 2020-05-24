@@ -1,41 +1,97 @@
 <?php    
-    /***  ENCABEZADO */
+    // Solo superadministrador
+    require_once "../Controladores/SesionesController.php";
+    $objecteSessions = new SesionesController();
 
-    //require '';
+    if (!isset($_SESSION["id_usuario"])){
+        $_SESSION["login"] = false;
+        $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
+        header ("location: ../../index.php");
+    }else{
+        if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="SuperAdministrador"){
+                $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Usuarios!!";
+                header ("location: ../../index.php");
+        }
+    }
+
+    // Header usuarios registrados
+
+    if (isset($_SESSION["login"])){
+        if ($_SESSION["login"]==true){
+            include '../Vistas/Includes/header_users.php';
+            } 
+    } 
+    else {
+        header("Location: index.php");
+    }
+
 
 ?>
 
-<h1>Lista Categorias</h1>
+<body>
 
-<div>
+<section class="admin">
+    <div class="container">
+    <div class="row">
+            
+    <?php include '../Vistas/Includes/nav-cuenta-superadmin.php';?>
+        
+    <div class="col-md-9 content">
+    <div class="row">
 
-    <table style="border:1px solid black;">
+    <h2 class="col-12">Categorías</h2>
+
+    <!-- Contenido inicio -->
+    <div class="col-12">
+    <table class="table fz-13">
+        <thead>
         <tr>
-            <th>id_categoria</th>
-            <th>nombre</th>
-            <th>icono</th>
-
-            <th>MODIFICAR</th>
+            <th scope="col">Icono</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Id categoría</th>
+            <th scope="col" class="text-right">Opciones</th>
         </tr>
+        </thead>
+
     <?php
         
         foreach($Llistat as $objecte){ 
             ?>
             <tr>
-                <td style="border:1px solid black;"><?php echo $objecte->id_categoria ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->nombre ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->icono ?></td>
+                
+                
+                <td>
+                    <figure class="img-container">
+                    <?php if ($objecte->icono) {
+                        echo '<img src="../imagenes/'.$objecte->icono.'">';
+                    } else {
+                        echo '<img src="../imagenes/no-image.jpg">';
+                    }
+                    ?>   
+                    </figure>
+                </td>
+                <td><?php echo $objecte->nombre ?></td>
+                <td><?php echo $objecte->id_categoria ?></td>
 
-                <td style="border:1px solid black;"><a href="CategoriasController.php?operacio=modificar&categoria=<?php echo $objecte->id_categoria ?>">MODIFICAR</a></td>
+                <td class="text-right"><a class="btn btn-sm btn-outline-success" href="CategoriasController.php?operacio=modificar&categoria=<?php echo $objecte->id_categoria ?>">Modificar</a></td>
             </tr>
     <?php
         }?>
     </table>
 </div>
-<br>
-<a href="../index.php">Inicio</a>
 
-<?php    
-    /***  PIE */
 
-?>
+<!-- Contenido fin -->
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+<?php include '../Vistas/Includes/footer.php'; ?>
+    
+</section>
+
+</body>
+
+</html>

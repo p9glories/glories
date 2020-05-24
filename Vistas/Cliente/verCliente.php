@@ -1,56 +1,105 @@
 <?php    
-    /***  ENCABEZADO */
+    // Solo superadministrador
+    require_once "../Controladores/SesionesController.php";
+    $objecteSessions = new SesionesController();
 
-    //require '';
+    if (!isset($_SESSION["id_usuario"])){
+        $_SESSION["login"] = false;
+        $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
+        header ("location: ../../index.php");
+    }else{
+        if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="SuperAdministrador"){
+                $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Usuarios!!";
+                header ("location: ../../index.php");
+        }
+    }
+
+    // Header usuarios registrados
+
+    if (isset($_SESSION["login"])){
+        if ($_SESSION["login"]==true){
+            include '../Vistas/Includes/header_users.php';
+            } 
+    } 
+    else {
+        header("Location: index.php");
+    }
+
 
 ?>
 
-<h1>Lista TODOS los Clientes</h1>
+<body>
 
-<div>
+<section class="admin">
+    <div class="container">
+    <div class="row">
+            
+    <?php include '../Vistas/Includes/nav-cuenta-superadmin.php';?>
+        
+    <div class="col-md-9 content">
+    <div class="row">
 
-    <table style="border:1px solid black;">
+    <h2 class="col-12">Clientes registrados</h2>
+
+    <!-- Contenido inicio -->
+    <div class="col-12">
+    <table class="table fz-13">
+        <thead>
         <tr>
-            <th>id_cliente</th>
-            <th>id_usuario</th>
-            <th>id_nivel</th>
+            <th scope="col">Id cliente</th>
+            <th scope="col">Id usuario</th>
+            
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
 
-            <th>email</th>
-            <th>nombre</th>
-            <th>apellidos</th>
-            <th>telefono</th>
-            <th>newsletter</th>
+            
+            <th scope="col">Email</th>
+            <th scope="col">Teléfono</th>
 
-            <th>alta</th>
-            <th>valoraciones</th>
+            <th scope="col">Newsletter</th>
+
+            <th scope="col">Fecha registro</th>
+            <th scope="col">Valoraciones</th>
+            <th scope="col">Nivel</th>
         </tr>
+        </thead>
     <?php
         
         foreach($Llistat as $objecte){ 
             ?>
             <tr>
-                <td style="border:1px solid black;"><?php echo $objecte->id_cliente ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->id_usuario ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->id_nivel ?></td>
+                <td><?php echo $objecte->id_cliente ?></td>
+                <td><?php echo $objecte->id_usuario ?></td>
+                
+                <td><?php echo $objecte->nombre ?></td>
+                <td><?php echo $objecte->apellidos ?></td>
 
-                <td style="border:1px solid black;"><?php echo $objecte->email ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->nombre ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->apellidos ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->telefono ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->newsletter ? "SI":"NO"?></td>
+                
+                <td><?php echo $objecte->email ?></td>
+                <td><?php echo $objecte->telefono ?></td>
+                <td><?php echo $objecte->newsletter ? "Sí":"No"?></td>
 
-                <td style="border:1px solid black;"><?php echo $objecte->alta ?></td>
-                <td style="border:1px solid black;"><?php echo $objecte->valoraciones ?></td>
+                <td><?php echo $objecte->alta ?></td>
+                <td><?php echo $objecte->valoraciones ?></td>
+                <td><?php echo $objecte->id_nivel ?></td>
 
             </tr>
     <?php
         }?>
     </table>
-</div>
-<br>
-<a href="../index.html">Inicio</a>
+    </div>
 
-<?php    
-    /***  PIE */
+<!-- Contenido fin -->
 
-?>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<?php include '../Vistas/Includes/footer.php'; ?>
+    
+</section>
+
+</body>
+
+</html>
