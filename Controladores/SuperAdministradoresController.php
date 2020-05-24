@@ -4,7 +4,7 @@ require_once "../Modelos/SuperAdministrador.php";
 
 class SuperAdministradoresController extends SuperAdministrador{
 
-    public function leeInfoAdministrador($email, $password, $nombre, $apellidos, $telefono, $newsletter){
+    public function leeInfoSuperAdministrador($email, $password, $nombre, $apellidos, $telefono, $newsletter){
        $this->resultadoRegistraSuperAdministrador($this->registraSuperAdministrador($email, $password, $nombre, $apellidos, $telefono, $newsletter));
     }
 
@@ -25,6 +25,33 @@ class SuperAdministradoresController extends SuperAdministrador{
         return $this->buscaSuperAdministrador($id);
     }
 
+    //AZ
+    public function infoSuperadmin(){
+
+        $Llistat = $this->retornaSuperadmin($_SESSION["id_usuario"]);
+
+        if (file_exists("../Vistas/SuperAdministrador/superadmin-perfil.php")){
+            require_once "../Vistas/SuperAdministrador/superadmin-perfil.php";
+        }
+        if (file_exists("../../Vistas/SuperAdministrador/superadmin-perfil.php")){
+            require_once "../../Vistas/SuperAdministrador/superadmin-perfil.php";
+        }
+
+    }
+
+    //AZ
+    public function mostrarModificarSuperadmin(){
+
+        $Llistat = $this->retornaSuperadmin($_SESSION["id_usuario"]);
+
+        if (file_exists("../Vistas/SuperAdministrador/superadmin-modificar.php")){
+            require_once "../Vistas/SuperAdministrador/superadmin-modificar.php";
+        }
+        if (file_exists("../../Vistas/SuperAdministrador/superadmin-modificar.php")){
+            require_once "../../Vistas/SuperAdministrador/superadmin-modificar.php";
+        }
+
+    }
 
 }
 
@@ -33,7 +60,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="inserta"){
         $email = $_POST["email"];
         $password = $_POST["password"];
         $Objeto = new SuperAdministradoresController();
-        $Objeto->leeInfoAdministrador($email,$password,$_POST["nombre"],$_POST["apellidos"],$_POST["telefono"],$_POST["newsletter"]);
+        $Objeto->leeInfoSuperAdministrador($email,$password,$_POST["nombre"],$_POST["apellidos"],$_POST["telefono"],$_POST["newsletter"]);
     }else{
         $_SESSION["mensajeResultado"]="
             <div style='background-color: red; height: 80px; text-align: center; padding-top: 5px;'>

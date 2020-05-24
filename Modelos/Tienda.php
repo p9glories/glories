@@ -222,6 +222,43 @@ class Tienda{
         }
     }
 
+
+    //AZ
+    protected function retornaTiendasAdmin($admin){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT tiendas.id_tienda, 
+                                        tiendas.id_admin,
+                                        administradores.id_usuario,
+                                        usuarios.apellidos,
+                                        tiendas.id_categoria, 
+                                        categorias.nombre as nombreCategoria,  
+                                    tiendas.nombre,
+                                    tiendas.descripcion,
+                                    tiendas.logo,
+                                    tiendas.horario,
+                                    tiendas.ubicacion,
+                                    tiendas.foto1,
+                                    tiendas.foto2,
+                                    tiendas.foto3
+                                    FROM tiendas 
+                                        INNER JOIN categorias
+                                        ON tiendas.id_categoria=categorias.id_categoria
+                                        INNER JOIN administradores
+                                        ON tiendas.id_admin=administradores.id_admin
+                                        INNER JOIN usuarios
+                                        ON administradores.id_usuario = usuarios.id_usuario
+                                        WHERE tiendas.id_admin='$admin'";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
     protected function modificaTienda($id, $admin, $categoria, $nombre, $descripcion, $logo, $horario, $telefono, $ubicacion, $foto1, $foto2, $foto3){
         $this->setId_tienda($id);
         $this->setId_admin($admin);

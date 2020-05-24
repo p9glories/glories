@@ -17,10 +17,10 @@
         <a href="#">Clientes</a>
       </li>
       <li>
-        <a href="#">Datos personales</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/superadmin-cuenta.php">Datos personales</a>
       </li>
       <li>
-        <a href="#">Cambiar contraseña</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/superadmin-password.php">Cambiar contraseña</a>
       </li>
     </ul>
   </nav>

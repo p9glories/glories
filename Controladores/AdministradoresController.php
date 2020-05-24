@@ -32,6 +32,35 @@ class AdministradoresController extends Administrador{
     }
     
 
+    //AZ
+    public function infoAdmin(){
+
+        $Llistat = $this->retornaAdmin($_SESSION["id_administrador"]);
+
+        if (file_exists("../Vistas/Administrador/admin-perfil.php")){
+            require_once "../Vistas/Administrador/admin-perfil.php";
+        }
+        if (file_exists("../../Vistas/Administrador/admin-perfil.php")){
+            require_once "../../Vistas/Administrador/admin-perfil.php";
+        }
+
+    }
+
+    //AZ
+    public function mostrarModificarAdmin(){
+
+        $Llistat = $this->retornaAdmin($_SESSION["id_administrador"]);
+
+        if (file_exists("../Vistas/Administrador/admin-modificar.php")){
+            require_once "../Vistas/Administrador/admin-modificar.php";
+        }
+        if (file_exists("../../Vistas/Administrador/admin-modificar.php")){
+            require_once "../../Vistas/Administrador/admin-modificar.php";
+        }
+
+    }
+
+
 }
 
 

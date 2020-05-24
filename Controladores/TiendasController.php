@@ -55,6 +55,12 @@ class TiendasController extends Tienda{
       require "../Vistas/Tienda/verTienda.php";
     }
 
+    //AZ
+    public function LlistaTiendasAdmin($admin){
+        $Llistat = $this->retornaTiendasAdmin($admin);
+        require "../Vistas/Tienda/verTiendaAdmin.php";
+    }
+
     public function selectTiendas(){
         return $this->retornaTiendasTodas();
     }
@@ -385,7 +391,11 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="modificar"){
     $objecte = new TiendasController();
     $objecte->MuestraModificarTienda($_GET["tienda"]);
 }
-
+//AZ
+if(isset($_GET["operacio"]) && $_GET["operacio"]=="verTiendaAdmin"){
+    $objecte = new TiendasController();
+    $objecte->LlistaTiendasAdmin($_SESSION["id_administrador"]);
+}
 
 
 if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){

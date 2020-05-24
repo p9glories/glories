@@ -48,7 +48,7 @@
 						    echo "<a class='c-orange' href='../admin-cuenta.php'>Mi cuenta</a> ";
 						}
 
-					} else if ($_SESSION["rol"]=="Superadministrador"){
+					} else if ($_SESSION["rol"]=="SuperAdministrador"){
 						
 						if (file_exists("superadmin-cuenta.php")){
 						    echo "<a class='c-orange' href='superadmin-cuenta.php'>Mi cuenta</a> ";

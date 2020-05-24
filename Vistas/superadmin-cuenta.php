@@ -21,7 +21,7 @@ else {
     <div class="container">
         <div class="row">
             
-        <?php include 'Includes/nav-cuenta-admin.php';?>
+        <?php include 'Includes/nav-cuenta-superadmin.php';?>
         
             <div class="col-md-9 content">
                 
@@ -29,12 +29,13 @@ else {
 
                     <h2 class="col-12">Datos personales</h2>
                     <?php
-                    include '../Controladores/AdministradoresController.php'; 
-                    $objecte = new AdministradoresController();
-                    $objecte->infoAdmin();
+          
+                    include '../Controladores/SuperAdministradoresController.php'; 
+                    $objecte = new SuperAdministradoresController();
+                    $objecte->infoSuperadmin();
                     ?>
                     <div class="col-12">
-                        <a href="admin-modificar.php" class="btn btn-secondary">Modificar</a>
+                        <a href="superadmin-modificar.php" class="btn btn-secondary">Modificar</a>
                     </div>
                     
                 

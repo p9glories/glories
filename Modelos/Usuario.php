@@ -136,6 +136,65 @@ class Usuario{
         }
         
     }
+    //AZ
+    protected function modificarAdmin($id, $email, $nombre, $apellidos, $telefono){
+        $this->setEmail($email);
+        $this->setNombre($nombre);
+        $this->setApellidos($apellidos);
+        $this->setTelefono($telefono);
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "UPDATE usuarios 
+                                    SET  email = :email,
+                                        nombre = :nombre,
+                                        apellidos = :apellidos,
+                                        telefono = :telefono
+                                    WHERE id_usuario = $id";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute(array(
+                ":email" => $this->getEmail(),
+                ":nombre" => $this->getNombre(),
+                ":apellidos" => $this->getApellidos(),
+                ":telefono" => $this->getTelefono(),
+            ));
+            $conecta->getConexionBD()->commit();
+            return true;
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return  $excepcio->getMessage();  
+        }
+    }
+        //AZ
+    protected function modificarSuperadmin($id, $email, $nombre, $apellidos, $telefono){
+        $this->setEmail($email);
+        $this->setNombre($nombre);
+        $this->setApellidos($apellidos);
+        $this->setTelefono($telefono);
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "UPDATE usuarios 
+                                    SET  email = :email,
+                                        nombre = :nombre,
+                                        apellidos = :apellidos,
+                                        telefono = :telefono
+                                    WHERE id_usuario = $id";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute(array(
+                ":email" => $this->getEmail(),
+                ":nombre" => $this->getNombre(),
+                ":apellidos" => $this->getApellidos(),
+                ":telefono" => $this->getTelefono(),
+            ));
+            $conecta->getConexionBD()->commit();
+            return true;
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return  $excepcio->getMessage();  
+        }
+        
+    }
 
     public function getId_usuario()
     {

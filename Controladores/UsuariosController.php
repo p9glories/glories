@@ -87,7 +87,16 @@ class UsuariosController extends Usuario{
         }else{
             $_SESSION["mensajeResultado"]="La contraseña no se ha podido modificar";
         } 
-        header("location: ../../Vistas/cliente-password.php");
+        if ($_SESSION["rol"]="Cliente"){
+            header("location: ../../Vistas/cliente-password.php");
+        }
+        if ($_SESSION["rol"]="Administrador"){
+            header("location: ../../Vistas/admin-password.php");
+        }
+        if ($_SESSION["rol"]="SuperAdministrador"){
+            header("location: ../../Vistas/superadmin-password.php");
+        }
+        
     }
 
     //AZ
@@ -101,6 +110,32 @@ class UsuariosController extends Usuario{
             $_SESSION["mensajeResultado"]="Tus datos no se han podido actualizar";
         } 
         header("location: ../../Vistas/cliente-modificar.php");
+    }
+
+    //AZ
+    public function modificarAdmn($id, $email, $nombre, $apellidos, $telefono){
+        $this->resultadoModificarAdmin($this->modificarAdmin($id, $email, $nombre, $apellidos, $telefono));
+    }
+    public function resultadoModificarAdmin($resultat){
+        if ($resultat){
+            $_SESSION["mensajeResultado"]="Tus datos se han actualizado correctamente";
+        }else{
+            $_SESSION["mensajeResultado"]="Tus datos no se han podido actualizar";
+        } 
+        header("location: ../../Vistas/admin-modificar.php");
+    }
+
+    //AZ
+    public function modificarSuperadmn($id, $email, $nombre, $apellidos, $telefono){
+        $this->resultadoModificarSuperadmin($this->modificarSuperadmin($id, $email, $nombre, $apellidos, $telefono));
+    }
+    public function resultadoModificarSuperadmin($resultat){
+        if ($resultat){
+            $_SESSION["mensajeResultado"]="Tus datos se han actualizado correctamente";
+        }else{
+            $_SESSION["mensajeResultado"]="Tus datos no se han podido actualizar";
+        } 
+        header("location: ../../Vistas/superadmin-modificar.php");
     }
 
 
@@ -167,6 +202,34 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modificarClient"){
         if (!empty($_POST["id"]) && !empty($_POST["email"])){
             $usuari = new UsuariosController();
             $usuari->modificarClnt($_POST["id"],$_POST["email"],$_POST["nombre"],$_POST["apellidos"],$_POST["telefono"],$_POST["newsletter"]);
+        }else{
+            echo "Faltan datos";
+        }
+    }else{
+        echo "Operacion No permitida";
+    }
+}
+
+//AZ
+if(isset($_POST["operacio"]) && $_POST["operacio"]=="modificarAdmin"){
+    if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["nombre"]) && isset($_POST["apellidos"]) && isset($_POST["telefono"])){
+        if (!empty($_POST["id"]) && !empty($_POST["email"])){
+            $usuari = new UsuariosController();
+            $usuari->modificarAdmn($_POST["id"],$_POST["email"],$_POST["nombre"],$_POST["apellidos"],$_POST["telefono"]);
+        }else{
+            echo "Faltan datos";
+        }
+    }else{
+        echo "Operacion No permitida";
+    }
+}
+
+//AZ
+if(isset($_POST["operacio"]) && $_POST["operacio"]=="modificarSuperadmin"){
+    if (isset($_POST["id"]) && isset($_POST["email"]) && isset($_POST["nombre"]) && isset($_POST["apellidos"]) && isset($_POST["telefono"])){
+        if (!empty($_POST["id"]) && !empty($_POST["email"])){
+            $usuari = new UsuariosController();
+            $usuari->modificarSuperadmn($_POST["id"],$_POST["email"],$_POST["nombre"],$_POST["apellidos"],$_POST["telefono"]);
         }else{
             echo "Faltan datos";
         }
