@@ -47,7 +47,7 @@ class TiendasController extends Tienda{
             $informacioTendes["foto1"] = $objecte->foto1;
             $informacioTendes["foto2"] = $objecte->foto2;
             $informacioTendes["foto3"] = $objecte->foto3;
-            $informacioTendes["estrellitas"] = $PuntosTiendas[$i]; 
+            $informacioTendes["estrellitas"] = $this->calculaPuntosTienda($informacioTendes["id_tienda"]); 
             array_push($Llistat, $informacioTendes);
             $i++;
         }

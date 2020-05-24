@@ -8,7 +8,7 @@
         <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/ValoracionesController.php?operacio=ver">Reseñas</a>
       </li>
       <li>
-        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/TiendasController.php?operacio=verTODO">Tiendas</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/TiendasController.php?operacio=ver">Tiendas</a>
       </li>
       <li>
         <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/CategoriasController.php?operacio=ver">Categorías</a>
