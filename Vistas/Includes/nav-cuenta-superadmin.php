@@ -5,17 +5,21 @@
     <h3>Área de Superadministrador</h3>
     <ul>
       <li>
-        <a href="#">Reseñas</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/ValoracionesController.php?operacio=ver">Reseñas</a>
       </li>
       <li>
-        <a href="#">Tiendas</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/TiendasController.php?operacio=verTODO">Tiendas</a>
       </li>
       <li>
-        <a href="#">Administradores</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/CategoriasController.php?operacio=ver">Categorías</a>
       </li>
       <li>
-        <a href="#">Clientes</a>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/AdministradoresController.php?operacio=ver">Administradores</a>
       </li>
+      <li>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/ClientesController.php?operacio=ver">Clientes</a>
+      </li>
+
       <li>
         <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Vistas/superadmin-cuenta.php">Datos personales</a>
       </li>

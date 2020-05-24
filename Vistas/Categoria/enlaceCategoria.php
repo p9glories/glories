@@ -10,7 +10,14 @@
         foreach($Llistat as $objecte){ 
             ?>
             <a class="col-6 col-md-2 box" href="categoria.php?id=<?php echo $objecte->id_categoria ?>">
-                <figure><img src="<?php echo $objecte->icono ?>"></figure>
+                <figure>
+                <?php if ($objecte->icono) {
+                    echo '<img src="../imagenes/'.$objecte->icono.'">';
+                } else {
+                    echo '<img src="../imagenes/no-image.jpg">';
+                }
+                ?>   
+                </figure>
                 <span><?php echo $objecte->nombre ?></span>
             </a>
     <?php

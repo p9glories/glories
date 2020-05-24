@@ -46,7 +46,7 @@ else {
                         <div class="col-md-12 mb-3">
 
                             <input type="submit" class="btn btn-success" value="Modificar">
-                            <a href="superadmin-perfil.php" class="btn btn-light">Cancelar</a>
+                            <a href="superadmin-cuenta.php" class="btn btn-light">Cancelar</a>
                         </div>
 
                     </div>
