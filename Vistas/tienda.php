@@ -120,8 +120,15 @@ if ( (isset($_SESSION["login"]))&&(($_SESSION["login"])==true)&&(($_SESSION["rol
 <!-- Lista valoraciones inicio -->
 
 <?php 
+
+    
+
 	$objecte = new ValoracionesController();
+    
+
 	$objecte->LlistavaloracionesAprobadasTienda($_GET["id"]);
+
+    
 ?>
 
 <!-- Lista valoraciones fin -->

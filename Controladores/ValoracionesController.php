@@ -28,9 +28,8 @@ class ValoracionesController extends Valoracion{
         } 
     }
     public function LlistaValoraciones(){
-        
         $Llistat = $this->retornaValoracionesTodos();
-        require "../Vistas/valoracion/verValoracion.php";
+        require "../Vistas/Valoracion/verValoracion.php";
     }
 
     public function LlistaValoracionesAprobar($administrador){
@@ -44,7 +43,7 @@ class ValoracionesController extends Valoracion{
         }
 
         $valoraciones = json_encode($valoraciones);
-        require "../Vistas/valoracion/verValoracionAdministrador.php";
+        require "../Vistas/Valoracion/verValoracionAdministrador.php";
     }
 
     public function MuestraModificarValoracion($id, $cliente, $tienda){
@@ -94,14 +93,17 @@ class ValoracionesController extends Valoracion{
 
 
      public function LlistavaloracionesAprobadas(){
+        require_once "ClientesController.php";
         $Llistat = $this->ListaValoracionesAprobada();
-        require "../Vistas/valoracion/verValoracion.php";
+        require "../Vistas/Valoracion/verValoracion.php";
      }
 
      //AZ
     public function LlistavaloracionesAprobadasTienda($idtienda){
         $Llistat = $this->ListaValoracionesAprobadasTienda($idtienda);
-        require "../Vistas/valoracion/tienda-valoraciones.php";
+        if (file_exists("../Vistas/Valoracion/tienda-valoraciones.php")){
+            require "../Vistas/Valoracion/tienda-valoraciones.php";
+        }
      }
     public function obtieneCantValoracionesAprobadas($idtienda){
         return $this->buscaCantValoracionesAprobadas($idtienda);
@@ -111,7 +113,7 @@ class ValoracionesController extends Valoracion{
     }
     public function Llistavaloracionespor($idcliente){
         $Llistat = $this->ListaValoracionesPor($idcliente);
-        require "../Vistas/valoracion/cliente-valoraciones.php";
+        require "../Vistas/Valoracion/cliente-valoraciones.php";
     }
 
     public function obtenNumeroValoracionesDel($idcliente){

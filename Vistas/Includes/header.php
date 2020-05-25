@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>CC Glòries</title>
-	<link rel="stylesheet" href="/Vistas/Theme/css/bootstrap.css">
+	<link rel="stylesheet" href="/Vistas/Theme/css/bootstrap.css?v=2">
 	<link rel="stylesheet" href="/Vistas/Theme/css/style.css">
 	<script src="/Vistas/Theme/js/jquery.min.js"></script>
 	<script src="/Vistas/Theme/js/bootstrap.min.js"></script>
