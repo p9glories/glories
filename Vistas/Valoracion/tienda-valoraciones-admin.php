@@ -9,7 +9,7 @@
         header ("location: ../../index.php");
     }else{
         if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="Administrador"){
-                $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Usuarios!!";
+                $_SESSION["Denegado"]="No tiene acceso al módulo!!";
                 header ("location: ../../index.php");
         }
     }
@@ -62,6 +62,13 @@
             </div>
             <div class="comment">
                 <?php echo $objecte->comentario ?>
+            </div>
+            <div class="comment">
+                <?php if ($objecte->aprobado > 0) {
+                    echo "<b class='c-999'>Aprobado</b>";
+                } else {
+                    echo "<b class='c-999'>Pendiente de aprobación</b>";
+                }?>
             </div>
         </div>
         

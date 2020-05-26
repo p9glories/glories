@@ -42,18 +42,32 @@
 
 					} else if ($_SESSION["rol"]=="Administrador"){
 
-						if (file_exists("admin-cuenta.php")){
-						    echo "<a class='c-orange' href='admin-cuenta.php'>Mi cuenta</a> ";
-						}else{
-						    echo "<a class='c-orange' href='../admin-cuenta.php'>Mi cuenta</a> ";
+						if (file_exists("Vistas/admin-cuenta.php")){
+						    echo "<a class='c-orange' href='Vistas/admin-cuenta.php'>Panel de control</a> ";
+						}
+						if (file_exists("../Vistas/admin-cuenta.php")){
+						    echo "<a class='c-orange' href='../Vistas/admin-cuenta.php'>Panel de control</a> ";
+						}
+						if (file_exists("../../Vistas/admin-cuenta.php")){
+						    echo "<a class='c-orange' href='../../Vistas/admin-cuenta.php'>Panel de control</a> ";
+						}
+						if (file_exists("../../../Vistas/admin-cuenta.php")){
+						    echo "<a class='c-orange' href='../../../Vistas/admin-cuenta.php'>Panel de control</a> ";
 						}
 
 					} else if ($_SESSION["rol"]=="SuperAdministrador"){
 						
-						if (file_exists("superadmin-cuenta.php")){
-						    echo "<a class='c-orange' href='superadmin-cuenta.php'>Mi cuenta</a> ";
-						}else{
-						    echo "<a class='c-orange' href='../superadmin-cuenta.php'>Mi cuenta</a> ";
+						if (file_exists("Vistas/superadmin-cuenta.php")){
+						    echo "<a class='c-orange' href='Vistas/superadmin-cuenta.php'>Panel de control</a> ";
+						}
+						if (file_exists("../Vistas/superadmin-cuenta.php")){
+						    echo "<a class='c-orange' href='../Vistas/superadmin-cuenta.php'>Panel de control</a> ";
+						}
+						if (file_exists("../../Vistas/superadmin-cuenta.php")){
+						    echo "<a class='c-orange' href='../../Vistas/superadmin-cuenta.php'>Panel de control</a> ";
+						}
+						if (file_exists("../../../Vistas/superadmin-cuenta.php")){
+						    echo "<a class='c-orange' href='../../../Vistas/superadmin-cuenta.php'>Panel de control</a> ";
 						}
 
 					}

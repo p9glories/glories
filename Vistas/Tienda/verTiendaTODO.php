@@ -9,7 +9,7 @@
         header ("location: ../../index.php");
     }else{
         if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="SuperAdministrador"){
-                $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Usuarios!!";
+                $_SESSION["Denegado"]="No tiene acceso al módulo!!";
                 header ("location: ../../index.php");
         }
     }

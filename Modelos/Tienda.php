@@ -13,7 +13,6 @@ class Tienda{
     protected $foto1;
     protected $foto2;
     protected $foto3;
-
     protected $id_admin; /**** */
     protected $id_categoria; /**** */
     
@@ -277,8 +276,8 @@ class Tienda{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sqlTienda = "UPDATE tiendas
-                                SET id_admin = $this->getId_admin(),
-                                    id_categoria = $this->getId_categoria(),
+                                SET id_admin = :id_admin,
+                                    id_categoria = :id_categoria,
                                     nombre = :nombre, 
                                     descripcion = :descripcion,
                                     logo = :logo,
@@ -288,9 +287,12 @@ class Tienda{
                                     foto1 = :foto1,
                                     foto2 = :foto2,
                                     foto3 = :foto3
-                                WHERE id_tienda = '$this->id_tienda'";
+                                WHERE id_tienda = :id_tienda";
             $resultado = $conecta->getConexionBD()->prepare($sqlTienda);
             $resultado->execute(array(
+                                    ":id_tienda" => $this->getId_tienda(),
+                                    "id_admin" => $this->getId_admin(),
+                                    "id_categoria" => $this->getId_categoria(),
                                     ":nombre" => $this->getNombre(),
                                     ":descripcion" => $this->getDescripcion(),
                                     ":logo" => $this->getLogo(),

@@ -9,7 +9,7 @@
         header ("location: ../../index.php");
     }else{
         if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="Administrador"){
-                $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Usuarios!!";
+                $_SESSION["Denegado"]="No tiene acceso al módulo!!";
                 header ("location: ../../index.php");
         }
     }
@@ -37,6 +37,14 @@
     <?php include '../Vistas/Includes/nav-cuenta-admin.php';?>
         
     <div class="col-md-9 content">
+
+        <?php if (isset($_SESSION["mensajeResultado"])){
+                    echo "<div class='row'><div class='col-12'><span class='msg'>".$_SESSION["mensajeResultado"]."</span></div></div>";
+                    unset($_SESSION["mensajeResultado"]);
+
+                };
+                ?>
+                
     <div class="row">
 
     <h2 class="col-12">Tienda</h2>

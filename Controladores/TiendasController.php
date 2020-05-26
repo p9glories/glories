@@ -109,18 +109,12 @@ class TiendasController extends Tienda{
 
     public function resultadoModificaTienda($resultat){
         if ($resultat){
-            $_SESSION["mensajeResultado"]="
-                    <div style='background-color: green; height: 80px; text-align: center; padding-top: 5px;'>
-                        <h1>Tienda Modificada</h1>
-                    <div>";
+            $_SESSION["mensajeResultado"]="Tienda modificada";
         }else{
-            $_SESSION["mensajeResultado"]="
-            <div style='background-color: red; height: 80px; text-align: center; padding-top: 5px;'>
-                <h1>La Tienda NO se ha podido Modificar</h1>
-            <div>";
+            $_SESSION["mensajeResultado"]="La tienda no se ha podido modificar";
             
         } 
-        header("location: ../index.php");
+        header("location: ../Controladores/TiendasController.php?operacio=verTiendaAdmin");
     }
 
     public function buscaTiendasDeAdmin($administrador){
@@ -209,7 +203,9 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="insertaT"){
             $id_admin = $_SESSION["id_administrador"];
             $id_categoria = $_POST["categoria"];
             if (isset($_POST["nombre"]) && !empty($_POST["nombre"])){
+
                     $nombre = $_POST["nombre"];
+
                     if (isset($_FILES["logo"])){
                         if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
@@ -402,12 +398,16 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
 
    
     if (isset($_SESSION["id_administrador"]) && isset($_POST["categoria"]) && isset($_POST["id"])){
+
+
         if ($_POST["categoria"]){
             $id_admin = $_SESSION["id_administrador"];
             $id_categoria = $_POST["categoria"];
             $id_tienda = $_POST["id"];
             if (isset($_POST["nombre"]) && !empty($_POST["nombre"])){
+
                     $nombre = $_POST["nombre"];
+
                     if (isset($_FILES["logo"])){
                         if(!file_exists($ruta_imagenes = $_SERVER["DOCUMENT_ROOT"]."/imagenes/")){
                             mkdir($ruta_imagenes);
@@ -550,7 +550,27 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
                         $ubicacion = null;
                     } else{
                         $ubicacion = $_POST["ubicacion"];
+                    }if (!isset($_POST["descripcion"]) || empty($_POST["descripcion"])){
+                        $descripcion = null;
+                    } else{
+                        $descripcion = $_POST["descripcion"];
                     }
+                    if (!isset($_POST["horario"]) || empty($_POST["horario"])){
+                        $horario = null;
+                    } else{
+                        $horario = $_POST["horario"];
+                    }
+                    if (!isset($_POST["telefono"]) || empty($_POST["telefono"])){
+                        $telefono = null;
+                    } else{
+                        $telefono = $_POST["telefono"];
+                    }
+                    if (!isset($_POST["ubicacion"]) || empty($_POST["ubicacion"])){
+                        $ubicacion = null;
+                    } else{
+                        $ubicacion = $_POST["ubicacion"];
+                    }
+  
                     $accio = new TiendasController();
                     $accio->ModificarTienda($id_tienda,$id_admin,$id_categoria,$nombre,$descripcion,$logo,$horario,$telefono,$ubicacion,$foto1,$foto2,$foto3); 
                 }
