@@ -24,15 +24,40 @@
 
     }
 
+    // Header usuarios registrados
+
+    if (isset($_SESSION["login"])){
+        if ($_SESSION["login"]==true){
+            include '../../Vistas/Includes/header_users.php';
+            } 
+    } 
+    else {
+        header("Location: index.php");
+    }
+
 ?>
 
-<h1>Inserta una TIENDA</h1>
-<form action="../../Controladores/TiendasController.php" method="POST" enctype="multipart/form-data">
-    <div class="six fields">
-       
+<body>
 
-    <div class="field">
-            <label for="categoria">Categoria</label>
+<section class="admin">
+    <div class="container">
+    <div class="row">
+            
+    <?php include '../../Vistas/Includes/nav-cuenta-admin.php';?>
+    <?php require_once "../../Controladores/CategoriasController.php";?>
+    <div class="col-md-9 content">
+    <div class="row">
+
+    <h2 class="col-12">Nueva tienda</h2>
+
+    <!-- Contenido inicio -->
+
+<form action="../../Controladores/TiendasController.php" method="POST" enctype="multipart/form-data">
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+                <div class="input-container select">
+            <label class="label" for="categoria">Categoria</label>
             <select name="categoria">
                 <option value="0">Seleccione:</option>
                     <?php
@@ -46,52 +71,98 @@
             </select>
 
         </div>
+            </div>
 
 
    
-        <div class="field">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" placeholder="nombre">
+        <div class="col-md-12 mb-3">
+            <div class="input-container">
+                <label class="label" for="nombre">Nombre</label>
+                <input type="text" name="nombre" required="required">
+            </div>
         </div>
-        <div class="field">
-            <label for="descripcion">Descripcion</label>
-            <input type="text" name="descripcion" placeholder="descripcion">
+
+        <div class="col-md-12 mb-3">
+            <div class="input-container">
+                <label class="label" for="descripcion">Descripcion</label>
+                <input type="text" name="descripcion" required="required">
+            </div>
         </div>
-        <div class="field">
-            <label for="logo">logo</label>
-            <input type="file" name="logo" placeholder="logo">
-   
+
+        <div class="col-md-12 mb-3">
+            <div class="input-container">
+                <label class="label" for="horario">Horario</label>
+                <input type="text" name="horario" required="required">
+            </div>
         </div>
-        <div class="field">
-            <label for="horario">Horario</label>
-            <input type="text" name="horario" placeholder="horario">
+        
+        <div class="col-md-6 mb-3">
+            <div class="input-container">
+                <label class="label" for="telefono">Telefono</label>
+                <input type="text" name="telefono" required="required">
+            </div>
         </div>
-        <div class="field">
-            <label for="telefono">Telefono</label>
-            <input type="text" name="telefono" placeholder="Telefono">
+        
+        <div class="col-md-6 mb-3">
+            <div class="input-container">
+                <label class="label" for="ubicacion">Ubicación</label>
+                <input type="text" name="ubicacion" required="required">
+            </div>
         </div>
-        <div class="field">
-            <label for="ubicacion">Ubicación</label>
-            <input type="text" name="ubicacion" placeholder="Ubicacion">
-        </div>
-        <div class="field">
-            <label for="foto1">Foto_1</label>
-            <input type="file" name="foto1" placeholder="foto1">
-        </div>
-        <div class="field">
-            <label for="foto2">Foto_2</label>
-            <input type="file" name="foto2" placeholder="foto2">
-        </div> 
-        <div class="field">
-            <label for="foto3">Foto_3</label>
-            <input type="file" name="foto3" placeholder="foto3">
-        </div>
+
+        <div class="col-md-6 mb-3">
+                <div class="input-container">
+                    <label class="label" for="logo">logo</label>
+                    <input type="file" name="logo" required="required">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="input-container">
+                    <label class="label" for="foto1">Foto_1</label>
+                    <input type="file" name="foto1" required="required">
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="input-container">
+                    <label class="label" for="foto2">Foto_2</label>
+                    <input type="file" name="foto2" required="required">
+                </div> 
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="input-container">
+                    <label class="label" for="foto3">Foto_3</label>
+                    <input type="file" name="foto3" required="required">
+                </div>
+            </div>
+            <div class="col-md-12">
         <input type="hidden" name="operacio" value="insertaT">
-        <input type="submit" value="Crea TIENDA">
+        <input type="submit" value="Crear tienda" class="btn btn-success">
+        <a href="javascript:history.back()" class="btn btn-light">Cancelar</a>
+            </div>
+
+
     </div>
 </form>
 
-<?php    
-    /***  PIE */
 
-?>
+
+
+</div>
+</div>
+</div>
+</div>
+        </div>
+<!-- Contenido fin -->
+
+    </div>
+    </div>
+    </div>
+    </div>
+
+<?php include '../../Vistas/Includes/footer.php'; ?>
+    
+</section>
+
+</body>
+
+</html>

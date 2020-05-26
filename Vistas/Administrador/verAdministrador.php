@@ -39,7 +39,7 @@
     <div class="col-md-9 content">
     <div class="row">
 
-    <h2 class="col-12">Administradores</h2>
+    <h2 class="col-12">Administradores <a class="btn btn-light" style="float: right;" href="../Vistas/Administrador/insertarAdministrador.php">+ Nuevo administrador</a></h2>
 
     <!-- Contenido inicio -->
     <div class="col-12">

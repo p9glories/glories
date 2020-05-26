@@ -44,7 +44,7 @@
 
                 };
                 ?>
-                
+
     <div class="row">
 
     <h2 class="col-12">Tienda</h2>
@@ -181,7 +181,18 @@
                 
             
     <?php
-        }?>
+        } 
+
+        if (empty($objecte)) {
+           ?>
+            <div class="col-12">
+                <p>No tienes tienda creada. </p>
+                <p><a class="btn btn-success" href="../../Vistas/Tienda/insertarTienda.php"><b>Crear tienda</b></a></p>
+            </div>
+            <?php
+        }
+
+        ?>
 
 </div>
 </div>
