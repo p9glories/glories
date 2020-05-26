@@ -53,8 +53,7 @@
             </div>
             <div class="field">
                 <label for="logo">logo</label>
-                <input type="text" name="logo" placeholder="logo">
-   
+                <input type="file" name="logo" placeholder="logo">
             </div>
             <div class="field">
                 <label for="horario">Horario</label>
@@ -69,16 +68,17 @@
                 <input type="text" name="ubicacion" placeholder="Ubicacion">
             </div>
             <div class="field">
-                <label for="foto1">Foto_1</label>
-                <input type="text" name="foto1" placeholder="foto1">
-            </div>
-            <div class="field">
-                <label for="foto2">Foto_2</label>
-                <input type="text" name="foto2" placeholder="foto2">
-            </div> <div class="field">
-                <label for="foto3">Foto_3</label>
-                <input type="text" name="foto3" placeholder="foto3">
-            </div>
+            <label for="foto1">Foto_1</label>
+            <input type="file" name="foto1" placeholder="foto1">
+        </div>
+        <div class="field">
+            <label for="foto2">Foto_2</label>
+            <input type="file" name="foto2" placeholder="foto2">
+        </div> 
+        <div class="field">
+            <label for="foto3">Foto_3</label>
+            <input type="file" name="foto3" placeholder="foto3">
+        </div>
             <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
             <input type="hidden" name="operacio" value="modifica">
             <input type="submit" value="Modifica la TIENDA">

@@ -8,8 +8,8 @@
         $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
         header ("location: ../../index.php");
     }else{
-        if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="SuperAdministrador"){
-                $_SESSION["Denegado"]="No tiene acceso al módulo de insertar Usuarios!!";
+        if (isset($_SESSION["rol"]) && $_SESSION["rol"]=="Cliente"){
+                $_SESSION["Denegado"]="No tiene acceso al módulo!!";
                 header ("location: ../../index.php");
         }
     }

@@ -31,29 +31,81 @@
  }
 
 
+// Header usuarios registrados
+
+    if (isset($_SESSION["login"])){
+        if ($_SESSION["login"]==true){
+            include '../../Vistas/Includes/header_users.php';
+            } 
+    } 
+    else {
+        header("Location: index.php");
+    }
+
+
 
 
 ?>
 
-<h1>Inserta una Categoría</h1>
-<form action="../../Controladores/CategoriasController.php" method="POST" enctype="multipart/form-data">
-    <div class="two fields">
-        <div class="field">
-            <label for="nivel">Categoria</label>
-            <input type="text" name="nombre" placeholder="nombre">
-        </div>
+<body>
 
-        <div class="field">
-            <label for="icono">Icono</label>
-            <input type="file" name="icono" placeholder="icono">
-        </div>
+<section class="admin">
+    <div class="container">
+    <div class="row">
+            
+    <?php include '../../Vistas/Includes/nav-cuenta-superadmin.php';?>
         
-        <input type="hidden" name="operacio" value="inserta">
-        <input type="submit" value="Crea CATEGORIA">
+    <div class="col-md-9 content">
+    <div class="row">
+
+    <h2 class="col-12">Nueva categoría</a>
+    </h2>
+
+    <!-- Contenido inicio -->
+
+    <div class="col-12">
+
+        <div class="row">
+    <form action="../../Controladores/CategoriasController.php" method="POST" enctype="multipart/form-data">
+        
+            <div class="col-12 mb-3">
+                <div class="input-container">
+                    <input type="text" name="nombre" required="required">
+                    <label class="label" for="nombre">Categoria</label>
+                </div>
+            </div>
+
+            <div class="col-12 mb-3">
+                <div class="input-container">
+                    <input type="file" name="icono" required="required">
+                    <label class="label" for="icono">Icono</label>
+                </div>
+            </div>
+            
+            <div class="col-12 mb-3">
+                <input type="hidden" name="operacio" value="inserta">
+                <input name="action" class="btn btn-light" onclick="history.back()" type="submit" value="Cancelar"/>
+                <input type="submit" class="btn btn-success" value="Crear categoría">
+
+            </div>
+
+    </form>
+
     </div>
-</form>
+        
+        </div>
+    
+<!-- Contenido fin -->
 
-<?php    
-    /***  PIE */
+    </div>
+    </div>
+    </div>
+    </div>
 
-?>
+<?php include '../../Vistas/Includes/footer.php'; ?>
+    
+</section>
+
+</body>
+
+</html>

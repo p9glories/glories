@@ -68,11 +68,25 @@ class ValoracionesController extends Valoracion{
 
      public function apruebaValoracion($valoracion, $cliente){
         $resultat = $this->aprueba($valoracion, $cliente);
+        include '../Vistas/Includes/header_users.php';
         if ($resultat){
-            echo "VALORACION APROBADA";
+            echo '<div class="container mt-5 mb-5">';
+            echo '<div class="row">';
+            echo '<div class="col-12 text-center">';
+            echo '<h3><b>Valoración <span class="c-orange">aprobada</span></b></h3>';
+            echo '<a class="btn btn-success" href="javascript:history.go(-1)">Entendido</a>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         }else{
-            echo "NO SE PUDO APROBAR";
+            echo '<div class="container mt-5 mb-5">';
+            echo '<div class="row">';
+            echo '<div class="col-12 text-center">';
+            echo '<h3><b>Lo sentimos, no se pudo aprobar</b></h3>';
+            echo '</div>';
+            echo '</div>';
         }
+        include '../Vistas/Includes/footer.php';
      }
      
      public function eliminaValoracion($valoracion, $cliente){
@@ -81,11 +95,25 @@ class ValoracionesController extends Valoracion{
         $valoracionesCliente = $client->CuantasValoracionesCliente($cliente)-1;
 
         $resultat = $this->elimina($valoracion, $cliente, $valoracionesCliente);
+        include '../Vistas/Includes/header_users.php';
         if ($resultat){
-            echo "VALORACION ELIMINADA";
+            echo '<div class="container mt-5 mb-5">';
+            echo '<div class="row">';
+            echo '<div class="col-12 text-center">';
+            echo '<h3><b>Valoración <span class="c-orange">eliminada</span></b></h3>';
+            echo '<a class="btn btn-success" href="javascript:history.go(-1)">Entendido</a>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         }else{
-            echo "NO SE PUDO ELIMINAR";
+            echo '<div class="container mt-5 mb-5">';
+            echo '<div class="row">';
+            echo '<div class="col-12 text-center">';
+            echo '<h3><b>Lo sentimos, no se pudo eliminar</b></h3>';
+            echo '</div>';
+            echo '</div>';
         }
+        include '../Vistas/Includes/footer.php';
      }
 
 
@@ -103,6 +131,13 @@ class ValoracionesController extends Valoracion{
         $Llistat = $this->ListaValoracionesAprobadasTienda($idtienda);
         if (file_exists("../Vistas/Valoracion/tienda-valoraciones.php")){
             require "../Vistas/Valoracion/tienda-valoraciones.php";
+        }
+     }
+     //AZ
+    public function LlistavaloracionesAprobadasAdmin(){
+        $Llistat = $this->retornaValoracionesAprobadasSegun($_SESSION["id_administrador"]);
+        if (file_exists("../Vistas/Valoracion/tienda-valoraciones-admin.php")){
+            require "../Vistas/Valoracion/tienda-valoraciones-admin.php";
         }
      }
     public function obtieneCantValoracionesAprobadas($idtienda){
@@ -166,7 +201,10 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="verAprobadas"){
 }
 
 
-
+if(isset($_GET["operacio"]) && $_GET["operacio"]=="verAprobadasAdmin"){
+    $objecte = new ValoracionesController();
+    $objecte->LlistavaloracionesAprobadasAdmin();
+}
 
 
 

@@ -64,6 +64,11 @@ class Categoria{
 
 
 
+
+
+
+
+
     protected function modificaCategoria($id, $nombre, $icono){
         $this->setId_categoria($id);
         $this->setNombre($nombre);
@@ -72,10 +77,14 @@ class Categoria{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
             $sentenciaSQL = "UPDATE categorias
-                                    SET nombre = $this->getNombre(), icono = $this->getIcono()
-                                    WHERE id_categoria = $this->getId_categoria()";
+                                    SET nombre = :nombre, icono = :icono
+                                    WHERE id_categoria = :id_categoria";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
-            $intencio->execute();
+            $intencio->execute(array(
+                ":id_categoria" => $this->getId_categoria(),
+                ":nombre" => $this->getNombre(),
+                ":icono" => $this->getIcono()
+            ));
             $conecta->getConexionBD()->commit();
             return true;  
         }catch(Exception $excepcio){

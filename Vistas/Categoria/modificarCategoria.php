@@ -30,38 +30,91 @@
         echo "</div>";
      }
  }
-   
+   // Header usuarios registrados
+
+    if (isset($_SESSION["login"])){
+        if ($_SESSION["login"]==true){
+            include '../../Vistas/Includes/header_users.php';
+            } 
+    } 
+    else {
+        header("Location: index.php");
+    }
+
+
 
 ?>
 
-<?php 
+<body>
+
+<section class="admin">
+    <div class="container">
+    <div class="row">
+            
+    <?php include '../../Vistas/Includes/nav-cuenta-superadmin.php';?>
+        
+    <div class="col-md-9 content">
+    <div class="row">
+
+    <!-- Contenido inicio -->
+    
+    <?php
     if (isset($_GET["id"])){
         ?>
-            <h1>Modifica la Categoría <?php echo $_GET["id"]?></h1>
-            <form action="../../Controladores/CategoriasController.php" method="POST" enctype="multipart/form-data">
-                <div class="two fields">
-                <div class="field">
-                    <label for="categoria">Categoria</label>
-                    <input type="text" name="nombre" placeholder="nombre">
-                </div>
+            <h2 class="col-12">Modifica la Categoría <?php echo $_GET["id"]?></h2>
+            <div class="col-12">
 
-                <div class="field">
-                    <label for="icono">Icono</label>
-                    <input type="file" name="icono" placeholder="icono">
+        <div class="row">
+
+            <form action="../../Controladores/CategoriasController.php" method="POST" enctype="multipart/form-data">
+                
+                <div class="col-12 mb-3">
+                <div class="input-container">
+                    <input type="text" name="nombre" required="required">
+                    <label class="label" for="nombre">Categoria</label>
                 </div>
+            </div>
+
+                <div class="col-12 mb-3">
+                <div class="input-container">
+                    <input type="file" name="icono" required="required">
+                    <label class="label" for="icono">Icono</label>
+                </div>
+            </div>
+
+            <div class="col-12 mb-3">
                 <input type="hidden" name="id" value="<?php echo $_GET["id"]?>">
                 <input type="hidden" name="operacio" value="modifica">
-                <input type="submit" value="Modifica CATEGORIA">
-                </div>
-            </form>
+                <input name="action" class="btn btn-light" onclick="history.back()" type="submit" value="Cancelar"/>
+                <input class="btn btn-success" type="submit" value="Modificar">
+            </div>
+</div>
+
+    </form>
+
+    </div>
+        
+        </div>
+
+
             <?php
     }else{
         echo "NO se puede mostrar";
     }
 
     ?>
+ 
+<!-- Contenido fin -->
 
-<?php    
-    /***  PIE */
+    </div>
+    </div>
+    </div>
+    </div>
 
-?>
+<?php include '../../Vistas/Includes/footer.php'; ?>
+    
+</section>
+
+</body>
+
+</html>

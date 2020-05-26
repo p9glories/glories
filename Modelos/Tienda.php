@@ -168,8 +168,9 @@ class Tienda{
         for($i=0;$i<count($PesTotal);$i++){
             $SumaPesTotal=$SumaPesTotal+$PesTotal[$i];
         }
-        
-        return round($total/$SumaPesTotal, 1);
+        if ($SumaPesTotal!=0) {
+            return round($total/$SumaPesTotal, 1);
+        }
         
     }
 
@@ -265,7 +266,7 @@ class Tienda{
         $this->setId_categoria($categoria);
         $this->setNombre($nombre);
         $this->setDescripcion($descripcion);
-        $this->setLogo(logo);
+        $this->setLogo($logo);
         $this->setHorario($horario);
         $this->setTelefono($telefono);
         $this->setUbicacion($ubicacion);
@@ -297,8 +298,8 @@ class Tienda{
                                     ":telefono" => $this->getTelefono(),
                                     ":ubicacion" => $this->getUbicacion(),
                                     ":foto1" => $this->getFoto1(),
-                                    ":foto2" => $this->getfoto2(),
-                                    ":foto3" => $this->getfoto3()
+                                    ":foto2" => $this->getFoto2(),
+                                    ":foto3" => $this->getFoto3()
                                 ));
             $conecta->getConexionBD()->commit();  
             return true;

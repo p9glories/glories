@@ -37,9 +37,18 @@
     <?php include '../Vistas/Includes/nav-cuenta-superadmin.php';?>
         
     <div class="col-md-9 content">
+
+        <?php if (isset($_SESSION["mensajeResultado"])){
+                    echo "<div class='row'><div class='col-12'><span class='msg'>".$_SESSION["mensajeResultado"]."</span></div></div>";
+                    unset($_SESSION["mensajeResultado"]);
+
+                };
+                ?>
+                
     <div class="row">
 
-    <h2 class="col-12">Categorías</h2>
+    <h2 class="col-12">Categorías <a class="btn btn-sm btn-light" style="float: right;" href="../Vistas/Categoria/insertarCategoria.php">+ Nueva categoría</a>
+    </h2>
 
     <!-- Contenido inicio -->
     <div class="col-12">

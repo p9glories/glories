@@ -14,31 +14,52 @@
         }
     }
 
+    // Header usuarios registrados
+
+    if (isset($_SESSION["login"])){
+        if ($_SESSION["login"]==true){
+            include '../Vistas/Includes/header_users.php';
+            } 
+    } 
+    else {
+        header("Location: index.php");
+    }
+
 ?>
 
-<h1>Lista TODAS las Valoraciones: <?php echo $_SESSION["rol"] ?></td></h1>
+<body>
 
-<div>
+<section class="admin">
+    <div class="container">
+    <div class="row">
+        
+    <?php include '../Vistas/Includes/nav-cuenta-admin.php';?>
+        
+    <div class="col-md-9 content">
+    <div class="row">
 
-    <table style="border:1px solid black;">
+    <h2 class="col-12">Valoraciones pendientes de aprobación</h2>
+
+    <!-- Contenido inicio -->
+    <div class="col-12">
+    <table class="table fz-13">
+        <thead>
         <tr>
-            <th>id_valoracion</th>
-            <th>id_cliente</th>
-            <th>id_tienda</th>
+            <th scope="col">Id valoración</th>
+            <th scope="col">Id cliente</th>
+            <th scope="col">Id tienda</th>
 
-            <th>puntuacion</th>
-            <th>comentario</th>
-            <th>aprobado</th>
-            <th>fecha</th>
-            <th>nivel</th>
+            <th scope="col">Puntuación</th>
+            <th scope="col">Comentario</th>
+            <th scope="col">Aprobación</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Nivel</th>
 
-    
-            <th>APROBAR</th>
 
-            <th>ELIMINAR</th>
-    
+            <th scope="col" class="text-right">Opciones</th>
         </tr>
-    
+        </thead>
+
             
         <?php
                    
@@ -50,7 +71,7 @@
                          <tr>
                  <?php      foreach($nivellcontingut as $clau=>$valor){    //$clau és el NOm del camp
                  ?>
-                         <td style="border:1px solid black;"><?php echo $valor ?></td>   
+                         <td><?php echo $valor ?></td>   
                      <?php
                             if ($clau == "id_valoracion"){
                                 $valoracio = $valor;
@@ -61,8 +82,8 @@
                         }
                     ?>
                         
-                         <td style="border:1px solid black;"><a href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">APROBAR</a></td>
-                         <td style="border:1px solid black;"><a href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">ELIMINAR</a></td>
+                         <td><a class="btn btn-sm btn-success" href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">APROBAR</a></td>
+                         <td><a class="btn btn-sm btn-danger" href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">ELIMINAR</a></td>
                      <?php
                     }
                 }
@@ -75,10 +96,18 @@
     </table>
 </div>
 
-<br>
-<a href="../index.php">Inicio</a>
 
-<?php    
-    /***  PIE */
+<!-- Contenido fin -->
 
-?>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<?php include '../Vistas/Includes/footer.php'; ?>
+    
+</section>
+
+</body>
+
+</html>

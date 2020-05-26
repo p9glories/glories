@@ -57,17 +57,11 @@ class CategoriasController extends Categoria{
     }
     public function resultadoModificaCategoria($resultat){
         if ($resultat){
-            $_SESSION["mensajeResultado"]="
-                    <div style='background-color: green; height: 80px; text-align: center; padding-top: 5px;'>
-                        <h1>Categoria Modificada</h1>
-                    <div>";
+            $_SESSION["mensajeResultado"]="Categoria Modificada";
         }else{
-            $_SESSION["mensajeResultado"]="
-            <div style='background-color: red; height: 80px; text-align: center; padding-top: 5px;'>
-                <h1>La Categoria NO se ha podido Modificar</h1>
-            <div>";
+            $_SESSION["mensajeResultado"]="La categoría no se ha podido modificar";
         } 
-        header("location: ../index.php");
+        header("location: ../Controladores/CategoriasController.php?operacio=ver");
     }
 
     public function selectCategorias(){
@@ -168,6 +162,7 @@ if(isset($_POST["operacio"]) && $_POST["operacio"]=="modifica"){
             }else{
                 $icono=null;
                 }  
+
         $objecte = new CategoriasController();
         $objecte->ModificarCategoria($_POST["id"],$_POST["nombre"],$icono); 
     }else{

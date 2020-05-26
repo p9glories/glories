@@ -189,6 +189,27 @@ class Valoracion{
         }
     }
 
+    protected function retornaValoracionesAprobadasSegun($administrador){
+        try{
+            $conecta = new ConexionBD();
+            $conecta->getConexionBD()->beginTransaction();
+            $sentenciaSQL = "SELECT * FROM valoraciones  
+                                INNER JOIN clientes
+                                        ON valoraciones.id_cliente=clientes.id_cliente 
+                                INNER JOIN usuarios
+                                        ON clientes.id_usuario=usuarios.id_usuario 
+                                INNER JOIN administradores
+                                        ON administradores.id_usuario=administradores.id_usuario 
+                                        WHERE aprobado = 1 AND id_admin='$administrador'";
+            $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
+            $intencio->execute();
+            return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $excepcio){
+            $conecta->getConexionBD()->rollback();  
+            return null;  
+        }
+    }
+
     protected function retornaIdUsuariodel($cliente){
         try{
             $conecta = new ConexionBD();

@@ -8,7 +8,7 @@
         <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/ValoracionesController.php?operacio=verAprobar">Reseñas pendientes</a>
       </li>
       <li>
-        <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/ValoracionesController.php?operacio=verAprobadas">Reseñas</a>
+        <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/ValoracionesController.php?operacio=verAprobadasAdmin">Reseñas</a>
       </li>
       <li>
         <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/TiendasController.php?operacio=verTiendaAdmin">Mi tienda</a>

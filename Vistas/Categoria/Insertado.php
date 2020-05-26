@@ -1,17 +1,20 @@
-<?php    
-    /***  ENCABEZADO */
+<?php include '../Vistas/Includes/header_users.php'; ?>
+<body>
 
-    //require '';
+<section class="admin">
+    <div class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h3><b>Categoría <span class="c-orange">creada</span></b></h3>
+				<a class="btn btn-success" href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/CategoriasController.php?operacio=ver">Entendido</a>
 
-?>
+			</div>
+		</div>
+	</div>
+</section>
 
-<h1 style="color: green;">>> Categoría Creada << </h1>
+<?php include '../Vistas/Includes/footer.php'; ?>
 
-<a href="../Vistas/Categoria/insertarCategoria.php">Volver</a>
-<br>
-<a href="../index.html">Inicio</a>
+</body>
 
-<?php    
-    /***  PIE */
-
-?>
+</html>
