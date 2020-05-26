@@ -8,8 +8,8 @@
         public function __construct() {
 
             try{
-                $this->conexionBD = new PDO('mysql:host=localhost; dbname=cc_glories', 'root', '');
-                //$this->conexionBD = new PDO('mysql:host=sql106.epizy.com;dbname=epiz_25852538_glories','epiz_25852538','M3OCJofK14CZGu');
+                //$this->conexionBD = new PDO('mysql:host=localhost; dbname=cc_glories', 'root', '');
+                $this->conexionBD = new PDO('mysql:host=sql106.epizy.com;dbname=epiz_25852538_glories','epiz_25852538','M3OCJofK14CZGu');
                 $this->conexionBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->conexionBD->exec("SET CHARACTER SET utf8");
                 return $this->conexionBD;

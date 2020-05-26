@@ -199,7 +199,7 @@ class Valoracion{
                                 INNER JOIN usuarios
                                         ON clientes.id_usuario=usuarios.id_usuario 
                                 INNER JOIN administradores
-                                        ON administradores.id_usuario=administradores.id_usuario 
+                                        ON administradores.id_usuario=usuarios.id_usuario 
                                         WHERE aprobado = 1 AND id_admin='$administrador'";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();

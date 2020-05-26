@@ -82,8 +82,8 @@
                         }
                     ?>
                         
-                         <td><a class="btn btn-sm btn-success" href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">APROBAR</a></td>
-                         <td><a class="btn btn-sm btn-danger" href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">ELIMINAR</a></td>
+                         <td><a class="btn btn-sm btn-success" href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Aprobar</a></td>
+                         <td><a class="btn btn-sm btn-danger" href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Eliminar</a></td>
                      <?php
                     }
                 }

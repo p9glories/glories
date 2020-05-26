@@ -53,7 +53,6 @@
     <!-- Contenido inicio -->
 
 <form action="../../Controladores/TiendasController.php" method="POST" enctype="multipart/form-data">
-    <div class="row">
 
         <div class="col-md-6 mb-3">
                 <div class="input-container select">
@@ -141,7 +140,6 @@
             </div>
 
 
-    </div>
 </form>
 
 
