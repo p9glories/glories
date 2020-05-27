@@ -198,9 +198,9 @@ class Valoracion{
                                         ON valoraciones.id_cliente=clientes.id_cliente 
                                 INNER JOIN usuarios
                                         ON clientes.id_usuario=usuarios.id_usuario 
-                                INNER JOIN administradores
-                                        ON administradores.id_usuario=usuarios.id_usuario 
-                                        WHERE aprobado = 1 AND id_admin='$administrador'";
+                                INNER JOIN tiendas
+                                        ON valoraciones.id_tienda=tiendas.id_tienda
+                                        WHERE aprobado = '1' AND id_admin='$administrador'";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
