@@ -46,10 +46,9 @@
     <table class="table fz-13">
         <thead>
         <tr>
-            <th scope="col">Id valoración</th>
-            <th scope="col">Id cliente</th>
             <th scope="col">Id tienda</th>
-            
+            <th scope="col">Id cliente</th>
+            <th scope="col">Nombres</th>
             <th scope="col">Puntuación</th>
             <th scope="col">Comentario</th>
 
@@ -67,9 +66,11 @@
         foreach($Llistat as $objecte){ 
             ?>
             <tr>
-                <td><?php echo $objecte->id_valoracion ?></td>
-                <td><?php echo $objecte->id_cliente ?></td>
                 <td><?php echo $objecte->id_tienda ?></td>
+                <?php $objecte->id_valoracion ?>
+                <td><?php echo $objecte->id_cliente ?></td>
+                <td><?php echo $objecte->nombre ?> <?php echo $objecte->apellidos ?></td>
+                
 
                 <td>
                     <span class="stars stars-0<?php echo $objecte->puntuacion ?>">
@@ -79,7 +80,7 @@
                 <td><?php echo $objecte->comentario ?></td>
                 <td><?php echo $objecte->aprobado ? "Sí":"No"?></td>
                 <td><?php echo DateTime::createFromFormat('Y-m-d', $objecte->fecha)->format("d/m/Y") ?></td>
-                <td><?php echo $objecte->nivel ?></td>
+                <td><?php echo $objecte->nombreNivel ?></td>
                 
                 <a href="ValoracionesController.php?tienda=<?php echo $objecte->id_tienda ?>&cliente=<?php echo $objecte->id_cliente ?>&operacio=modificar&valoracion=<?php echo $objecte->id_valoracion ?>" class="d-none">MODIFICAR</a>
 

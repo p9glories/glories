@@ -29,6 +29,9 @@
 .c-orange {
   color: #ff5722!important;
 }
+.c-green {
+  color: #4CAF50!important;s
+}
 figure.null {
   background-image: url(../img/icon-null.png);
   background-size: 80%;
@@ -567,14 +570,14 @@ section.commerce .info .stars {
 }
 section.commerce .info .stars span {
 }
-section.commerce .info .votes {font-size: 14px;color: #555555;}
+section.commerce .info .votes {font-size: 15px;color: #555555;}
 
 section.commerce .info .description {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 20px;
 }
 section.commerce .info .data {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 20px;
 }
 section.commerce .info .data div {
@@ -639,7 +642,7 @@ section.commerce .info .data div {
 
 .rating-done .date {font-size: 13px;color: #666666;}
 .rating-done .comment {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .rating-done.figure {

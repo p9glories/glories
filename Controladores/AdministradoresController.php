@@ -40,7 +40,7 @@ class AdministradoresController extends Administrador{
         if (file_exists("../Vistas/Administrador/admin-perfil.php")){
             require_once "../Vistas/Administrador/admin-perfil.php";
         }
-        if (file_exists("../../Vistas/Administrador/admin-perfil.php")){
+        else if (file_exists("../../Vistas/Administrador/admin-perfil.php")){
             require_once "../../Vistas/Administrador/admin-perfil.php";
         }
 
@@ -54,7 +54,7 @@ class AdministradoresController extends Administrador{
         if (file_exists("../Vistas/Administrador/admin-modificar.php")){
             require_once "../Vistas/Administrador/admin-modificar.php";
         }
-        if (file_exists("../../Vistas/Administrador/admin-modificar.php")){
+        else if (file_exists("../../Vistas/Administrador/admin-modificar.php")){
             require_once "../../Vistas/Administrador/admin-modificar.php";
         }
 

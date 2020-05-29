@@ -56,7 +56,7 @@ class ClientesController extends Cliente{
         if (file_exists("../Vistas/Cliente/cliente-perfil.php")){
             require_once "../Vistas/Cliente/cliente-perfil.php";
         }
-        if (file_exists("../../Vistas/Cliente/cliente-perfil.php")){
+        else if (file_exists("../../Vistas/Cliente/cliente-perfil.php")){
             require_once "../../Vistas/Cliente/cliente-perfil.php";
         }
 
@@ -70,7 +70,7 @@ class ClientesController extends Cliente{
         if (file_exists("../Vistas/Cliente/cliente-modificar.php")){
             require_once "../Vistas/Cliente/cliente-modificar.php";
         }
-        if (file_exists("../../Vistas/Cliente/cliente-modificar.php")){
+        else if (file_exists("../../Vistas/Cliente/cliente-modificar.php")){
             require_once "../../Vistas/Cliente/cliente-modificar.php";
         }
 

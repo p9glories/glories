@@ -36,12 +36,10 @@ class ValoracionesController extends Valoracion{
         require_once "TiendasController.php";
         $tiendas = new TiendasController();
         $conjuntDeTendes=$tiendas->buscaTiendasDeAdmin($administrador);
-
         $valoraciones= Array();
         foreach($conjuntDeTendes as $tendes){
             array_push($valoraciones, $this->retornaValoracionTienda($tendes->id_tienda));
         }
-
         $valoraciones = json_encode($valoraciones);
         require "../Vistas/Valoracion/verValoracionAdministrador.php";
     }
@@ -215,7 +213,7 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="verAprobar"){
             $objecte->LlistaValoracionesAprobar($_SESSION["id_administrador"]);
         }
         else{
-            $_SESSION["Denegado"]="No tiene acceso al módulo de revisar las Valoraciones!!";
+            $_SESSION["Denegado"]="No tiene acceso al módulo!!";
             header ("location: ../index.php");
         }
     }else{

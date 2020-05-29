@@ -15,10 +15,10 @@
 <header>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 a">
+			<div class="col-md-6 a">
 				<a class="logo" href="<?php $_SERVER['DOCUMENT_ROOT']?>/index.php"></a>
 			</div>
-			<div class="col-md-4 b align-self-center">
+			<div class="col-md-4 b align-self-center d-none">
 				<form action="#">
 					<div class="input-container s2">
 						<input type="text" name="search" id="search" required="required">
@@ -27,7 +27,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-md-4 c align-self-center">
+			<div class="col-md-6 c align-self-center">
 				<span class="btn txt" data-toggle="modal" data-target="#loginModal">
 					<i class="icon-user"></i>
 					<b>Acceso de usuarios</b>

@@ -39,7 +39,7 @@
     <div class="col-md-9 content">
     <div class="row">
 
-    <h2 class="col-12">Reseñas</h2>
+    <h2 class="col-12">Reseñas recibidas</h2>
     
     <!-- Contenido inicio -->
     <div class="col-12">
@@ -51,10 +51,9 @@
             ?>
         <tr>
             <td>
-
         <div class="rating-done">
             <div class="top">
-                <span class="name"><?php echo $objecte->nombre ?> <?php echo $objecte->apellidos ?> - Nivel <?php echo $objecte->nivel ?></span>
+                <span class="name"><?php echo $objecte->nombre ?> <?php echo $objecte->apellidos ?> - <?php echo $objecte->nombreNivel ?></span>
                 <span class="date"><?php echo DateTime::createFromFormat('Y-m-d', $objecte->fecha)->format("d/m/Y") ?></span>
             </div>
             <div class="stars stars-0<?php echo $objecte->puntuacion ?>">
@@ -65,7 +64,7 @@
             </div>
             <div class="comment">
                 <?php if ($objecte->aprobado > 0) {
-                    echo "<b class='c-999'>Aprobado</b>";
+                    echo "<b class='c-green'>Aprobado</b>";
                 } else {
                     echo "<b class='c-999'>Pendiente de aprobación</b>";
                 }?>

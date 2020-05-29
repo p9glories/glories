@@ -60,7 +60,25 @@ class Valoracion{
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM valoraciones";
+            $sentenciaSQL = "SELECT 
+                                valoraciones.id_valoracion, 
+                                valoraciones.id_cliente,
+                                valoraciones.id_tienda,
+                                valoraciones.puntuacion,
+                                valoraciones.comentario,
+                                valoraciones.aprobado,
+                                valoraciones.fecha,
+                                valoraciones.nivel,
+                                usuarios.nombre,
+                                usuarios.apellidos,
+                                niveles.nombre AS nombreNivel
+                                    FROM valoraciones
+                                INNER JOIN niveles
+                                        ON valoraciones.nivel=niveles.id_nivel
+                                INNER JOIN clientes
+                                        ON valoraciones.id_cliente=clientes.id_cliente 
+                                INNER JOIN usuarios
+                                        ON clientes.id_usuario=usuarios.id_usuario";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);
@@ -105,7 +123,21 @@ class Valoracion{
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM valoraciones  
+            $sentenciaSQL = "SELECT 
+                                valoraciones.id_valoracion, 
+                                valoraciones.id_cliente,
+                                valoraciones.id_tienda,
+                                valoraciones.puntuacion,
+                                valoraciones.comentario,
+                                valoraciones.aprobado,
+                                valoraciones.fecha,
+                                valoraciones.nivel,
+                                usuarios.nombre,
+                                usuarios.apellidos,
+                                niveles.nombre AS nombreNivel
+                                    FROM valoraciones
+                                INNER JOIN niveles
+                                        ON valoraciones.nivel=niveles.id_nivel
                                 INNER JOIN clientes
                                         ON valoraciones.id_cliente=clientes.id_cliente 
                                 INNER JOIN usuarios
@@ -193,7 +225,21 @@ class Valoracion{
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM valoraciones  
+            $sentenciaSQL = "SELECT 
+                                valoraciones.id_valoracion, 
+                                valoraciones.id_cliente,
+                                valoraciones.id_tienda,
+                                valoraciones.puntuacion,
+                                valoraciones.comentario,
+                                valoraciones.aprobado,
+                                valoraciones.fecha,
+                                valoraciones.nivel,
+                                usuarios.nombre,
+                                usuarios.apellidos,
+                                niveles.nombre AS nombreNivel
+                                        FROM valoraciones
+                                INNER JOIN niveles
+                                        ON valoraciones.nivel=niveles.id_nivel 
                                 INNER JOIN clientes
                                         ON valoraciones.id_cliente=clientes.id_cliente 
                                 INNER JOIN usuarios

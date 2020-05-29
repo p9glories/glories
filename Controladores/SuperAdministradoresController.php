@@ -33,7 +33,7 @@ class SuperAdministradoresController extends SuperAdministrador{
         if (file_exists("../Vistas/SuperAdministrador/superadmin-perfil.php")){
             require_once "../Vistas/SuperAdministrador/superadmin-perfil.php";
         }
-        if (file_exists("../../Vistas/SuperAdministrador/superadmin-perfil.php")){
+        else if (file_exists("../../Vistas/SuperAdministrador/superadmin-perfil.php")){
             require_once "../../Vistas/SuperAdministrador/superadmin-perfil.php";
         }
 
@@ -47,7 +47,7 @@ class SuperAdministradoresController extends SuperAdministrador{
         if (file_exists("../Vistas/SuperAdministrador/superadmin-modificar.php")){
             require_once "../Vistas/SuperAdministrador/superadmin-modificar.php";
         }
-        if (file_exists("../../Vistas/SuperAdministrador/superadmin-modificar.php")){
+        else if (file_exists("../../Vistas/SuperAdministrador/superadmin-modificar.php")){
             require_once "../../Vistas/SuperAdministrador/superadmin-modificar.php";
         }
 

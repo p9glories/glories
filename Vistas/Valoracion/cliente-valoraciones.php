@@ -26,7 +26,7 @@
             <?php if ($objecte->aprobado==0) {
                 echo "Sin aprobar";
             } else {
-                echo "Aprobado";
+                echo "<span class='c-green'>Aprobado</span>";
             } 
             ?>
 

@@ -38,7 +38,7 @@
     <div class="col-md-9 content">
     <div class="row">
 
-    <h2 class="col-12">Valoraciones pendientes de aprobación</h2>
+    <h2 class="col-12">Reseñas pendientes de aprobación</h2>
 
     <!-- Contenido inicio -->
     <div class="col-12">

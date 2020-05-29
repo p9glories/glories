@@ -15,10 +15,10 @@
 <header>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 a">
+			<div class="col-md-6 a">
 				<a class="logo" href="<?php $_SERVER['DOCUMENT_ROOT']?>/index.php"></a>
 			</div>
-			<div class="col-md-4 b align-self-center">
+			<div class="col-md-4 b align-self-center d-none">
 				<form action="#">
 					<div class="input-container s2">
 						<input type="text" name="search" id="search" required="required">
@@ -27,47 +27,48 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-md-4 c align-self-center">
+			<div class="col-md-6 c align-self-center">
 				<span class="btn txt">
 					<i class="icon-user"></i>
 					<?php 
 					echo "<b>".$_SESSION["nombre"]." ".$_SESSION["apellidos"]."<span>, ".$_SESSION["rol"]."</span></b>";
 					if ($_SESSION["rol"]=="Cliente"){
 
-						if (file_exists("cliente-cuenta.php")){
-						    echo "<a class='c-orange' href='cliente-cuenta.php'>Mi cuenta</a> ";
-						}else{
-						    echo "<a class='c-orange' href='../cliente-cuenta.php'>Mi cuenta</a> ";
+						if (file_exists("cliente-valoraciones.php")){
+						    echo "<a class='c-orange' href='cliente-valoraciones.php'>Mi cuenta</a> ";
+						} 
+						if (file_exists("../cliente-valoraciones.php")){
+						    echo "<a class='c-orange' href='../cliente-valoraciones.php'>Mi cuenta</a> ";
 						}
 
 					} else if ($_SESSION["rol"]=="Administrador"){
 
-						if (file_exists("Vistas/admin-cuenta.php")){
-						    echo "<a class='c-orange' href='Vistas/admin-cuenta.php'>Panel de control</a> ";
+						if (file_exists("Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='Controladores/ValoracionesController.php?operacio=verAprobar'>Panel de control</a> ";
 						}
-						if (file_exists("../Vistas/admin-cuenta.php")){
-						    echo "<a class='c-orange' href='../Vistas/admin-cuenta.php'>Panel de control</a> ";
+						else if (file_exists("../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../Controladores/ValoracionesController.php?operacio=verAprobar'>Panel de control</a> ";
 						}
-						if (file_exists("../../Vistas/admin-cuenta.php")){
-						    echo "<a class='c-orange' href='../../Vistas/admin-cuenta.php'>Panel de control</a> ";
+						else if (file_exists("../../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../../Controladores/ValoracionesController.php?operacio=verAprobar'>Panel de control</a> ";
 						}
-						if (file_exists("../../../Vistas/admin-cuenta.php")){
-						    echo "<a class='c-orange' href='../../../Vistas/admin-cuenta.php'>Panel de control</a> ";
+						else if (file_exists("../../../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../../../Controladores/ValoracionesController.php?operacio=verAprobar'>Panel de control</a> ";
 						}
 
 					} else if ($_SESSION["rol"]=="SuperAdministrador"){
 						
-						if (file_exists("Vistas/superadmin-cuenta.php")){
-						    echo "<a class='c-orange' href='Vistas/superadmin-cuenta.php'>Panel de control</a> ";
+						if (file_exists("Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
 						}
-						if (file_exists("../Vistas/superadmin-cuenta.php")){
-						    echo "<a class='c-orange' href='../Vistas/superadmin-cuenta.php'>Panel de control</a> ";
+						else if (file_exists("../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
 						}
-						if (file_exists("../../Vistas/superadmin-cuenta.php")){
-						    echo "<a class='c-orange' href='../../Vistas/superadmin-cuenta.php'>Panel de control</a> ";
+						else if (file_exists("../../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../../Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
 						}
-						if (file_exists("../../../Vistas/superadmin-cuenta.php")){
-						    echo "<a class='c-orange' href='../../../Vistas/superadmin-cuenta.php'>Panel de control</a> ";
+						else if (file_exists("../../../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../../../Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
 						}
 
 					}
