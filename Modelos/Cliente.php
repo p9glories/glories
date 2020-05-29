@@ -81,9 +81,23 @@ class Cliente{
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM usuarios
+            $sentenciaSQL = "SELECT usuarios.id_usuario,
+                                    usuarios.email,
+                                    usuarios.password,
+                                    usuarios.nombre,
+                                    usuarios.apellidos,
+                                    usuarios.newsletter,
+                                    usuarios.telefono,
+                                    clientes.id_cliente,
+                                    clientes.alta,
+                                    clientes.id_nivel,
+                                    clientes.valoraciones,
+                                    niveles.nombre AS nivelNombre
+                                        FROM usuarios
                                         INNER JOIN clientes 
-                                        ON clientes.id_usuario=usuarios.id_usuario";
+                                        ON clientes.id_usuario=usuarios.id_usuario
+                                        INNER JOIN niveles
+                                        ON clientes.id_nivel=niveles.id_nivel";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
             return $resultat = $intencio->fetchAll(PDO::FETCH_OBJ);

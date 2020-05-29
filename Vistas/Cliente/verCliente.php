@@ -81,7 +81,7 @@
 
                 <td><?php echo $objecte->alta ?></td>
                 <td><?php echo $objecte->valoraciones ?></td>
-                <td><?php echo $objecte->id_nivel ?></td>
+                <td><?php echo $objecte->nivelNombre ?></td>
 
             </tr>
     <?php
