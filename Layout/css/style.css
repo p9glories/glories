@@ -404,6 +404,7 @@ nav {
 section.products {
   padding: 40px 0;
   background-color: #f4f4f4;
+  min-height: 640px;
 }
 section.products h2 {
   margin-bottom: 20px;
