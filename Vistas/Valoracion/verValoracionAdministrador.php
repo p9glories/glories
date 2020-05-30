@@ -42,7 +42,7 @@
 
     <!-- Contenido inicio -->
     <div class="col-12">
-    <table class="table fz-13">
+    <table class="table fz-13 ver-valoracion-admin">
         <thead>
         <tr>
             <th scope="col">Id valoración</th>
@@ -82,8 +82,10 @@
                         }
                     ?>
                         
-                         <td><a class="btn btn-sm btn-success" href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Aprobar</a></td>
-                         <td><a class="btn btn-sm btn-danger" href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Eliminar</a></td>
+                         <td>
+                            <a class="btn btn-sm btn-success mt-1 mr-1" href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Aprobar</a>
+                            <a class="btn btn-sm btn-danger mt-1 mr-1" href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Eliminar</a>
+                        </td>
                      <?php
                     }
                 }

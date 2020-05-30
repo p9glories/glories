@@ -177,7 +177,7 @@ class Tienda{
         try{
             $conecta = new ConexionBD();
             $conecta->getConexionBD()->beginTransaction();
-            $sentenciaSQL = "SELECT * FROM Tiendas
+            $sentenciaSQL = "SELECT * FROM tiendas
                                     WHERE id_admin = $administrador";
             $intencio = $conecta->getConexionBD()->prepare($sentenciaSQL);
             $intencio->execute();
