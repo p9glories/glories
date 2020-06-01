@@ -9,7 +9,7 @@
 
             try{
                 //$this->conexionBD = new PDO('mysql:host=localhost; dbname=cc_glories', 'root', '');
-                $this->conexionBD = new PDO('mysql:host=sql313.epizy.com;dbname=epiz_25892821_p9glories','epiz_25892821','zgSTx73BBM');
+                $this->conexionBD = new PDO('mysql:host=localhost;dbname=id13923357_ccglories','id13923357_glories2020','Xu4Uv]v4YgKiWf/W');
                 $this->conexionBD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->conexionBD->exec("SET CHARACTER SET utf8");
                 return $this->conexionBD;

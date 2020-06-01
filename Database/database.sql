@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 29-05-2020 a las 20:54:10
--- Versión del servidor: 10.3.16-MariaDB
--- Versión de PHP: 7.3.12
+-- Servidor: sql313.epizy.com
+-- Tiempo de generación: 30-05-2020 a las 19:11:30
+-- Versión del servidor: 5.6.47-87.0
+-- Versión de PHP: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `id13879041_cc_glories`
+-- Base de datos: `epiz_25892821_p9glories`
 --
 
 -- --------------------------------------------------------
@@ -92,7 +92,7 @@ CREATE TABLE `clientes` (
   `id_usuario` int(11) NOT NULL,
   `id_nivel` int(11) NOT NULL,
   `alta` date NOT NULL,
-  `valoraciones` int(11) NOT NULL DEFAULT 0
+  `valoraciones` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -100,8 +100,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `id_usuario`, `id_nivel`, `alta`, `valoraciones`) VALUES
-(1, 21, 2, '2020-05-27', 0),
-(2, 22, 2, '2020-05-27', 0),
+(1, 21, 2, '2020-05-27', 1),
+(2, 22, 2, '2020-05-27', 1),
 (3, 23, 2, '2020-05-27', 0),
 (4, 24, 2, '2020-05-27', 0),
 (5, 25, 2, '2020-05-27', 0),
@@ -128,7 +128,7 @@ CREATE TABLE `niveles` (
 
 INSERT INTO `niveles` (`id_nivel`, `nombre`) VALUES
 (1, 'Nada'),
-(2, 'Principiante'),
+(2, 'Novato'),
 (3, 'Intermedio'),
 (4, 'Avanzado');
 
@@ -209,7 +209,7 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `newsletter` tinyint(1) NOT NULL DEFAULT 0
+  `newsletter` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -237,11 +237,11 @@ INSERT INTO `usuarios` (`id_usuario`, `email`, `password`, `nombre`, `apellidos`
 (18, 'admin18', 'admin18', 'Ismael', 'Guerrero', '660123456', 0),
 (19, 'superadmin1', 'superadmin1', 'Angello', 'Zamudio', '660123456', 0),
 (20, 'superadmin2', 'superadmin2', 'Gerard', 'Prat', '660123456', 0),
-(21, 'cliente1', 'cliente1', 'José', 'Rodriguez', '660987654', 1),
+(21, 'cliente1', 'cliente1', 'José', 'Rodriguez', '660987654', 0),
 (22, 'cliente2', 'cliente2', 'Félix', 'Castro', '660987654', 1),
-(23, 'cliente3', 'cliente3', 'Omar', 'Santos', '660987654', 1),
+(23, 'cliente3', 'cliente3', 'Omar', 'Santos', '660987654', 0),
 (24, 'cliente4', 'cliente4', 'Fátima', 'Vall', '660987654', 1),
-(25, 'cliente5', 'cliente5', 'Miquel', 'Boix', '660987654', 1),
+(25, 'cliente5', 'cliente5', 'Miquel', 'Boix', '660987654', 0),
 (26, 'cliente6', 'cliente6', 'Marta', 'Prat', '660987654', 1),
 (27, 'cliente7', 'cliente7', 'Augusto', 'Ugarte', '660987654', 1),
 (28, 'cliente8', 'cliente8', 'Laura', 'Chávez', '660987654', 1),
@@ -271,33 +271,33 @@ CREATE TABLE `valoraciones` (
 
 INSERT INTO `valoraciones` (`id_valoracion`, `id_cliente`, `id_tienda`, `puntuacion`, `comentario`, `aprobado`, `fecha`, `nivel`) VALUES
 (1, 1, 7, 5, 'Me encanta, hay de todo y buena calidad, hoy he comprado sushi, a ver cómo está.', 1, '2020-05-27', 2),
-(2, 1, 1, 4, 'Atienden rápido, buen servicio, limpio y muy amplio e intimo la zona de arriba', 0, '2020-05-27', 2),
+(2, 1, 1, 4, 'Atienden rápido, buen servicio, limpio y muy amplio e intimo la zona de arriba', 1, '2020-05-27', 2),
 (3, 1, 11, 2, 'No hay mucha variedad, es más un centro de recogida de pedidos que una tienda', 1, '2020-05-27', 2),
 (4, 1, 8, 4, 'Los helados son muy buenos también junto con la panadería y pastelería.', 1, '2020-05-27', 2),
 (5, 1, 9, 5, 'Limpio, bien surtido y trato amable por las cajeras.', 1, '2020-05-27', 2),
 (6, 1, 4, 4, 'Todo mucho más ordenado que en otros sephora. La chica fue muy atenta conmigo.', 1, '2020-05-27', 2),
-(7, 1, 5, 2, 'Muy buenos productos y buenos precios pero las dependientas tienen muy pocas ganas de trabajar. No sé cuál será su situación laboral y si está justificada su actitud, pero he ido pidiendo consejo para elegir un maquillaje y me han atendido con muy pocas ganas y despachándome rápido, finalmente me he traído uno que no cumplía con lo que le pedía. Igualmente me ha pasado con el resto de la compra, y sinceramente después de haberme gastado 50€ en productos no es agradable salir con esa sensación de mala atención.', 1, '2020-05-27', 2),
+(7, 1, 5, 2, 'Muy buenos productos y buenos precios pero las dependientas tienen muy pocas ganas de trabajar. No sé cuál será su situación laboral y si está justificada su actitud, pero he ido pidiendo consejo para elegir un maquillaje y me han atendido con muy pocas ganas y despachándome rápido, finalmente me he traído uno que no cumplía con lo que le pedía. Igualmente me ha pasado con el resto de la compra, y sinceramente después de haberme gastado 50€ en productos no es agradable salir con esa sensación de mala atención.', 1, '2020-05-27', 3),
 (8, 1, 6, 5, 'Me encantan sus productos especialmente el aceite de almendras que te deja la piel suave e hidratada. La dependienta también te ayuda mucho en aconsejarte y elegir el producto o productos adecuados para ti y para tus regalos a tu familia y amigos.', 1, '2020-05-27', 2),
 (9, 1, 10, 1, 'Si estáis cerrados lo mínimo que podrías hacer es ponerlo en la web. Y cambiar el contestador. \r\nPenoso', 1, '2020-05-27', 2),
 (10, 1, 12, 5, 'Bonita tienda de deportes,  no es muy grande, pero tienen bastante variedad,  diferentes tipos de zapatillas tanto de chica como de chico,  sudaderas... Tienen también zapatillas de niño,  te tratan muy bien,  súper simpáticos y amables,  tienda acogedora, con  precios asequibles.', 1, '2020-05-27', 2),
-(11, 1, 13, 4, 'Espacioso y con buenos productos. Casi todo lo que tengo en casa es de allí y nunca he tenido queja alguna, ni con las devoluciones. Eso sí, echo en falta la anterior sección de libros y películas, antes era más grande y contenía ofertas interesantes.', 1, '2020-05-27', 2),
+(11, 1, 13, 4, 'Espacioso y con buenos productos. Casi todo lo que tengo en casa es de allí y nunca he tenido queja alguna, ni con las devoluciones. Eso sí, echo en falta la anterior sección de libros y películas, antes era más grande y contenía ofertas interesantes.', 1, '2020-05-27', 3),
 (12, 1, 14, 1, 'Son unos auténticos estafadores, siempre ponen pegas para las devoluciones, te venden cosas rotas o ya usadas y que han sido vendidas anteriormente.', 1, '2020-05-27', 2),
 (13, 1, 15, 4, 'Aparcamiento justo en la puerta, nunca he esperado mucho tiempo en la cola, no hay tanta aglomeración de gente, aquello es muy grande y tienen de todo.', 1, '2020-05-27', 2),
-(14, 1, 16, 4, 'Es un establecimiento donde puedes comprar todo tipo de ropa  tanto para el hombre como para la mujer. Su relacion precio calidad es buena.', 1, '2020-05-27', 2),
+(14, 1, 16, 4, 'Es un establecimiento donde puedes comprar todo tipo de ropa  tanto para el hombre como para la mujer. Su relacion precio calidad es buena.', 1, '2020-05-27', 3),
 (15, 1, 17, 5, 'La ropa muy bien y la calidad bastante buena, me gusta comprar allí y mi madre también.', 1, '2020-05-27', 2),
 (16, 1, 18, 4, 'Es un establecimiento donde puedes comprar todo tipo de ropa  tanto para el hombre como para la mujer. Su relacion precio calidad es buena.', 1, '2020-05-27', 2),
 (17, 1, 3, 1, 'No se por donde empezar... El bar esta sucio, el bocadillo que pedí me lo trajeron en media hora y frio y la gente maleducada.', 1, '2020-05-27', 2),
-(18, 1, 2, 4, 'Buen lugar. Los camareros y el personal muy amables. Los baños limpios.\r\n', 1, '2020-05-27', 2),
-(19, 3, 2, 1, 'Pésimo total las bandejas dnd se sirve la comida chorreando le puso el papel y se mojó del agua q traía las patatas fritas las mesas sucias ....un desastre total es la primera vez que pasa eso en un Mac donald.', 1, '2020-05-28', 2),
+(18, 1, 2, 4, 'Buen lugar. Los camareros y el personal muy amables. Los baños limpios.\r\n', 0, '2020-05-27', 3),
+(19, 3, 2, 1, 'Pésimo total las bandejas dnd se sirve la comida chorreando le puso el papel y se mojó del agua q traía las patatas fritas las mesas sucias ....un desastre total es la primera vez que pasa eso en un Mac donald.', 1, '2020-05-28', 3),
 (20, 2, 7, 3, 'Siempre muy limpio. La única pega que pondría es que las cajeras deberían estar más atentas a los clientes y hablar menos de sus vidas las unas con las otras mientras nos cobran. Sus vidas no me interesan lo más mínimo.', 1, '2020-05-29', 2),
 (21, 2, 8, 2, 'Le faltan marcas yo echo de menos entre otros el arroz la cazuela que se consume en casa de toda la vida es tan bueno como el mejor pero más baratito.', 1, '2020-05-29', 2),
 (22, 2, 9, 4, 'El parking no merece la pena entrar si es por una o dos cosas ya que te costará más que lo que compres. Empleados algo bordes si entras en repetidas ocasiones por varios productos por olvidos o lo que sea.', 1, '2020-05-29', 2),
-(23, 2, 4, 3, 'Muy pequeño, me gustaría que fuese más grande.', 1, '2020-05-29', 2),
+(23, 2, 4, 3, 'Muy pequeño, me gustaría que fuese más grande.', 1, '2020-05-29', 3),
 (24, 2, 5, 4, 'Variedad, limpieza,buen servicio y empleadas simpáticas no creo que se pueda pedir más a este tipo establecimientos.', 1, '2020-05-29', 2),
 (25, 2, 6, 3, 'Cadena de productos de perfumería y similares, a veces con buenas ofertas.', 1, '2020-05-29', 2),
 (26, 2, 10, 4, 'Tienen buenos precios y algunos modelos que no encuentras casi en ninguna tienda. Los chicos son muy amables.', 1, '2020-05-29', 2),
 (27, 2, 11, 4, 'Es una gran opción si no dispones de coche. Podría ser más grande y estar mejor surtido. La tienda grande está lejos y no siempre se puede ir.', 1, '2020-05-29', 2),
-(28, 2, 12, 3, 'La ropa está bien en lo que a calidad/precio se refiere. En ropa de mujer encuentras muchas tallas y eso se agradece. La ropa de niños es muy chula y tienen muchas ofertas en conjuntos que son una monada.', 1, '2020-05-29', 2),
+(28, 2, 12, 3, 'La ropa está bien en lo que a calidad/precio se refiere. En ropa de mujer encuentras muchas tallas y eso se agradece. La ropa de niños es muy chula y tienen muchas ofertas en conjuntos que son una monada.', 0, '2020-05-29', 2),
 (29, 2, 13, 2, 'Suelen tener lo que voy buscando. El problema es que cuesta mucho trabajo que te atiendan.', 1, '2020-05-29', 2),
 (30, 2, 14, 5, 'Muy buen sitio donde informarse de los últimos modelos de móviles. También hacen seguros que están bastante bien y contratos de luz con los que te ahorras bastante comparado con otras compañías. Me atendió un chico llamado David fue muy apañado y simpático.', 1, '2020-05-29', 2),
 (31, 2, 15, 3, 'Desde la ultima reforma que lo hicieron la mitad de grande ha perdido mucha variedad de productos.', 1, '2020-05-29', 2),
@@ -310,25 +310,25 @@ INSERT INTO `valoraciones` (`id_valoracion`, `id_cliente`, `id_tienda`, `puntuac
 (38, 3, 7, 1, 'Pésima la previsión de carnes, no había de casi nada, no volveré más.', 1, '2020-05-29', 2),
 (39, 3, 8, 5, 'La verdad que los trabajadores son muy amables y durante el estado de alarme y aún el miedo que tienen siguen ayudándote como siempre.', 1, '2020-05-29', 2),
 (40, 3, 9, 2, 'No gusta nada las nuevas ubicaciones de la pescadería', 1, '2020-05-29', 2),
-(41, 3, 4, 5, 'El personal muy atento y considerado', 1, '2020-05-29', 2),
+(41, 3, 4, 5, 'El personal muy atento y considerado', 0, '2020-05-29', 3),
 (42, 3, 5, 5, 'Tienda situada en un entorno inmejorable. Unos perfumes espectaculares. Unas ofertas muy buenas y un trato inmejorable. Recomendable. Hay que ir cada mes al menos una vez. Siempre que voy me llevo unas colonias y perfumes buenísimos. Gracias por todo. Me encanta.', 1, '2020-05-29', 2),
 (43, 3, 6, 1, 'Esta muy bien porque puedes encontrar muchas cosas y de diferentes marcas. Pero las dependientas son unas acosadoras que intentan venderte la línea que cada una vende.', 1, '2020-05-29', 2),
 (44, 3, 10, 4, 'Buen equipo', 1, '2020-05-29', 2),
-(45, 3, 11, 5, 'Local grande, organizado por deporte en distintos pisos, la atención es buena, cuesta encontrar a alguno de los empleados, pero cuando logras tener su atención te ayudan en todo lo que necesitas! Hay que ir con tiempo porque siempre se forma cola para pagar, aunque esta la opción de hacerlo usando una máquina para el pago con tarjeta.', 1, '2020-05-29', 2),
+(45, 3, 11, 5, 'Local grande, organizado por deporte en distintos pisos, la atención es buena, cuesta encontrar a alguno de los empleados, pero cuando logras tener su atención te ayudan en todo lo que necesitas! Hay que ir con tiempo porque siempre se forma cola para pagar, aunque esta la opción de hacerlo usando una máquina para el pago con tarjeta.', 0, '2020-05-29', 2),
 (46, 3, 12, 3, ' Hace 2 meses\r\nCada vez que voy bajo la mayoría de los productos de varios géneros, hay un cartel con el precio no correspondente al real y cada vez que voy a la caja tengo una sorpresa en lo que quiero comprar.', 1, '2020-05-29', 2),
-(47, 3, 13, 1, 'Media Markt ....99,9% inversión en publicidad 00,01 % inversión en equipo humano y selección de personal , imagino que pagan lo que pagan..y se nota notablemente...horrible la atención, la profesionalidad, atención telefónica inexistente.', 1, '2020-05-29', 2),
+(47, 3, 13, 1, 'Media Markt ....99,9% inversión en publicidad 00,01 % inversión en equipo humano y selección de personal , imagino que pagan lo que pagan..y se nota notablemente...horrible la atención, la profesionalidad, atención telefónica inexistente.', 0, '2020-05-29', 4),
 (48, 3, 14, 2, 'Pocos conocimientos d los empleados, falta de profesionalidad, trato  informal, rayando mala educación.', 1, '2020-05-29', 2),
-(49, 3, 15, 2, 'He realizado una compra de una lavadora, que al usarla por primera vez resulta que estaba dañada y pierde agua. No tienen servicio de atención al cliente.', 1, '2020-05-29', 2),
-(50, 3, 16, 3, 'Hace muchos años que compro en C y A. Uso talla grande y siempre encuentro lo que busco. Me gusta mucho su ropa. También compro ropa para mis nietas y nietos.', 1, '2020-05-29', 2),
-(51, 3, 17, 3, 'Tienda de Ropa bonita y a un precio que se puede comprar, zapatos, complementos muy chulos. Calidad buena. Todas las semanas hay algo distinto. Y la ropa de niños me encanta.', 1, '2020-05-29', 2),
-(52, 3, 18, 5, 'Me gusta mucho, he encontrado ropa bastante bien de precio por las rebajas.', 1, '2020-05-29', 2),
+(49, 3, 15, 2, 'He realizado una compra de una lavadora, que al usarla por primera vez resulta que estaba dañada y pierde agua. No tienen servicio de atención al cliente.', 0, '2020-05-29', 2),
+(50, 3, 16, 3, 'Hace muchos años que compro en C y A. Uso talla grande y siempre encuentro lo que busco. Me gusta mucho su ropa. También compro ropa para mis nietas y nietos.', 0, '2020-05-29', 2),
+(51, 3, 17, 3, 'Tienda de Ropa bonita y a un precio que se puede comprar, zapatos, complementos muy chulos. Calidad buena. Todas las semanas hay algo distinto. Y la ropa de niños me encanta.', 0, '2020-05-29', 2),
+(52, 3, 18, 5, 'Me gusta mucho, he encontrado ropa bastante bien de precio por las rebajas.', 0, '2020-05-29', 2),
 (53, 3, 1, 5, 'En la categoría de comida rápida me gusta el whoper.  Intento no comer carbohidratos así que si necesito comer algo rápido lo pido con ensalada y la hamburguesa es lo suficientemente grande para quedar saciada sin comer el pan. Claro que también voy como capricho y entonces pido hasta patatas :)', 1, '2020-05-29', 2),
-(54, 3, 3, 5, 'Muy bien,limpio y atención rápida, suelo ir a comer un día por semana al salir d curro y 0 quejas :)', 1, '2020-05-29', 2),
+(54, 3, 3, 5, 'Muy bien,limpio y atención rápida, suelo ir a comer un día por semana al salir d curro y 0 quejas :)', 0, '2020-05-29', 2),
 (55, 4, 7, 5, 'Amplio y cómodo local donde puedes comprar todo lo necesario para tu hogar o cualquier otra comprra rápida. Buena atención y con los precios característicos de esta cadena de supermercados. Buena atención', 1, '2020-05-29', 2),
 (56, 4, 8, 4, 'Es agradable, no se diferencia tanto de su competencia en cuanto a espacio. Tiene productos buenos a buenos precios, si hay que verificar (como en todos) que los precios bajos sean de buena calidad y no rendidos con otros ingredientes. Tiene buena variedad de quesos y jamones.', 1, '2020-05-29', 2),
 (57, 4, 9, 5, 'Este negocio destaca por la buena atención al cliente,la familiaridad en el trato,la limpieza de sus instalaciones,la excelente calidad-precio de sus productos y al gran esfuerzo y trabajo que realizan día a día todos sus emplead@s. \r\n Mucha salud y ánimo!!!', 1, '2020-05-29', 2),
 (58, 4, 4, 4, 'Tienda que se dedica a la venta de todo tipo de maquillajes, productos de belleza, todo lo referente al cuidado de la piel y por extensión a la perfumería en general. Se encuentra ubicado dentro del Corte Inglés, y tiene una amplia variedad para la comercialización. La atención brindada por sus dependientes es dedicada y amable y los precios son de moderados a altos. Es recomendable su visita!!\r\n', 1, '2020-05-29', 2),
-(59, 4, 5, 2, 'Mi padre se ha quedado sin regalo de reyes. El pedido se realizo hace mas de dos semanas y hemos estado esperando al transportista en 4 ocasiones sin salir de casa. Por estar en las fechas le sugiero que voy a recoger el producto a la tienda físicamente conservándome el precio y me niegan esta opción. Supuestamente me realizaran el abono pero me han ocasionado un gran perjuicio y molestias.', 1, '2020-05-29', 2),
+(59, 4, 5, 2, 'Mi padre se ha quedado sin regalo de reyes. El pedido se realizo hace mas de dos semanas y hemos estado esperando al transportista en 4 ocasiones sin salir de casa. Por estar en las fechas le sugiero que voy a recoger el producto a la tienda físicamente conservándome el precio y me niegan esta opción. Supuestamente me realizaran el abono pero me han ocasionado un gran perjuicio y molestias.', 0, '2020-05-29', 2),
 (60, 4, 6, 4, 'Me fascinan todos sus productos. No sabría cuál es el favorito... pero sus fragancias son divinas...', 1, '2020-05-29', 2),
 (61, 4, 10, 4, 'Una garantía variedad de zapatillas y artículos de deporte. Todo muy bien señalizado y limpio. \r\nEl trato del personal excelente. \r\nSi tuviese que cambiar algo sería, habilitar más sitios para sentarse y probarse las zapatillas ya que hay poco y es muy estrecho. Añadiría también más espejos de pie.', 1, '2020-05-29', 2),
 (62, 4, 11, 1, 'La compra online va de pena, hice un pedido el 10-Mayo y aún está en preparación, me han anulado artículos de mi compra. La fecha estimada de entrega era el pasado 21-Mayo, estoy por anularlo no creo ni que lo reciba en este año. Nunca más.', 1, '2020-05-29', 2),
@@ -352,7 +352,7 @@ INSERT INTO `valoraciones` (`id_valoracion`, `id_cliente`, `id_tienda`, `puntuac
 (80, 5, 11, 5, 'Buena ropa deportiva y muy bien atendido por el personal. Se nota que lo hacen con profesionalidad.', 1, '2020-05-29', 2),
 (81, 5, 12, 1, 'La tienda en general, bien.Los empleados son muy atentos y amables pero el encargado de cobrar, que creo es el encargado de la tienda, es un déspota que me hizo sentir hasta vergüenza ajena del comportamiento grosero con los empleados', 1, '2020-05-29', 2),
 (82, 5, 13, 3, 'He comprado un climatizador y el empleado a sido amable me a dicho como funciona y me acompañado con el paquete hasta la caja para que yo no la cogiera pues pesaba. Muy agradable y agradecida por el trato', 1, '2020-05-29', 2),
-(83, 5, 14, 4, 'Buena atención. Juani ha sido muy amable y resolutiva.', 1, '2020-05-29', 2),
+(83, 5, 14, 4, 'Buena atención. Juani ha sido muy amable y resolutiva.', 0, '2020-05-29', 2),
 (84, 5, 15, 5, 'Buena atención del personal, súper efectiva.', 1, '2020-05-29', 2),
 (85, 5, 16, 4, 'Muy buena tienda, todo muy bien colocado y te atienden rápido.', 1, '2020-05-29', 2),
 (86, 5, 17, 3, 'La ropa es muy bonita y concuerda con los precios, fui en la época de rebajas buscando unos vaqueros vintage que fuesen  buenos calidad-precio y en esta tienda los encontré. La recomiendo!', 1, '2020-05-29', 2),
