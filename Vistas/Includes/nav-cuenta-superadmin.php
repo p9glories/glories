@@ -5,6 +5,9 @@
     <h3>Área de Superadministrador</h3>
     <ul>
       <li>
+        <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/ValoracionesController.php?operacio=verAprobar">Reseñas pendientes</a>
+      </li>
+      <li>
         <a href="<?php $_SERVER['DOCUMENT_ROOT']?>/Controladores/ValoracionesController.php?operacio=ver">Reseñas</a>
       </li>
       <li>

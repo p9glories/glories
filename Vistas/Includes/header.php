@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>CC Glòries</title>
 	<link rel="stylesheet" href="/Vistas/Theme/css/bootstrap.css?v=2">
-	<link rel="stylesheet" href="/Vistas/Theme/css/style.css">
+	<link rel="stylesheet" href="/Vistas/Theme/css/style.css?v=2">
 	<script src="/Vistas/Theme/js/jquery.min.js"></script>
 	<script src="/Vistas/Theme/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">

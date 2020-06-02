@@ -44,6 +44,21 @@
 					} else if ($_SESSION["rol"]=="Administrador"){
 
 						if (file_exists("Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='Controladores/ValoracionesController.php?operacio=verAprobadasAdmin'>Panel de control</a> ";
+						}
+						else if (file_exists("../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../Controladores/ValoracionesController.php?operacio=verAprobadasAdmin'>Panel de control</a> ";
+						}
+						else if (file_exists("../../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../../Controladores/ValoracionesController.php?operacio=verAprobadasAdmin'>Panel de control</a> ";
+						}
+						else if (file_exists("../../../Controladores/ValoracionesController.php")){
+						    echo "<a class='c-orange' href='../../../Controladores/ValoracionesController.php?operacio=verAprobadasAdmin'>Panel de control</a> ";
+						}
+
+					} else if ($_SESSION["rol"]=="SuperAdministrador"){
+						
+						if (file_exists("Controladores/ValoracionesController.php")){
 						    echo "<a class='c-orange' href='Controladores/ValoracionesController.php?operacio=verAprobar'>Panel de control</a> ";
 						}
 						else if (file_exists("../Controladores/ValoracionesController.php")){
@@ -54,21 +69,6 @@
 						}
 						else if (file_exists("../../../Controladores/ValoracionesController.php")){
 						    echo "<a class='c-orange' href='../../../Controladores/ValoracionesController.php?operacio=verAprobar'>Panel de control</a> ";
-						}
-
-					} else if ($_SESSION["rol"]=="SuperAdministrador"){
-						
-						if (file_exists("Controladores/ValoracionesController.php")){
-						    echo "<a class='c-orange' href='Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
-						}
-						else if (file_exists("../Controladores/ValoracionesController.php")){
-						    echo "<a class='c-orange' href='../Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
-						}
-						else if (file_exists("../../Controladores/ValoracionesController.php")){
-						    echo "<a class='c-orange' href='../../Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
-						}
-						else if (file_exists("../../../Controladores/ValoracionesController.php")){
-						    echo "<a class='c-orange' href='../../../Controladores/ValoracionesController.php?operacio=ver'>Panel de control</a> ";
 						}
 
 					}

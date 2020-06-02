@@ -77,7 +77,6 @@
                 <?php $objecte->horario ?>
                 <?php $objecte->ubicacion ?>
                 <td>
-                    <?php echo $objecte->estrellitas ?>
                     <span class="stars stars-0<?php echo ceil($objecte->estrellitas) ?>">
                     <span></span><span></span><span></span><span></span><span></span>
                 </span>

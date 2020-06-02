@@ -5,10 +5,7 @@
     <h3>Área de Administrador</h3>
     <ul>
       <li>
-        <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/ValoracionesController.php?operacio=verAprobar">Reseñas pendientes</a>
-      </li>
-      <li>
-        <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/ValoracionesController.php?operacio=verAprobadasAdmin">Reseñas</a>
+        <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/ValoracionesController.php?operacio=verAprobadasAdmin">Reseñas recibidas</a>
       </li>
       <li>
         <a href="<?php $_SERVER["DOCUMENT_ROOT"]?>/Controladores/TiendasController.php?operacio=verTiendaAdmin">Mi tienda</a>

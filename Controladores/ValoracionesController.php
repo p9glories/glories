@@ -32,10 +32,10 @@ class ValoracionesController extends Valoracion{
         require "../Vistas/Valoracion/verValoracion.php";
     }
 
-    public function LlistaValoracionesAprobar($administrador){
+    public function LlistaValoracionesAprobar(){
         require_once "TiendasController.php";
         $tiendas = new TiendasController();
-        $conjuntDeTendes=$tiendas->buscaTiendasDeAdmin($administrador);
+        $conjuntDeTendes=$tiendas->selectTiendas();
         $valoraciones= Array();
         foreach($conjuntDeTendes as $tendes){
             array_push($valoraciones, $this->retornaValoracionTienda($tendes->id_tienda));
@@ -209,15 +209,15 @@ if(isset($_GET["operacio"]) && $_GET["operacio"]=="verAprobadasAdmin"){
 if(isset($_GET["operacio"]) && $_GET["operacio"]=="verAprobar"){
     $objecte = new ValoracionesController();
     if (isset($_SESSION["login"]) && $_SESSION["login"]==true){
-        if (isset($_SESSION["rol"]) && $_SESSION["rol"]=="Administrador"){
-            $objecte->LlistaValoracionesAprobar($_SESSION["id_administrador"]);
+        if (isset($_SESSION["rol"]) && $_SESSION["rol"]=="SuperAdministrador"){
+            $objecte->LlistaValoracionesAprobar();
         }
         else{
             $_SESSION["Denegado"]="No tiene acceso al módulo!!";
             header ("location: ../index.php");
         }
     }else{
-        header("location: ../formLoginPrueba.php");
+        header("location: ../index.php");
     }
     
 }

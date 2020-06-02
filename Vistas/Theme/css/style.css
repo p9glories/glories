@@ -30,7 +30,7 @@
   color: #ff5722!important;
 }
 .c-green {
-  color: #4CAF50!important;s
+  color: #4CAF50!important;
 }
 figure.null {
   background-image: url(../img/icon-null.png);
@@ -802,7 +802,12 @@ figure.img-container img {
   float: left;
   object-fit: contain;
 }
-
+.ver-valoracion-admin tr > *:nth-child(1),
+.ver-valoracion-admin tr > *:nth-child(2),
+.ver-valoracion-admin tr > *:nth-child(3),
+.ver-valoracion-admin tr > *:nth-child(6) {
+  display: none !important;
+}
 
 
 

@@ -8,7 +8,7 @@
         $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
         header ("location: ../index.php");
     }else{
-        if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="Administrador"){
+        if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="SuperAdministrador"){
             $_SESSION["Denegado"]="No tiene acceso al módulo de revisar las Valoraciones!!";
             header ("location: ../index.php");
         }
@@ -33,7 +33,7 @@
     <div class="container">
     <div class="row">
         
-    <?php include '../Vistas/Includes/nav-cuenta-admin.php';?>
+    <?php include '../Vistas/Includes/nav-cuenta-superadmin.php';?>
         
     <div class="col-md-9 content">
     <div class="row">
@@ -84,7 +84,7 @@
                         
                          <td>
                             <a class="btn btn-sm btn-success mt-1 mr-1" href="ValoracionesController.php?aprobarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Aprobar</a>
-                            <a class="btn btn-sm btn-danger mt-1 mr-1" href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Eliminar</a>
+                            <a class="btn btn-sm btn-danger mt-1 mr-1" href="ValoracionesController.php?eliminarValoracion=<?php echo $valoracio ?>&cliente=<?php echo $clientAbuscar ?>">Rechazar</a>
                         </td>
                      <?php
                     }

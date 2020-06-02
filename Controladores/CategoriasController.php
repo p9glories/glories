@@ -9,7 +9,8 @@ if (file_exists("../Modelos/Categoria.php")){
 //GP
 if (file_exists("../Controladores/SesionesController.php")){
     require_once "../Controladores/SesionesController.php";
-}else{
+}
+else if (file_exists("../../Controladores/SesionesController.php")){
     require_once "../../Controladores/SesionesController.php";
 }
 

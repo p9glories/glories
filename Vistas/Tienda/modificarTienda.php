@@ -6,11 +6,11 @@
     if (!isset($_SESSION["id_usuario"])){
         $_SESSION["login"] = false;
         $_SESSION["mensajeLogin"]= "<< NO LOGUEADO >>";
-        header ("location: ../../index.php");
+        header ("location: ../index.php");
     }else{
         if (isset($_SESSION["rol"]) && $_SESSION["rol"]!="Administrador"){
                 $_SESSION["Denegado"]="No tiene acceso al módulo!!";
-                header ("location: ../../index.php");
+                header ("location: ../index.php");
         }
     }
 
@@ -29,6 +29,7 @@
 ?>
 
 <body>
+
 
 <section class="admin">
     <div class="container">
@@ -126,7 +127,6 @@
             </div>
         </form>
       
-
 
 </div>
 </div>
